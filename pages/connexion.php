@@ -35,17 +35,11 @@ $path_images=$path_root."images/";
             <label for="inputMotDePasse">Mot de passe</label>
             <input type="password" class="form-control mx-auto text-center" id="inputMotDePasse" placeholder="************">
           </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="checkbox" class="form-check-input">
-              Rester connecté(e)
-            </label>
-          </div>
           <button type="submit" class="btn btn-primary">Connexion</button>
         </form>
         <div class="card-block text-center">
           <p class="card-text">Vous n'êtes pas encore inscrit ?</p>
-          <a class="btn btn-success" href="<?php echo $path_pages ; ?>inscription.php" role="button">S'inscrire</a>
+          <a class="btn btn-secondary" href="<?php echo $path_pages ; ?>inscription.php" role="button">Inscription</a>
         </div>
       </div>
       
