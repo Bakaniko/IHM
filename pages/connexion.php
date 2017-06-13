@@ -2,11 +2,11 @@
 if (session_status()==PHP_SESSION_NONE) {session_start();}?>
 
 <?php if (isset($_SESSION['flash'])):?>
-<?php foreach ($_SESSION['flash'] as $type=>$message):?>
-  <div class="alertalert-<?=$type;?>">
-    <?=$message;?>
-  </div>
-<?php endforeach;?>
+  <?php foreach ($_SESSION['flash'] as $type=>$message):?>
+    <div class="alertalert-<?=$type;?>">
+      <?=$message;?>
+    </div>
+  <?php endforeach;?>
   <?php unset($_SESSION['flash']);?>
 <?php endif;?>
 <?php // Définition des chemins d'accès aux fichiers
@@ -43,6 +43,10 @@ $path_images=$path_root."images/";
           </div>
           <button type="submit" class="btn btn-primary">Connexion</button>
         </form>
+        <div class="card-block text-center">
+          <p class="card-text">Vous n'êtes pas encore inscrit ?</p>
+          <a class="btn btn-success" href="<?php echo $path_pages ; ?>inscription.php" role="button">S'inscrire</a>
+        </div>
       </div>
       
       <!-- Fin des formulaires -->

@@ -16,10 +16,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo $path_pages ; ?>connexion.php"><i class="material-icons">&#xE853;&nbsp;</i>Se connecter</a>
-        </li>
-        <li class="nav-item">
-         <a class="nav-link" href="<?php echo $path_pages ; ?>register.php"><i class="material-icons">&#xE853;&nbsp;</i>S'inscrire</a>
-        </li>
+      </li>
       </ul>
   </div>
 </nav>
