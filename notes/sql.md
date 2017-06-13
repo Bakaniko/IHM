@@ -82,7 +82,7 @@ Varchar 15
 
 ### adresseMail
 
-email de contact, *devra correspondre à un certain format*
+email de contact, *devra correspondre à un certain format* NOT NULL
 
 **unique**
 
@@ -241,7 +241,7 @@ proj_Salle.idSalle, **clé étrangère**
 
 Identifiant unique
 
-Numérique INT auto-incrémenté **clé primaire**
+varchar(10) **clé primaire**
 
 ### *idSalle*
 
