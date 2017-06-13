@@ -25,7 +25,7 @@ $path_images=$path_root."images/";
 		<div class="card mx-auto">
 			<div class="card-block text-center">
 				<a class="btn btn-secondary" href="#" role="button"><i class="fa fa-undo mr-2" aria-hidden="true"></i>Refaire la sélection</a>
-				<a class="btn btn-success" href="<?php echo $path_pages ; ?>panier.php" role="button"><i class="fa fa-check mr-2" aria-hidden="true"></i>Valider la sélection</a>
+				<a class="btn btn-success" href="<?php echo $path_pages ; ?>panier.php" role="button"><i class="fa fa-check mr-2" aria-hidden="true"></i>Ajouter au panier</a>
 			</div>
 		</div>
 	</div>

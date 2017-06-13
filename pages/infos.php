@@ -29,26 +29,28 @@ $path_images=$path_root."images/";
 
 			</div>
 			<!-- Formulaire -->
-			<div class="card-block text-center">
+			<div class="card-block">
 				<h5 class="card-title text-center">Par email</h5>
-				<form action="" method="post">
-					<div class="form-group">
-						<label for="prenom">Prénom</label>
-						<input type="text" id="prenom"  class="form-control mx-auto text-center" name="user_firstname" />
+				<form class="d-flex flex-column justify-content-center" action="" method="post">
+					<div class="form-group d-flex flex-row flex-wrap justify-content-center">
+						<label class="col-2 my-auto" for="prenom">Prénom</label>
+						<input type="text" id="prenom"  class="form-control" name="user_firstname" />
 					</div>		
-					<div class="form-group">
-						<label for="nom">Nom</label>
-						<input type="text" id="nom" class="form-control mx-auto text-center" name="user_name"  />
+					<div class="form-group d-flex flex-row flex-wrap justify-content-center">
+						<label class="col-2 my-auto" for="nom">Nom</label>
+						<input type="text" id="nom" class="form-control" name="user_name"  />
 					</div>									
-					<div class="form-group">
-						<label for="couriel">Adresse email</label>
-						<input type="email" id="courriel" class="form-control mx-auto text-center" name="user_email" />
+					<div class="form-group d-flex flex-row flex-wrap justify-content-center">
+						<label class="col-2 my-auto" for="couriel">Email</label>
+						<input type="email" id="courriel" class="form-control" name="user_email" />
 					</div>
-					<div class="form-group">
-						<label for="message">Message</label>
-						<textarea class="form-control mx-auto text-center" id="message" rows="3"></textarea>
+					<div class="form-group d-flex flex-row flex-wrap justify-content-center">
+						<label class="my-auto" for="message">Message</label>
+						<textarea class="form-control" id="message" rows="4"></textarea>
 					</div>
+					<div class="form-group d-flex flex-row flex-wrap justify-content-center">
 						<button class="btn btn-primary" type="submit">Envoyer</button>
+						</div>
 				</form>
 			</div>
 		</div>

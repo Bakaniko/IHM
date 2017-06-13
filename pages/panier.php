@@ -61,7 +61,7 @@ $path_images=$path_root."images/";
 				</table>
 			</div>
 			<div class="card-block text-center">
-				<a class="btn btn-secondary" href="<?php echo $path_pages ; ?>reservation.php" role="button"><i class="fa fa-arrow-left mr-2" aria-hidden="true"></i>Retour</a>
+				<a class="btn btn-secondary" href="<?php echo $path_pages ; ?>programmation.php" role="button">Poursuivre mes achats</a>
 				<a class="btn btn-success" href="https://developer.paypal.com/docs/classic/ipn/integration-guide/IPNSimulator" role="button"><i class="fa fa-check mr-2" aria-hidden="true"></i>Paiement</a>
 			</div>
 		</div>

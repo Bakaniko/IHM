@@ -6,17 +6,20 @@
   <div class="collapse navbar-collapse" id="menu-deroulant">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo $path_root ; ?>index.php"><i class="material-icons">&#xE88A;&nbsp;</i>Accueil</a>
+        <a class="nav-link" href="<?php echo $path_root ; ?>index.php"><i class="material-icons mr-1">&#xE88A;</i>Accueil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo $path_pages ; ?>programmation.php"><i class="material-icons">&#xE616;&nbsp;</i>Programmation</a>
+      <a class="nav-link" href="<?php echo $path_pages ; ?>programmation.php"><i class="material-icons mr-1">&#xE616;</i>Programmation</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo $path_pages ; ?>connexion.php"><i class="material-icons">&#xE853;&nbsp;</i>Connexion</a>
+        <a class="nav-link" href="<?php echo $path_pages ; ?>connexion.php"><i class="material-icons mr-1">&#xE853;</i>Connexion</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo $path_pages ; ?>infos.php"><i class="material-icons">&#xE88F;&nbsp;</i>Infos</a>
+        <a class="nav-link" href="<?php echo $path_pages ; ?>infos.php"><i class="material-icons mr-1">&#xE8CB;</i>Panier</a>
       </li>
-      </ul>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo $path_pages ; ?>infos.php"><i class="material-icons mr-1">&#xE88F;</i>Infos</a>
+      </li>
+    </ul>
   </div>
 </nav>

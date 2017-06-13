@@ -7,7 +7,7 @@
 nav button i {color:#E6E6E6;}
 nav button i:hover {color:#FFFFFF;}
 ul .navbar-nav {white-space:nowrap;width:100%;}
-.navbar-brand {margin-right:3rem;margin-left:4.5rem;}
+.navbar-brand {margin-right:2rem;margin-left:4rem;}
 .navbar-brand img {height:2.5rem;}
 .nav-item, .navbar-text{display:inline-block;white-space:nowrap;}
 .navbar-inverse .navbar-nav .nav-link {
