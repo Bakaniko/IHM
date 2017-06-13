@@ -1,10 +1,12 @@
+<?php
+if (session_status()==PHP_SESSION_NONE) {session_start();}
+?>
 <?php // Définition des chemins d'accès aux fichiers
 $path_root="../";
 $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
 $path_images=$path_root."images/";
 ?>
-
 <!DOCTYPE html>
 <html lang="fr" class="">
 <?php include($path_structure."head.php"); ?>	<!-- Inclusion <head> -->
@@ -14,6 +16,8 @@ $path_images=$path_root."images/";
 	<!-- Contenu de la page panier -->
 	
 	<div class="container" id="main">
+		<h1>Mon panier</h1>
+		<p></p>
 		<div class="card mx-auto">
 			<div class="card-block text-center">
 				<h4 class="card-title"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date et Titre du spectacle</a></h4>

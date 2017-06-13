@@ -12,11 +12,14 @@
         <a class="nav-link" href="<?php echo $path_pages ; ?>programmation.php"><i class="material-icons">&#xE616;&nbsp;</i>Programmation</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo $path_pages ; ?>infos.php"><i class="material-icons">&#xE88F;&nbsp;</i>Infos</a>
+        <a class="nav-link" href="<?php echo $path_pages ; ?>infos.php"><i class="material-icons">&#xE88F;&nbsp;</i>Nous contacter</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo $path_pages ; ?>connexion.php"><i class="material-icons">&#xE853;&nbsp;</i>Connexion</a>
-      </li>
-    </ul>
+        <a class="nav-link" href="<?php echo $path_pages ; ?>connexion.php"><i class="material-icons">&#xE853;&nbsp;</i>Se connecter</a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" href="<?php echo $path_pages ; ?>register.php"><i class="material-icons">&#xE853;&nbsp;</i>S'inscrire</a>
+        </li>
+      </ul>
   </div>
 </nav>
