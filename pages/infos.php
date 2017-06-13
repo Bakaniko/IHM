@@ -16,7 +16,7 @@ $path_images=$path_root."images/";
 	<div class="container" id="main">
 		<div class="card mx-auto">
 			<div class="card-block">
-				<h4 class="card-title text-center">Nous Contacter</h4>
+				<h4 class="card-title text-center">Nous contacter</h4>
 				<p class="card-text text-justify">
 					Par téléphone au 08 92 89 90 90 (0,35 € TTC/min depuis un poste fixe hors coût éventuel selon opérateur) 
 					ou au + 33 1 71 25 24 23 depuis l’étranger, du lundi au samedi de 9h à 19h.

@@ -12,10 +12,10 @@
         <a class="nav-link" href="<?php echo $path_pages ; ?>programmation.php"><i class="material-icons">&#xE616;&nbsp;</i>Programmation</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo $path_pages ; ?>infos.php"><i class="material-icons">&#xE88F;&nbsp;</i>Nous contacter</a>
+        <a class="nav-link" href="<?php echo $path_pages ; ?>connexion.php"><i class="material-icons">&#xE853;&nbsp;</i>Connexion</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo $path_pages ; ?>connexion.php"><i class="material-icons">&#xE853;&nbsp;</i>Se connecter</a>
+        <a class="nav-link" href="<?php echo $path_pages ; ?>infos.php"><i class="material-icons">&#xE88F;&nbsp;</i>Infos</a>
       </li>
       </ul>
   </div>
