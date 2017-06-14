@@ -1,11 +1,13 @@
 <head>
-	<title>PROJET M1</title>
+	<title>Opéra National de Paris</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Google Material Icons-->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link rel="stylesheet" href="<?php echo $path_root ; ?>bootstrap.min.css">
+	<!-- Google Material Icons-->
+	<link rel="stylesheet" href="<?php echo $path_root ; ?>material-design-icons-3.0.1/iconfont/material-icons.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="<?php echo $path_root ; ?>font-awesome-4.7.0/css/font-awesome.min.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="<?php echo $path_root ; ?>style.css" type="text/css" media="screen">
 </head>
