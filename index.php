@@ -4,8 +4,8 @@ $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
 $path_images=$path_root."images/";
 
-require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
-require_once"$path_structure".'fonctions.php';# inclure la fonction debug
+require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
+require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 ?>
 
@@ -44,7 +44,7 @@ require_once"$path_structure".'fonctions.php';# inclure la fonction debug
                 WHERE r.date >= CURRENT_DATE ORDER BY date ASC LIMIT 6';
 
         $req = $pdo->query($sql);
-			
+
 
             while ($data = $req->fetch()){
               echo '<li class="list-group-item"><a href='.$path_pages.'spectacle.php" class="card-link">'.$data->date." : ".$data->nom.','.$data->type.'</a></li>';
