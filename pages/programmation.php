@@ -65,12 +65,12 @@ $path_images=$path_root."images/";
 								<option value="2">Salle 2</option>
 								<option value="3">Salle 3</option>
 							</select>
-							<label for="inlineFormCustomSelect"></label>
+						</div>
+						<div class="form-group d-flex align-items-end">
+							<button type="submit" class="btn btn-primary">Chercher</button>
 						</div>
 					</div>
-					<div class="form-group my-auto">
-						<button type="submit" class="btn btn-primary">Chercher</button>
-					</div>
+
 				</form>
 
 			</div>
@@ -82,9 +82,6 @@ $path_images=$path_root."images/";
 		<div class="card-deck">
 			<!-- Liste 1 -->
 			<div class="card mx-auto">
-				<div class="card-block text-center">
-					<h5 class="card-title">Liste 1</h5>
-				</div>
 				<ul class="list-group list-group-flush mx-auto">
 					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
 					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
@@ -103,9 +100,6 @@ $path_images=$path_root."images/";
 			</div>
 			<!-- Liste 2 -->
 			<div class="card mx-auto">
-				<div class="card-block text-center">
-					<h5 class="card-title">Liste 2</a></h5>
-				</div>
 				<ul class="list-group list-group-flush mx-auto">
 					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
 					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
@@ -124,9 +118,6 @@ $path_images=$path_root."images/";
 			</div>
 			<!-- Liste 3 -->
 			<div class="card mx-auto">
-				<div class="card-block text-center">
-					<h5 class="card-title">Liste 3</a></h5>
-				</div>
 				<ul class="list-group list-group-flush mx-auto">
 					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
 					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
