@@ -47,7 +47,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 
             while ($data = $req->fetch()){
-              echo '<li class="list-group-item"><a href='.$path_pages.'spectacle.php" class="card-link">'.$data->date." : ".$data->nom.','.$data->type.'</a></li>';
+              echo '<li class="list-group-item"><a href="'.$path_pages.'spectacle.php?spectacle='.$data->nom.'"class="card-link">'.$data->date." : ".$data->nom.','.$data->type.'</a></li>';
 
             }
           $req->closeCursor();
