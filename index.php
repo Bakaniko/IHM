@@ -20,11 +20,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 	<div class="container" id="main">
 		<div class="card mx-auto">
 			<div class="card-block text-center">
-				<h4 class="card-title"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date et Titre du spectacle à venir</a></h4>
-				<p class="card-text">Présentation du spectacle</p>
-			</div>
-			<img class="card-img-bottom img-fluid d-block mx-auto" src="<?php echo $path_images ; ?>les_contes_d_hoffmann_1_christian_leiber_opera_national_de_paris.jpg" alt="Titre du spectacle">
-			<ul class="list-group list-group-flush mt-3">
+
 
 				<!--
 				<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date et titre du spectacle + informations</a></li>
@@ -38,17 +34,34 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 		-->
 
-			<?php $sql  = $sql  = 'SELECT spe.nom, r.date, spe.type
+			<?php
+				//date_format(r.date, "%d %M %Y") as date
+				$sql  = $sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
                 FROM  proj_Representation as r
                 JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
                 WHERE r.date >= CURRENT_DATE ORDER BY date ASC LIMIT 6';
 
         $req = $pdo->query($sql);
-
+						$compteur=0;
 
             while ($data = $req->fetch()){
-              echo '<li class="list-group-item"><a href="'.$path_pages.'spectacle.php?spectacle='.$data->nom.'"class="card-link">'.$data->date." : ".$data->nom.','.$data->type.'</a></li>';
+							if($compteur==0){
+								?>
+							<h4 class="card-title"><a href="<?php echo $path_pages.'spectacle.php?spectacle='.$data->nom;?>" class="card-link"><?php echo $data->nom;?></a></h4>
+							<h5 class="card-title"><?php echo affDate($data->date);?></h5>
 
+							</div>
+							<img class="card-img-bottom img-fluid d-block mx-auto" src="<?php echo $path_images.$data->nomImage;?>" alt="<?php echo "Affiche de ".$data->nom;?>">
+
+							<p class="card-text"><?php echo $data->infos;?></p>
+
+							<ul class="list-group list-group-flush mt-3">
+							<?php
+							}
+							else{
+								echo '<li class="list-group-item"><a href="'.$path_pages.'spectacle.php?spectacle='.$data->nom.'"class="card-link">'.affDate($data->date)." : ".$data->nom.','.$data->type.'</a></li>';
+							}
+							$compteur++;
             }
           $req->closeCursor();
             ?>
