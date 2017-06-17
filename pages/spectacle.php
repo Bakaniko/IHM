@@ -59,7 +59,7 @@ $req = $pdo->query($sql);
 								// afficher un bouton réserver pour chaque représentation
 								?>
 
-													<li class="list-group-item"><?php echo  affDate($data->date)." : ".$data->nom  ?><a class="btn btn-lg btn-primary" href="<?php echo $path_pages ; ?>reservation.php" role="button">Réserver</a></li>
+													<li class="list-group-item"><?php echo  affDate($data->date)." : ".$data->nom  ?><a class="btn btn-lg btn-primary" href="<?php echo $path_pages ; ?>reservation.php?idRepresentation=<?php echo $data->representation ; ?>" role="button">Réserver</a></li>
 
 								<?php
 							}
