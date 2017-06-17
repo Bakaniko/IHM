@@ -31,7 +31,7 @@ $path_images=$path_root."images/";
 				</p>
 			</div>
 			<div class="card-block text-center">
-				<a class="btn btn-lg btn-success" href="<?php echo $path_pages ; ?>reservation.php" role="button">Réserver</a>
+				<a class="btn btn-lg btn-primary" href="<?php echo $path_pages ; ?>reservation.php" role="button">Réserver</a>
 			</div>
 		</div>
 	</div>
