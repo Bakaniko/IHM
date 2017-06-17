@@ -48,7 +48,8 @@ $req = $pdo->query($sql);
 										from proj_Representation as r
 										JOIN proj_Spectacle as spe
 										ON r.idSpectacle=spe.idSpectacle
-										where r.idSpectacle=2
+										where r.idSpectacle=".$idSpectacle."
+										AND r.date >= CURRENT_DATE
 										ORDER BY date ASC"; ?>
 
 				<?php $req = $pdo->query($sql);
