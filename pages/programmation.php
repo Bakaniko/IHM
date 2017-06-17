@@ -103,55 +103,56 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 			<!-- Liste 1 -->
 			<div class="card mx-auto">
 				<ul class="list-group list-group-flush mx-auto">
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-				</ul>
+
+					<?php
+					// sélection de tous les spectacles à venir
+					$sql = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE date < '2017-05-01' ORDER BY date ASC";
+									$req = $pdo->query($sql);
+
+									while ($data=$req->fetch()) { ?>
+										<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php?idSpectacle=<?php echo $data->idSpectacle  ?>" class="card-link"><?php echo affDate($data->date)." ".$data->spectacle." (".$data->salle.")" ?></a></li>
+									<?php }
+								$req->closeCursor(); ?>
+					</ul>
 			</div>
 			<!-- Liste 2 -->
 			<div class="card mx-auto">
 				<ul class="list-group list-group-flush mx-auto">
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
+					<?php
+					// sélection de tous les spectacles à venir
+					$sql = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE date >= '2017-05-01' AND date < '2017-09-01' ORDER BY date ASC";
+									$req = $pdo->query($sql);
+
+									while ($data=$req->fetch()) { ?>
+										<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php?idSpectacle=<?php echo $data->idSpectacle  ?>" class="card-link"><?php echo affDate($data->date)." ".$data->spectacle." (".$data->salle.")" ?></a></li>
+									<?php }
+								$req->closeCursor(); ?>
 				</ul>
 			</div>
 			<!-- Liste 3 -->
 			<div class="card mx-auto">
 				<ul class="list-group list-group-flush mx-auto">
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
-					<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date Spectacle Salle</a></li>
+					<?php
+					// sélection de tous les spectacles à venir
+					$sql = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE date >= '2017-09-01' ORDER BY date ASC";
+									$req = $pdo->query($sql);
+
+									while ($data=$req->fetch()) { ?>
+										<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php?idSpectacle=<?php echo $data->idSpectacle  ?>" class="card-link"><?php echo affDate($data->date)." ".$data->spectacle." (".$data->salle.")" ?></a></li>
+									<?php }
+								$req->closeCursor(); ?>
 				</ul>
 			</div>
 		</div>
