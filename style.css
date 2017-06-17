@@ -23,10 +23,23 @@ ul .navbar-nav {white-space:nowrap;width:100%;}
 #pied i {color:#6E6E6E;}
 #pied i:hover {text-decoration:underline; color:#000000;}
 #retourHaut {font-size: 1.2rem}
+.footer {
+	width:100%;
+  position: absolute;
+  bottom: 0;
+}
 
-/* Page */
+html {
+  position: relative;
+  min-height: 100%;
+}
+    
 #main {margin-top: 5rem;}
-
+#connexion {max-width:26rem;}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 12rem;
+}
 /* index */
 li>a.card-link, p.card-text {font-size: 1.1rem;}
 .card img {max-height:30rem;}
@@ -36,10 +49,9 @@ a.card-link {color:#000000;}
 a.card-link:hover {text-decoration:underline;}
 
 /* connexion */
-input {max-width: 25rem;}
 
 /* Programmation */
-#moisSelect, #typeSelect, #salleSelect {min-width: 10rem;}
+.custom-select {min-width: 10rem;}
 
 /* Réservation */
 
