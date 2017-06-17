@@ -10,4 +10,6 @@
 	<link rel="stylesheet" href="<?php echo $path_root ; ?>ressources/font-awesome-4.7.0/css/font-awesome.min.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="<?php echo $path_root ; ?>style.css" type="text/css" media="screen">
+
+	<?php  setlocale (LC_TIME, 'fr_FR.utf8','fra');  //localisation ?>
 </head>
