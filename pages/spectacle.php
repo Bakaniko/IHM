@@ -15,13 +15,14 @@ $idSpectacle = intval($_GET['idSpectacle']);
 $sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
 				FROM  proj_Representation as r
 				JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
-				WHERE date >= CURRENT_DATE AND spe.idSpectacle = '.$idSpectacle.' ORDER BY DATE  ASC' ;
-//print_r($_GET);
-$req = $pdo->query($sql);
-		$compteur=0;
+				WHERE date >= CURRENT_DATE AND spe.idSpectacle = :idSpectacle ORDER BY DATE  ASC' ;
+				
+$req = $pdo->prepare($sql);
+if($req->execute(array('idSpectacle' => $idSpectacle))){
 
 		$data = $req->fetch();
 		$req->closeCursor();
+	}
 ?>
 
 <!DOCTYPE html>
