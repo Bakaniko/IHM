@@ -6,6 +6,7 @@ $path_images=$path_root."images/";
 // inclusion des fichiers de connexion
 require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
 require_once("$path_structure".'fonctions.php');# inclure la fonction debug
+$annee=date("Y");
 
 ?>
 
@@ -25,16 +26,68 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 				<h4 class="card-title">Programmation 2017</h4>
 				<p class="card-text">Chercher et sélectionner un spectacle selon des critères</p>
 			</div>
+			<?php
+			/* 	sortie de $_POST
+					Array ( [typeSelect] => Ballet [moisSelect] => 1 [salleSelect] => 3 [btn-submit] => ) */
+			//print_r($_POST);
+			?>
 			<!-- Formulaire critères de recherche -->
+			<?php
+				if(isset($_POST['btn-submit'])){
+					// récupération des valeurs fournies
+					$mois = htmlspecialchars($_POST['moisSelect']);
+					$type = htmlspecialchars($_POST['typeSelect']);
+					$salle = htmlspecialchars($_POST['salleSelect']);
+					//echo $mois.$type.$salle;
+					/*
+					$sql = "SELECT DISTINCT(s.type) as type from proj_Spectacle as s where 1 ORDER BY type ASC";
 
-			<form>
+					$req = $pdo->query($sql);
+
+					while ($data=$req->fetch()) {
+
+					}*/
+					//echo $annee;
+					$dateDebut=$annee."-".$mois."01";
+					if(intval($mois < 9)){
+						$moisFin="0".(intval($mois)+1);
+						$dateFin=$annee."-".$moisFin."01";
+					}
+					elseif ($mois < 12) {
+						$moisFin=intval($mois)+1;
+						$dateFin=$annee."-".$moisFin."01";
+					}
+					else{
+						$moisFin=01;
+						$dateFin=($annee+1)."-".$moisFin."01";
+					}
+
+					/*
+					$sql = "SELECT spe.type as type, r.date as date, s.nom, s.idSalle as salle, r.idRepresentation
+					FROM proj_Representation as r
+					JOIN proj_Spectacle as spe ON spe.idSpectacle=r.idSpectacle
+					JOIN proj_Salle as s ON s.idSalle = r.idSalle
+					WHERE date  ORDER BY date ASC";
+
+					$req = $pdo->prepare($sql);
+
+				if($req->execute(array('date' => $idSpectacle))){
+								while ($data = $req->fetch()){
+
+								}
+*/
+				}
+				else {
+			  ?>
+
+			<form action="<?php echo $path_pages;?>programmation.php" method="post">
 				<div class="card-block text-center mx-auto">
 					<div class="d-flex flex-row flex-wrap justify-content-center">
 						<!-- Type -->
 						<div class="form-group d-flex flex-column">
 							<label for="typeSelect">Type</label>
-							<select class="custom-select" id="typeSelect">
-								<option selected>Choisir...</option>
+							<select class="custom-select" id="typeSelect" name="typeSelect">
+								<!--<option selected>Choisir...</option>-->
 								<?php //requête de sélection les options de type de spectacle présents dans la base
 								$sql = "SELECT DISTINCT(s.type) as type from proj_Spectacle as s where 1 ORDER BY type ASC";
 
@@ -51,17 +104,17 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 						<!-- Mois -->
 						<div class="form-group d-flex flex-column">
 							<label for="moisSelect">Mois</label>
-							<select class="custom-select" id="moisSelect">
-								<option selected>Choisir...</option>
-								<option value="1">Janvier</option>
-								<option value="2">Février</option>
-								<option value="3">Mars</option>
-								<option value="4">Avril</option>
-								<option value="5">Mai</option>
-								<option value="6">Juin</option>
-								<option value="7">Juillet</option>
-								<option value="8">Août</option>
-								<option value="9">Septembre</option>
+							<select class="custom-select" id="moisSelect" name="moisSelect">
+								<!--<option selected>Choisir...</option>-->
+								<option value="01">Janvier</option>
+								<option value="02">Février</option>
+								<option value="03">Mars</option>
+								<option value="04">Avril</option>
+								<option value="05">Mai</option>
+								<option value="06">Juin</option>
+								<option value="07">Juillet</option>
+								<option value="08">Août</option>
+								<option value="09">Septembre</option>
 								<option value="10">Octobre</option>
 								<option value="11">Novembre</option>
 								<option value="12">Décembre</option>
@@ -70,8 +123,8 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 						<!-- Salle -->
 						<div class="form-group d-flex flex-column">
 							<label for="salleSelect">Salle</label>
-							<select class="custom-select" id="salleSelect">
-								<option selected>Choisir...</option>
+							<select class="custom-select" id="salleSelect" name="salleSelect">
+								<!--<option selected>Choisir...</option>-->
 
 								<?php //requête de sélection des noms de salle présents dans la base
 								$sql = "SELECT DISTINCT(s.nom) as nom, s.idSalle from proj_Salle as s where 1 ORDER BY s.nom DESC";
@@ -87,7 +140,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 							</select>
 						</div>
 						<div class="form-group d-flex align-items-end">
-							<button type="submit" class="btn btn-primary">Chercher</button>
+							<button type="submit" class="btn btn-primary" name="btn-submit">Chercher</button>
 						</div>
 					</div>
 
@@ -95,6 +148,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 			</div>
 			<!-- Fin du Formulaire critères de recherche-->
+
 		</div>
 
 
@@ -156,7 +210,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 				</ul>
 			</div>
 		</div>
-
+<?php } ?>
 	</div>
 	<?php include($path_structure."footer.php"); ?>	<!-- Inclusion pied de page -->
 	<?php include($path_structure."JS.php"); ?>	<!-- Inclusion CDN et fichiers javascript -->
