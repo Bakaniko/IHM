@@ -10,12 +10,14 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 // récupération du paramètre passé par la méthode GET
 $nomSpectacle ="'".$_GET['spectacle']."'";
+$idSpectacle ="'".$_GET['idSpectacle']."'";
 
 $sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
 				FROM  proj_Representation as r
 				JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
-				WHERE date >= CURRENT_DATE AND spe.nom = '.$nomSpectacle.'ORDER BY DATE  ASC' ;
+				WHERE date >= CURRENT_DATE AND spe.idSpectacle = '.$idSpectacle.' ORDER BY DATE  ASC' ;
 echo $sql;
+print_r($_GET);
 $req = $pdo->query($sql);
 		$compteur=0;
 
