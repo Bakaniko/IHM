@@ -3,6 +3,10 @@ $path_root="../";
 $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
 $path_images=$path_root."images/";
+// inclusion des fichiers de connexion
+require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
+require_once("$path_structure".'fonctions.php');# inclure la fonction debug
+
 ?>
 
 <!DOCTYPE html>
@@ -31,10 +35,17 @@ $path_images=$path_root."images/";
 							<label for="typeSelect">Type</label>
 							<select class="custom-select" id="typeSelect">
 								<option selected>Choisir...</option>
-								<option value="1">Concert et Récital</option>
-								<option value="2">Ballet</option>
-								<option value="3">Concert et Récital</option>
-								<option value="4">Galas</option>
+								<?php //requête de sélection les options de type de spectacle présents dans la base
+								$sql = "SELECT DISTINCT(s.type) as type from proj_Spectacle as s where 1 ORDER BY type ASC";
+
+								$req = $pdo->query($sql);
+
+								while ($data=$req->fetch()) {
+
+											echo "<option value=".$data->type.">".$data->type."</option>";
+									}
+								$req->closeCursor();
+									 ?>
 							</select>
 						</div>
 						<!-- Mois -->
@@ -61,9 +72,18 @@ $path_images=$path_root."images/";
 							<label for="salleSelect">Salle</label>
 							<select class="custom-select" id="salleSelect">
 								<option selected>Choisir...</option>
-								<option value="1">Salle 1</option>
-								<option value="2">Salle 2</option>
-								<option value="3">Salle 3</option>
+
+								<?php //requête de sélection des noms de salle présents dans la base
+								$sql = "SELECT DISTINCT(s.nom) as nom, s.idSalle from proj_Salle as s where 1 ORDER BY s.nom DESC";
+
+								$req = $pdo->query($sql);
+
+								while ($data=$req->fetch()) {
+
+											echo "<option value=".$data->idSalle.">".$data->nom."</option>";
+									}
+								$req->closeCursor();
+									 ?>
 							</select>
 						</div>
 						<div class="form-group d-flex align-items-end">
