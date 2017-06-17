@@ -43,6 +43,7 @@ $req = $pdo->query($sql);
 				<p class="card-text text-justify"><?php echo $data->infos;?></p>
 			</div>
 			<div class="card-block text-center">
+				<h4 class="card-title">Prochaines représentations</h4>
 				<ul class="list-group list-group-flush mt-3">
 			<?php $sql = "SELECT r.date as date, spe.nom, r.idRepresentation
 										from proj_Representation as r
