@@ -16,8 +16,7 @@ $sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
 				FROM  proj_Representation as r
 				JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
 				WHERE date >= CURRENT_DATE AND spe.idSpectacle = '.$idSpectacle.' ORDER BY DATE  ASC' ;
-echo $sql;
-print_r($_GET);
+//print_r($_GET);
 $req = $pdo->query($sql);
 		$compteur=0;
 
@@ -44,8 +43,28 @@ $req = $pdo->query($sql);
 				<p class="card-text text-justify"><?php echo $data->infos;?></p>
 			</div>
 			<div class="card-block text-center">
-				<a class="btn btn-lg btn-primary" href="<?php echo $path_pages ; ?>reservation.php" role="button">Réserver</a>
-			</div>
+				<ul class="list-group list-group-flush mt-3">
+			<?php $sql = "SELECT r.date as date, spe.nom, r.idRepresentation
+										from proj_Representation as r
+										JOIN proj_Spectacle as spe
+										ON r.idSpectacle=spe.idSpectacle
+										where r.idSpectacle=2
+										ORDER BY date ASC"; ?>
+
+				<?php $req = $pdo->query($sql);
+
+							while ($data = $req->fetch()){ // tant que j'ai des objets qui sont retournés
+								// afficher un bouton réserver pour chaque représentation
+								?>
+
+													<li class="list-group-item"><?php echo  affDate($data->date)." : ".$data->nom  ?><a class="btn btn-lg btn-primary" href="<?php echo $path_pages ; ?>reservation.php" role="button">Réserver</a></li>
+
+								<?php
+							}
+							$req->closeCursor(); ?>
+
+						</ul>
+				</div>
 		</div>
 	</div>
 	<?php include($path_structure."footer.php"); ?>	<!-- Inclusion pied de page -->
