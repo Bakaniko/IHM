@@ -18,6 +18,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 	<!-- Contenu de la page d'accueil -->
 
 	<div class="container" id="main">
+
 		<div class="card mx-auto">
 			<div class="card-block text-center">
 
@@ -69,7 +70,8 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
         </ul>
 		</div>
 	</div>
-	<?php include($path_structure."footer.php"); ?> <!-- Inclusion pied de page -->
-	<?php include($path_structure."JS.php"); ?>	<!-- Inclusion CDN et fichiers javascript -->
+</div>
+<?php include($path_structure."footer.php"); ?> <!-- Inclusion pied de page -->
+<?php include($path_structure."JS.php"); ?>	<!-- Inclusion CDN et fichiers javascript -->
 </body>
 </html>
