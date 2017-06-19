@@ -14,4 +14,4 @@ Mais il souhaite assister à une représentation de Rigoletto dont il a vu les a
 -> accès au site
 -> programmation
 -> choix d'une représentation
--> valide le panier
+-> valide le panier et règle sa commande.
