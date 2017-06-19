@@ -36,7 +36,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 			<?php
 				//date_format(r.date, "%d %M %Y") as date
-				$sql  = $sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
+				$sql  = $sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage, spe.idSpectacle as id
                 FROM  proj_Representation as r
                 JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
                 WHERE r.date >= CURRENT_DATE ORDER BY date ASC LIMIT 6';
@@ -47,7 +47,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
             while ($data = $req->fetch()){
 							if($compteur==0){
 								?>
-							<h4 class="card-title"><a href="<?php echo $path_pages.'spectacle.php?spectacle='.$data->nom;?>" class="card-link"><?php echo $data->nom;?></a></h4>
+							<h4 class="card-title"><a href="<?php echo $path_pages.'spectacle.php?spectacle='.$data->nom.'&idSpectacle='.$data->id;?>" class="card-link"><?php echo $data->nom;?></a></h4>
 							<h5 class="card-title"><?php echo affDate($data->date);?></h5>
 
 							</div>
@@ -59,7 +59,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 							<?php
 							}
 							else{
-								echo '<li class="list-group-item"><a href="'.$path_pages.'spectacle.php?spectacle='.$data->nom.'"class="card-link">'.affDate($data->date)." : ".$data->nom.','.$data->type.'</a></li>';
+								echo '<li class="list-group-item"><a href="'.$path_pages.'spectacle.php?spectacle='.$data->nom.'&idSpectacle='.$data->id.'"class="card-link">'.affDate($data->date)." : ".$data->nom.','.$data->type.'</a></li>';
 							}
 							$compteur++;
             }

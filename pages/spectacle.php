@@ -9,18 +9,20 @@ require_once("$path_structure".'base.php');# inclure la connection à la base de
 require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 // récupération du paramètre passé par la méthode GET
-$nomSpectacle ="'".$_GET['spectacle']."'";
+$nomSpectacle ="'".htmlspecialchars($_GET['spectacle'])."'";
+$idSpectacle = intval($_GET['idSpectacle']);
 
 $sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
 				FROM  proj_Representation as r
 				JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
-				WHERE date >= CURRENT_DATE AND spe.nom = '.$nomSpectacle.'ORDER BY DATE  ASC' ;
-echo $sql;
-$req = $pdo->query($sql);
-		$compteur=0;
+				WHERE date >= CURRENT_DATE AND spe.idSpectacle = :idSpectacle ORDER BY DATE  ASC' ;
+				
+$req = $pdo->prepare($sql);
+if($req->execute(array('idSpectacle' => $idSpectacle))){
 
 		$data = $req->fetch();
 		$req->closeCursor();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -42,8 +44,39 @@ $req = $pdo->query($sql);
 				<p class="card-text text-justify"><?php echo $data->infos;?></p>
 			</div>
 			<div class="card-block text-center">
-				<a class="btn btn-lg btn-primary" href="<?php echo $path_pages ; ?>reservation.php" role="button">Réserver</a>
-			</div>
+				<h4 class="card-title">Prochaines représentations</h4>
+				<ul class="list-group list-group-flush mt-3">
+			<?php
+
+			// retourne ma date et le nom des prochaines représentations du spectacle passé par $_GET
+			$sql = "SELECT r.date as date, spe.nom, r.idRepresentation as representation
+										from proj_Representation as r
+										JOIN proj_Spectacle as spe
+										ON r.idSpectacle = spe.idSpectacle
+										where r.idSpectacle = :idSpectacle
+										AND r.date >= CURRENT_DATE
+										ORDER BY date ASC";
+										//echo $sql;
+			//$req->bindParam(':idSpectacle', $idSpectacle, PDO::PARAM_INT,3);
+			//echo $idSpectacle;
+
+
+				$req = $pdo->prepare($sql);
+
+			if($req->execute(array('idSpectacle' => $idSpectacle))){
+							while ($data = $req->fetch()){ // tant que j'ai des objets qui sont retournés
+								// afficher un bouton réserver pour chaque représentation
+								?>
+
+													<li class="list-group-item"><?php echo  affDate($data->date)." : ".$data->nom  ?><a class="btn btn-lg btn-primary" href="<?php echo $path_pages ; ?>reservation.php?idRepresentation=<?php echo $data->representation ; ?>" role="button">Réserver</a></li>
+
+								<?php
+							}
+							$req->closeCursor();
+						} // fin du if?>
+
+						</ul>
+				</div>
 		</div>
 	</div>
 	<?php include($path_structure."footer.php"); ?>	<!-- Inclusion pied de page -->
