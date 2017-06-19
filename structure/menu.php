@@ -9,7 +9,7 @@
         <a class="nav-link" href="<?php echo $path_root ; ?>index.php"><i class="material-icons mr-2">&#xE88A;</i>Accueil</a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="<?php echo $path_pages ; ?>programmation.php"><i class="material-icons mr-2">&#xE616;</i>Programmation</a>
+      <a class="nav-link" href="<?php echo $path_pages ; ?>programmation.php?annee=<?php echo date('Y');?>"><i class="material-icons mr-2">&#xE616;</i>Programmation <?php echo date('Y');?></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo $path_pages ; ?>connexion.php"><i class="material-icons mr-2">&#xE853;</i>Connexion</a>
