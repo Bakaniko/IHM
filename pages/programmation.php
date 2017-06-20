@@ -255,21 +255,21 @@ else{
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE
+									WHERE s.idSalle ='".$salle."' AND
 									date >= '".$annee."-".$mois."-01' AND date < '".$annee."-".$mois."-11' ORDER BY date ASC";
 									//echo $sql1;
 					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE
+									WHERE s.idSalle ='".$salle."' AND
 									date >= '".$annee."-".$mois."-11' AND date < '".$annee."-".$mois."-21' ORDER BY date ASC";
 
 					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE
+									WHERE s.idSalle ='".$salle."' AND
 									date >= '".$annee."-".$mois."-21' AND date <= '".$annee."-".$mois."-31' ORDER BY date ASC";
 
 				}
