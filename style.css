@@ -7,7 +7,7 @@
 nav button i {color:#E6E6E6;}
 nav button i:hover {color:#FFFFFF;}
 ul .navbar-nav {white-space:nowrap;width:100%;}
-.navbar-brand {margin-right:2rem;margin-left:4rem;}
+.navbar-brand {margin-right:1rem;margin-left:0rem;}
 .navbar-brand img {height:2.5rem;}
 .nav-item, .navbar-text{display:inline-block;white-space:nowrap;}
 .navbar-inverse .navbar-nav .nav-link {
@@ -16,6 +16,10 @@ ul .navbar-nav {white-space:nowrap;width:100%;}
 	padding-left : 1rem;
 	padding-right: 1rem;
 }
+#badgePanier {background-color:#53aa53;color::#E6E6E6;}
+.nav-link:hover #badgePanier  {background-color:#5cb85c;color:#FFFFFF;}
+
+
 .navbar-inverse .navbar-nav .nav-link:hover {color:#FFFFFF;text-decoration:underline;}
 
 /* Pied */
@@ -28,6 +32,7 @@ ul .navbar-nav {white-space:nowrap;width:100%;}
   position: absolute;
   bottom: 0;
 }
+
 
 html {
   position: relative;
@@ -43,10 +48,12 @@ body {
 /* index */
 li>a.card-link, p.card-text {font-size: 1.1rem;}
 .card img {max-height:30rem;}
+#indexImg img {max-height:20rem;}
 .card {max-width:48rem;}
 .card, .list-group-item {border: none;}
 a.card-link {color:#000000;}
 a.card-link:hover {text-decoration:underline;}
+#btnTaillePolice {position:fixed;top:40%;right:0.5rem; z-index:1;}
 
 /* connexion */
 

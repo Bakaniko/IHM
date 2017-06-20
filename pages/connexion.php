@@ -29,8 +29,8 @@ $path_images=$path_root."images/";
         <h4 class="card-title">Formulaire de connexion</h4>
         <form>
           <div class="form-group">
-            <label for="inputEmail">Adresse email</label>
-            <input type="email" class="form-control mx-auto text-center" id="inputEmail" aria-describedby="emailHelp" placeholder="pinpin.lapin@gmail.com">
+            <label for="inputEmail">Login</label>
+            <input type="text class="form-control mx-auto text-center" id="inputEmail" aria-describedby="" placeholder="pinpin.lapin@gmail.com">
           </div>
           <div class="form-group">
             <label for="inputMotDePasse">Mot de passe</label>

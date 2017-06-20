@@ -1,4 +1,7 @@
-<?php // Définition des chemins d'accès aux fichiers
+<?php
+session_start();
+
+ // Définition des chemins d'accès aux fichiers
 $path_root="./";
 $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
@@ -19,7 +22,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 	<div class="container" id="main">
 		<div class="card mx-auto text-center">
-			<h2> Prochains spectacles</h2>
+			<h2>Prochaines représentations</h2>
 		</div>
 		<!--
 		<div class="btn-group-vertical" id="btnTaillePolice" role="group" aria-label="Taille de police">
