@@ -179,46 +179,46 @@ else{
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.idSpectacle ='".$type."' AND s.idSalle='".$salle."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND s.idSalle='".$salle."' AND
 									date >= '".$annee."-".$mois."-01' AND date < '".$annee."-".$mois."-11' ORDER BY date ASC";
 									//echo $sql1;
 					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND s.idSalle='".$salle."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND s.idSalle='".$salle."' AND
 									date >= '".$annee."-".$mois."-11' AND date < '".$annee."-".$mois."-21' ORDER BY date ASC";
 
 					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND s.idSalle='".$salle."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND s.idSalle='".$salle."' AND
 									date >= '".$annee."-".$mois."-21' AND date <= '".$annee."-".$mois."-31' ORDER BY date ASC";
 
 				}
 				elseif($mois !== "Choisir..." && $type !== "Choisir..." && $salle == "Choisir..."){
-					echo "2. mois + ballet -> ok";
+					echo "2. mois + type -> ok";
 
 					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND
 									date >= '".$annee."-".$mois."-01' AND date < '".$annee."-".$mois."-11' ORDER BY date ASC";
 									//echo $sql1;
 					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND
 									date >= '".$annee."-".$mois."-11' AND date < '".$annee."-".$mois."-21' ORDER BY date ASC";
 
 					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND
 									date >= '".$annee."-".$mois."-21' AND date <= '".$annee."-".$mois."-31' ORDER BY date ASC";
 
 				}
@@ -229,21 +229,21 @@ else{
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND  salle ='".$salle."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND  salle ='".$salle."' AND
 									date >= '".$annee."-01-01' AND date < '".$annee."-05-01' ORDER BY date ASC";
 									//echo $sql1;
 					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND  salle ='".$salle."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND  salle ='".$salle."' AND
 									date >= '".$annee."-05-01' AND date < '".$annee."-09-01' ORDER BY date ASC";
 
 					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND  salle ='".$salle."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND  salle ='".$salle."' AND
 									date >= '".$annee."-09-01' AND date <= '".$annee."-12-31' ORDER BY date ASC";
 
 
@@ -329,21 +329,21 @@ else{
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND
 									date >= '".$annee."-01-01' AND date < '".$annee."-05-01' ORDER BY date ASC";
 									//echo $sql1;
 					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND
 									date >= '".$annee."-05-01' AND date < '".$annee."-09-01' ORDER BY date ASC";
 
 					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type ='".$type."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND
 									date >= '".$annee."-09-01' AND date <= '".$annee."-12-31' ORDER BY date ASC";
 
 				}
@@ -351,10 +351,11 @@ else{
 						echo "<p>SQL1: ".$sql1."</p>";
 						echo "<p>SQL2: ".$sql2."</p>";
 						echo "<p>SQL3: ".$sql3."</p>";
+						/*
 						$req = $pdo->query($sql1);
 						$data=$req->fetch();
 						print_r($data);
-?>
+?>				*/
 				<!-- Listes de spectacles en sortie -->
 				<div class="card-deck">
 					<!-- Liste 1 -->
