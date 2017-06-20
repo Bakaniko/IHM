@@ -4,6 +4,8 @@
 <script src="<?php echo $path_root ; ?>ressources/tether.min.js"></script>
 <!-- Bootstrap -->
 <script src="<?php echo $path_root ; ?>ressources/bootstrap.min.js"></script>
+<!-- Font Awesome-->
+<script src="https://use.fontawesome.com/6e96b5da51.js"></script>
 <!-- Google Maps-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqgqboFmTx_a7rxzlrFPjZhRbDMzpUiy8"></script>
 <!-- Fonctions Javascript -->
