@@ -355,7 +355,8 @@ else{
 						$req = $pdo->query($sql1);
 						$data=$req->fetch();
 						print_r($data);
-?>				*/
+			*/
+?>	
 				<!-- Listes de spectacles en sortie -->
 				<div class="card-deck">
 					<!-- Liste 1 -->
