@@ -49,7 +49,7 @@ else{
 
 												while ($data=$req->fetch()) {
 
-															echo "<option value=".$data->type.">".$data->type."</option>";
+															echo "<option value=".$data->type.">".$data->type."</option>\n";
 													}
 												$req->closeCursor();
 													 ?>
@@ -87,7 +87,7 @@ else{
 
 												while ($data=$req->fetch()) {
 
-															echo "<option value=".$data->idSalle.">".$data->nom."</option>";
+															echo "<option value=".$data->idSalle.">".$data->nom."</option>\n";
 													}
 												$req->closeCursor();
 													 ?>
@@ -110,6 +110,7 @@ else{
 			<!-- Formulaire critères de recherche -->
 			<?php
 				if(isset($_POST['btn-submit']) || ((isset($_POST['moisSelect']) && isset($_POST['typeSelect']) && isset($_POST['salleSelect'])) &&($_POST['moisSelect'] == "Choisir..." && $_POST['typeSelect'] == "Choisir..." && $_POST['salleSelect'] == "Choisir...")) ){
+					// si le formulaire est utilisé ou les valeurs existent dans $_POST
 					// récupération des valeurs fournies
 					$mois = htmlspecialchars($_POST['moisSelect']);
 					$type = htmlspecialchars($_POST['typeSelect']);
@@ -138,7 +139,7 @@ else{
 						$dateFin=($annee+1)."-".$moisFin."01";
 					}
 
-					// sélection de tous les spectacles à venir
+					// sélection de tous les spectacles à venir - requête par défaut
 					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
@@ -172,15 +173,91 @@ else{
 								}
 */
 				if ($mois !== "Choisir..." && $type !== "Choisir..." && $salle !== "Choisir...") {
-					echo "1. 3 valeurs saisies";
+					//echo "1. 3 valeurs saisies";
+
+					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.idSpectacle ='".$type."' AND s.idSalle='".$salle."' AND
+									date >= '".$annee."-".$mois."-01' AND date < '".$annee."-".$mois."-11' ORDER BY date ASC";
+									//echo $sql1;
+					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND s.idSalle='".$salle."' AND
+									date >= '".$annee."-".$mois."-11' AND date < '".$annee."-".$mois."-21' ORDER BY date ASC";
+
+					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND s.idSalle='".$salle."' AND
+									date >= '".$annee."-".$mois."-21' AND date <= '".$annee."-".$mois."-31' ORDER BY date ASC";
+
+				}
+				elseif($mois !== "Choisir..." && $type !== "Choisir..." && $salle == "Choisir..."){
+					echo "2. mois + ballet -> ok";
+
+					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND
+									date >= '".$annee."-".$mois."-01' AND date < '".$annee."-".$mois."-11' ORDER BY date ASC";
+									//echo $sql1;
+					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND
+									date >= '".$annee."-".$mois."-11' AND date < '".$annee."-".$mois."-21' ORDER BY date ASC";
+
+					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND
+									date >= '".$annee."-".$mois."-21' AND date <= '".$annee."-".$mois."-31' ORDER BY date ASC";
+
+				}
+				elseif($mois == "Choisir..." && $type !== "Choisir..." && $salle !== "Choisir..."){
+					echo " 3. type +salle -> ok";
+
+					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND  salle ='".$salle."' AND
+									date >= '".$annee."-01-01' AND date < '".$annee."-05-01' ORDER BY date ASC";
+									//echo $sql1;
+					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND  salle ='".$salle."' AND
+									date >= '".$annee."-05-01' AND date < '".$annee."-09-01' ORDER BY date ASC";
+
+					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND  salle ='".$salle."' AND
+									date >= '".$annee."-09-01' AND date <= '".$annee."-12-31' ORDER BY date ASC";
+
+
+				}
+				elseif($mois !== "Choisir..." && $type == "Choisir..." && $salle !== "Choisir..."){
+					echo " 4. mois +salle";
 
 					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
 									WHERE
-									 date >= '".$annee."-".$mois."-01' AND date < '".$annee."-".$mois."-11' ORDER BY date ASC";
-									echo $sql1;
+									date >= '".$annee."-".$mois."-01' AND date < '".$annee."-".$mois."-11' ORDER BY date ASC";
+									//echo $sql1;
 					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
@@ -195,21 +272,88 @@ else{
 									WHERE
 									date >= '".$annee."-".$mois."-21' AND date <= '".$annee."-".$mois."-31' ORDER BY date ASC";
 
-				}elseif($mois !== "Choisir..." && $type !== "Choisir..." && $salle == "Choisir..."){
-					echo "2. mois + ballet -> ok";
-				}elseif($mois == "Choisir..." && $type !== "Choisir..." && $salle !== "Choisir..."){
-					echo " 3. type +salle -> ok";
-				}elseif($mois !== "Choisir..." && $type == "Choisir..." && $salle !== "Choisir..."){
-					echo " 4. mois +salle";
-				}elseif($mois == "Choisir..." && $type == "Choisir..." && $salle !== "Choisir..."){
+				}
+				elseif($mois == "Choisir..." && $type == "Choisir..." && $salle !== "Choisir..."){
 					echo "5. salle uniquement -> ok";
+					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE s.idSalle ='".$salle."' AND
+									date >= '".$annee."-01-01' AND date < '".$annee."-05-01' ORDER BY date ASC";
+									//echo $sql1;
+					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE s.idSalle ='".$salle."' AND
+									date >= '".$annee."-05-01' AND date < '".$annee."-09-01' ORDER BY date ASC";
+
+					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE s.idSalle ='".$salle."' AND
+									date >= '".$annee."-09-01' AND date <= '".$annee."-12-31' ORDER BY date ASC";
+
 				}
 				elseif($mois !== "Choisir..." && $type == "Choisir..." && $salle == "Choisir..."){
 					echo "6. mois uniquement -> ok";
+
+					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE
+									date >= '".$annee."-".$mois."-01' AND date < '".$annee."-".$mois."-11' ORDER BY date ASC";
+									//echo $sql1;
+					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE
+									date >= '".$annee."-".$mois."-11' AND date < '".$annee."-".$mois."-21' ORDER BY date ASC";
+
+					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE
+									date >= '".$annee."-".$mois."-21' AND date <= '".$annee."-".$mois."-31' ORDER BY date ASC";
+
 				}
 				elseif($mois == "Choisir..." && $type !== "Choisir..." && $salle == "Choisir..."){
 					echo "7. type uniquement -> ok";
+
+					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND
+									date >= '".$annee."-01-01' AND date < '".$annee."-05-01' ORDER BY date ASC";
+									//echo $sql1;
+					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND
+									date >= '".$annee."-05-01' AND date < '".$annee."-09-01' ORDER BY date ASC";
+
+					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
+									FROM proj_Representation as r
+									JOIN proj_Salle as s ON r.idSalle = s.idSalle
+									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
+									WHERE spe.type ='".$type."' AND
+									date >= '".$annee."-09-01' AND date <= '".$annee."-12-31' ORDER BY date ASC";
+
 				}
+
+						echo "<p>SQL1: ".$sql1."</p>";
+						echo "<p>SQL2: ".$sql2."</p>";
+						echo "<p>SQL3: ".$sql3."</p>";
+						$req = $pdo->query($sql1);
+						$data=$req->fetch();
+						print_r($data);
 ?>
 				<!-- Listes de spectacles en sortie -->
 				<div class="card-deck">
@@ -256,8 +400,8 @@ else{
 						</ul>
 					</div>
 				</div>
-		<?php	}
-				else {
+		<?php	} // fin de si btn-submit validé ou 3 valeurs vides
+				else { // si submit est vide ou les 3 valeurs ont vides
 			  ?>
 
 
