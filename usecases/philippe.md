@@ -1,7 +1,10 @@
 ---
 title:  'Use case : Phillippe'
 author:
+- Bilo Boury
+- Charles Cascio
 - Nicolas Roelandt
+- Nassim Yousfi
 tags: [Use case, Philippe]
 geometry: a4paper, margin=2cm
 ...

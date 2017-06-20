@@ -1,7 +1,10 @@
 ---
 title:  'Use case : Marcelle et Jacques'
 author:
+- Bilo Boury
+- Charles Cascio
 - Nicolas Roelandt
+- Nassim Yousfi
 tags: [Use case, Jean-Marc]
 geometry: a4paper, margin=2cm
 ...
