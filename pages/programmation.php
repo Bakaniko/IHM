@@ -115,7 +115,7 @@ else{
 					$mois = htmlspecialchars($_POST['moisSelect']);
 					$type = htmlspecialchars($_POST['typeSelect']);
 					$salle = htmlspecialchars($_POST['salleSelect']);
-					echo "<p>".$mois.$type.$salle."</p>";
+					//echo "<p>".$mois.$type.$salle."</p>"; // debug => controle des saisies
 					/*
 					$sql = "SELECT DISTINCT(s.type) as type from proj_Spectacle as s where 1 ORDER BY type ASC";
 
@@ -198,7 +198,7 @@ else{
 
 				}
 				elseif($mois !== "Choisir..." && $type !== "Choisir..." && $salle == "Choisir..."){
-					echo "2. mois + type -> ok";
+					//echo "2. mois + type -> ok";
 
 					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
@@ -223,33 +223,33 @@ else{
 
 				}
 				elseif($mois == "Choisir..." && $type !== "Choisir..." && $salle !== "Choisir..."){
-					echo " 3. type +salle -> ok";
+					//echo " 3. type +salle -> ok";
 
 					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND  salle ='".$salle."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND  s.idSalle ='".$salle."' AND
 									date >= '".$annee."-01-01' AND date < '".$annee."-05-01' ORDER BY date ASC";
 									//echo $sql1;
 					$sql2 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND  salle ='".$salle."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND  s.idSalle ='".$salle."' AND
 									date >= '".$annee."-05-01' AND date < '".$annee."-09-01' ORDER BY date ASC";
 
 					$sql3 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
 									JOIN proj_Spectacle as spe ON spe.idSpectacle = r.idSpectacle
-									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND  salle ='".$salle."' AND
+									WHERE spe.type LIKE '".substr($type, 0, 2)."%' AND  s.idSalle ='".$salle."' AND
 									date >= '".$annee."-09-01' AND date <= '".$annee."-12-31' ORDER BY date ASC";
 
 
 				}
 				elseif($mois !== "Choisir..." && $type == "Choisir..." && $salle !== "Choisir..."){
-					echo " 4. mois +salle";
+					//echo " 4. mois +salle";
 
 					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
@@ -274,7 +274,7 @@ else{
 
 				}
 				elseif($mois == "Choisir..." && $type == "Choisir..." && $salle !== "Choisir..."){
-					echo "5. salle uniquement -> ok";
+					//echo "5. salle uniquement -> ok";
 					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
 									JOIN proj_Salle as s ON r.idSalle = s.idSalle
@@ -298,7 +298,7 @@ else{
 
 				}
 				elseif($mois !== "Choisir..." && $type == "Choisir..." && $salle == "Choisir..."){
-					echo "6. mois uniquement -> ok";
+					//echo "6. mois uniquement -> ok";
 
 					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
@@ -323,7 +323,7 @@ else{
 
 				}
 				elseif($mois == "Choisir..." && $type !== "Choisir..." && $salle == "Choisir..."){
-					echo "7. type uniquement -> ok";
+					//echo "7. type uniquement -> ok";
 
 					$sql1 = "SELECT r.date as date, spe.nom as spectacle ,s.nom as salle, spe.idSpectacle
 									FROM proj_Representation as r
@@ -348,15 +348,17 @@ else{
 
 				}
 
+						/*
 						echo "<p>SQL1: ".$sql1."</p>";
 						echo "<p>SQL2: ".$sql2."</p>";
 						echo "<p>SQL3: ".$sql3."</p>";
+						*/
 						/*
 						$req = $pdo->query($sql1);
 						$data=$req->fetch();
 						print_r($data);
 			*/
-?>	
+?>
 				<!-- Listes de spectacles en sortie -->
 				<div class="card-deck">
 					<!-- Liste 1 -->
