@@ -17,13 +17,13 @@
 #############################################
 
 '''
-Parametres en entree:
-- nombre de spectacles en base
-- nombre de clients en base
-- nombre de place dans la salle
+Parameters:
+- csv file with performance ids
+- csv file with user ids
+- csv file with place ids
 
-format de sortie attendu:
-- 1 ligne = 1 enregistrement
+Outpu format:
+- 1 line = 1 row
 idUtilisateur;idRepresentation;idPlace
 
 
@@ -87,7 +87,6 @@ print(performances)
 
 
 # Main algorithme
-nbUtilisateur = len(usersId)
 nbPlaces = len(places)
 
 for performance in performances:
@@ -119,8 +118,8 @@ for performance in performances:
                     # print places[i + j] + u" isReserved by " + str(userId) + " for performance "+ performance  # output test
                     # print places[i + j] + u" isReserved by " + str(userId) + " for performance "+ performance  # output test
                     # print str(userId) + "," + performance + "," + places[i + j] # output test
-                    resa.write(str(userId) + "," + performance + "," +
-                               places[i + j] + "\n")  # output in file
+                    resa.write((str(userId) + "," + performance + "," +
+                                places[i + j] + "\n").encode('utf8'))  # output in file
                 pointer = i + nbReservation  # pointer moves forward
 
             # if tails
