@@ -1,4 +1,7 @@
-<?php // Définition des chemins d'accès aux fichiers
+<?php
+session_start();
+
+ // Définition des chemins d'accès aux fichiers
 $path_root="./";
 $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
@@ -18,57 +21,42 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 	<!-- Contenu de la page d'accueil -->
 
 	<div class="container" id="main">
+		<div class="card mx-auto text-center">
+			<h2>Prochaines représentations</h2>
+		</div>
+		<!--
+		<div class="btn-group-vertical" id="btnTaillePolice" role="group" aria-label="Taille de police">
+			<button class="btn btn-secondary font-weight-bold" id="zoomIn">+</button>
+			<button class="btn btn-secondary font-weight-bold" id="zoomOut">-</button>
+		</div>
 
-		<div class="card mx-auto">
-			<div class="card-block text-center">
-
-
-				<!--
-				<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date et titre du spectacle + informations</a></li>
-				<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date et titre du spectacle + informations</a></li>
-				<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date et titre du spectacle + informations</a></li>
-				<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date et titre du spectacle + informations</a></li>
-				<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date et titre du spectacle + informations</a></li>
-				<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date et titre du spectacle + informations</a></li>
-				<li class="list-group-item"><a href="<?php echo $path_pages ; ?>spectacle.php" class="card-link">Date et titre du spectacle + informations</a></li>
-			</ul>
-
-		-->
-
-			<?php
+	-->
+		<div class="card-deck" id="indexImg">
+<?php
 				//date_format(r.date, "%d %M %Y") as date
 				$sql  = $sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage, spe.idSpectacle as id
                 FROM  proj_Representation as r
                 JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
-                WHERE r.date >= CURRENT_DATE ORDER BY date ASC LIMIT 6';
+                WHERE r.date >= CURRENT_DATE ORDER BY date ASC LIMIT 5';
 
         $req = $pdo->query($sql);
-						$compteur=0;
+					while ($data = $req->fetch()){
+															?>
+						<div class="card">
+							<a href="<?php echo $path_pages.'spectacle.php?spectacle='.$data->nom.'&idSpectacle='.$data->id;?>" class="card-link">
+								<div class="card-block text-center">
+									<h4 class="card-title" id="indexTitreSpec"><?php echo $data->nom;?></h4>
+									<h6 class="card-title"><?php echo affDate($data->date);?></h6>
+								</div>
+								<img class="card-img-bottom img-fluid d-block mx-auto" src="<?php echo $path_images.$data->nomImage;?>" alt="<?php echo "Affiche de ".$data->nom;?>">
+							</a>
+						</div>
 
-            while ($data = $req->fetch()){
-							if($compteur==0){
-								?>
-							<h4 class="card-title"><a href="<?php echo $path_pages.'spectacle.php?spectacle='.$data->nom.'&idSpectacle='.$data->id;?>" class="card-link"><?php echo $data->nom;?></a></h4>
-							<h5 class="card-title"><?php echo affDate($data->date);?></h5>
-
-							</div>
-							<img class="card-img-bottom img-fluid d-block mx-auto" src="<?php echo $path_images.$data->nomImage;?>" alt="<?php echo "Affiche de ".$data->nom;?>">
-
-							<p class="card-text"><?php echo $data->infos;?></p>
-
-							<ul class="list-group list-group-flush mt-3">
 							<?php
-							}
-							else{
-								echo '<li class="list-group-item"><a href="'.$path_pages.'spectacle.php?spectacle='.$data->nom.'&idSpectacle='.$data->id.'"class="card-link">'.affDate($data->date)." : ".$data->nom.','.$data->type.'</a></li>';
-							}
-							$compteur++;
-            }
-          $req->closeCursor();
-            ?>
 
-        </ul>
-		</div>
+            }
+						 $req->closeCursor();
+            ?>
 	</div>
 </div>
 <?php include($path_structure."footer.php"); ?> <!-- Inclusion pied de page -->

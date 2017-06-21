@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb4
--- https://www.phpmyadmin.net/
+-- version 4.5.2
+-- http://www.phpmyadmin.net
 --
--- Client :  localhost:3306
--- Généré le :  Ven 16 Juin 2017 à 23:53
--- Version du serveur :  5.6.30-1
--- Version de PHP :  7.0.19-1
+-- Client :  localhost
+-- Généré le :  Mar 20 Juin 2017 à 17:10
+-- Version du serveur :  10.1.19-MariaDB
+-- Version de PHP :  5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -177,11 +177,11 @@ CREATE TABLE `proj_Spectacle` (
 --
 
 INSERT INTO `proj_Spectacle` (`idSpectacle`, `nom`, `type`, `infos`, `nomImage`) VALUES
-(1, 'Henri Dès En Famille', 'Spectacle pour enfant', '<p>\r\nConnu pour son répertoire de musique pour enfants, Henri Dès est un auteur-compositeur-interprète suisse. Avec 50 ans de carrière au compteur, cet artiste a connu deux grandes périodes: celle des chansons pour adultes, à laquelle il se consacre dans un premier temps, puis celle, plus longue, des oeuvres pour enfants qu\'il poursuit encore aujourd\'hui avec des albums de compositions originales, des comédies musicales, des concerts, des contes, des livres...</p>\r\n\r\n<p>Représentant de la Suisse au concours Eurovision de la chanson en 1970, Henri Dès (de son vrai nom Henri Destraz) constitue pour plusieurs générations la référence en matière de comptines pour enfants. Son répertoire regorge de classiques chantées par les \"kids\" d\'aujourd\'hui, comme pour leurs parents et les grands-parents: \"Les Bêtises à l\'école\", \"La Petite Charlotte\", \"La Glace au citron\", \"Le Petit zinzin\"…</p>\r\n', 'DES_7833565682037481098.jpg'),
-(2, 'Les Contes d\'Hoffmann', 'Opéra', '<p>Opéra fantastique en un prologue, trois actes et un épilogue (1881)</p>\r\n\r\n\r\n<p>Musique: Jacques Offenbach</p>\r\n<p>Livret: Jules Barbier</p>\r\n\r\n\r\n<p>D’après Jules Barbier, Michel Carré</p>\r\n<p>En langue française</p>\r\n', 'contesHoffman.webp'),
-(3, 'Aida', 'Opéra', '<p>Opéra en quatre actes (1871)</p>\r\n\r\n\r\n<p>Musique : Giuseppe Verdi</p>\r\n<p>Livret : Antonio Ghislanzoni</p>\r\n\r\n<p>D\'après Auguste Mariette</p>\r\n<p>En langue italienne</p>', 'aida.jpg'),
-(4, 'La Source', 'Ballet', '<p>Son goût pour l’histoire de la danse et ses recherches autour du répertoire du 19ème siècle, ont conduit le danseur étoile de l’Opéra de Paris et chorégraphe Jean-Guillaume Bart à ressusciter un ballet classique, créé en 1866, dont il renouvelle avec bonheur la lettre tout en conservant l’esprit : un pur enchantement.</p>\r\n\r\n<p>Aérienne, poétique, imagée et sophistiquée, la danse littéralement habitée sous une musique réorchestrée par le compositeur Marc Olivier Dupin témoigne d’un élan à la fois créatif, virtuose et naturel.</p>\r\n\r\n<p>L’histoire met en scène Naïla, une fée, esprit de la source, et qui s’apparente à la petite sirène. Elle tombe amoureuse d’un mortel, Djémil, le chasseur, qui ne l’aime pas en retour car son cœur bat la chamade pour une mystérieuse Orientale Nouredda, promise au Khan. Naïla sacrifiera alors sa vie et son pouvoir afin de rendre possible l’amour terrestre des deux amoureux où entre temps les rebondissements liés aux incertitudes du cœur et aux jalousies du clan auront fait rage.</p>', 'Affiche-la-source-1.jpg'),
-(5, 'La Balayère', 'Ballet', '<p>En trois actes</p>\r\n\r\n<p>Musique : Ludwig Minkus</p> \r\n<p>Livret : Marius Petipa et Serguei Khoudekov</p>\r\n<p>Chorégraphie : Rudolf Noureev</p>\r\n\r\n<p>Le guerrier Solor et la belle bayadère Nikiya sont secrètement amants et ont prévu de s\'enfuir et de se marier. Mais le Rajah a choisi Solor comme mari pour sa fille Gamzatti, et le Brahmane du temple veut épouser Nikiya.</p>', 'la_balayere.jpg');
+(1, 'Henri Dès En Famille', 'Spectacle pour enfant', 'onnu pour son répertoire de musique pour enfants, Henri Dès est un auteur-compositeur-interprète suisse. Avec 50 ans de carrière au compteur, cet artiste a connu deux grandes périodes: celle des chansons pour adultes, à laquelle il se consacre dans un premier temps, puis celle, plus longue, des oeuvres pour enfants qu''il poursuit encore aujourd''hui avec des albums de compositions originales, des comédies musicales, des concerts, des contes, des livres...\r\n\r\nReprésentant de la Suisse au concours Eurovision de la chanson en 1970, Henri Dès (de son vrai nom Henri Destraz) constitue pour plusieurs générations la référence en matière de comptines pour enfants. Son répertoire regorge de classiques chantées par les "kids" d''aujourd''hui, comme pour leurs parents et les grands-parents: "Les Bêtises à l''école", "La Petite Charlotte", "La Glace au citron", "Le Petit zinzin"…', 'DES_7833565682037481098.jpg'),
+(2, 'Les Contes d''Hoffmann', 'Opéra', 'Opéra fantastique en un prologue, trois actes et un épilogue (1881)\r\n\r\nMusique: Jacques Offenbach \r\nLivret: Jules Barbier\r\n\r\nD’après Jules Barbier, Michel Carré\r\nEn langue française', 'contesHoffman.webp'),
+(3, 'Aida', 'Opéra', '<p>Opéra en quatre actes (1871)</p>\r\n\r\n<p>Musique Giuseppe Verdi</p>\r\n<p>Livret Antonio Ghislanzoni</p> \r\n\r\n<p>D''après Auguste Mariette</p>\r\n<p>En langue italienne</p>', 'aida.jpg'),
+(4, 'La Source', 'Ballet', '<p>Son goût pour l’histoire de la danse et ses recherches autour du répertoire du 19ème siècle, ont conduit le danseur étoile de l’Opéra de Paris et chorégraphe Jean-Guillaume Bart à ressusciter un ballet classique, créé en 1866, dont il renouvelle avec bonheur la lettre tout en conservant l’esprit : un pur enchantement.</p>\r\n\r\n<p>Aérienne, poétique, imagée et sophistiquée, la danse littéralement habitée sous une musique réorchestrée par le compositeur Marc Olivier Dupin témoigne d’un élan à la fois créatif, virtuose et naturel</p>\r\n\r\n<p>L’histoire met en scène Naïla, une fée, esprit de la source, et qui s’apparente à la petite sirène. Elle tombe amoureuse d’un mortel, Djémil, le chasseur, qui ne l’aime pas en retour car son cœur bat la chamade pour une mystérieuse Orientale Nouredda, promise au Khan. Naïla sacrifiera alors sa vie et son pouvoir afin de rendre possible l’amour terrestre des deux amoureux où entre temps les rebondissements liés aux incertitudes du cœur et aux jalousies du clan auront fait rage.<p>', 'Affiche-la-source-1.jpg'),
+(5, 'La Balayère', 'Ballet', '\r\n<p>En trois actes</p>\r\n\r\n<p>Musique Ludwig Minkus</p> \r\n<p>Livret Marius Petipa et Serguei Khoudekov </p>\r\n<p>Chorégraphie Rudolf Noureev</p>\r\n\r\n<p>Le guerrier Solor et la belle bayadère Nikiya sont secrètement amants et ont prévu de s''enfuir et de se marier. Mais le Rajah a choisi Solor comme mari pour sa fille Gamzatti, et le Brahmane du temple veut épouser Nikiya.</p>', 'la_balayere.jpg');
 
 -- --------------------------------------------------------
 
@@ -424,7 +424,6 @@ ALTER TABLE `proj_Categorie`
 -- Contraintes pour la table `proj_Place`
 --
 ALTER TABLE `proj_Place`
-  ADD CONSTRAINT `proj_Place_ibfk_1` FOREIGN KEY (`idPlace`) REFERENCES `proj_Reservation` (`idPlace`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `proj_Place_ibfk_2` FOREIGN KEY (`idSalle`) REFERENCES `proj_Salle` (`idSalle`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `proj_Place_ibfk_3` FOREIGN KEY (`Categorie`) REFERENCES `proj_Categorie` (`Categorie`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -447,7 +446,8 @@ ALTER TABLE `proj_Representation`
 --
 ALTER TABLE `proj_Reservation`
   ADD CONSTRAINT `proj_Reservation_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `proj_utilisateur` (`idUtilisateur`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `proj_Reservation_ibfk_2` FOREIGN KEY (`idRepresentation`) REFERENCES `proj_Representation` (`idRepresentation`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `proj_Reservation_ibfk_2` FOREIGN KEY (`idRepresentation`) REFERENCES `proj_Representation` (`idRepresentation`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `proj_Reservation_ibfk_3` FOREIGN KEY (`idPlace`) REFERENCES `proj_Place` (`idPlace`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `proj_utilisateur`
