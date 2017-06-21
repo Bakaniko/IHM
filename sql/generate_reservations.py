@@ -33,17 +33,51 @@ une_chaine = une_chaine.encode('utf8')
 '''
 
 import random
+import csv
 
 # resa = open('reservations.csv', 'wa')
 
+'''
+    User id loading
+'''
+
+# empty array
+usersId = []
+file = open("proj_utilisateur.csv", "r")
+userCsv = csv.reader(file)
+for row in userCsv:
+    # print(row[1])
+    usersId.append(row[0])
+
+file.close()
+# output check
+print(usersId)
+
+'''
+    Amount of place
+'''
+
+# empty array
+places = []
+file = open("proj_Salle.csv", "r")
+salleCsv = csv.reader(file)
+for row in salleCsv:
+    # print(row[1])
+    places.append(row[0])
+
+file.close()
+# output check
+print(places)
+
+
 # Main algorithme
 idRepresentation = 3
-nbUtilisateur = 900
-nbPlace = 20
+nbUtilisateur = len(usersId)
+nbPlaces = len(places)
 i = 1
 pointer = 1
 
-while i < (nbPlace + 1):
+while i < nbPlaces:
     # from place 1 to nbPlace + 1
 
     # if i is on the pointer
@@ -59,13 +93,13 @@ while i < (nbPlace + 1):
             # print u"reservation de " + str(nbReservation) + u" places"
 
             # pick a random user id
-            userId = random.randint(0, nbUtilisateur)
+            userId = random.choice(usersId)
 
             # to avoid nbPlace overflow
-            if (pointer + nbReservation > nbPlace):
-                nbReservation = nbPlace - pointer
+            if (pointer + nbReservation > nbPlaces):
+                nbReservation = nbPlaces - pointer
             for j in range(0, nbReservation):
-                print str(i + j) + u" isReserved by " + str(userId)  # output
+                print places[i + j] + u" isReserved by " + str(userId)  # output
 
             pointer = i + nbReservation  # pointer moves forward
 
