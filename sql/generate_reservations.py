@@ -35,7 +35,7 @@ une_chaine = une_chaine.encode('utf8')
 import random
 import csv
 
-# resa = open('reservations.csv', 'wa')
+resa = open('reservations.csv', 'wa')
 
 '''
     User id loading
@@ -70,7 +70,7 @@ file.close()
 print(places)
 
 '''
-    Amount of performance
+    Number of performance
 '''
 
 # empty array
@@ -87,44 +87,48 @@ print(performances)
 
 
 # Main algorithme
-idRepresentation = 3
 nbUtilisateur = len(usersId)
 nbPlaces = len(places)
-i = 1
-pointer = 1
 
-while i < nbPlaces:
-    # from place 1 to nbPlace + 1
+for performance in performances:
+    i = 0
+    pointer = 1
 
-    # if i is on the pointer
-    if i == pointer:
-        # then flip a coin
-        isReserve = random.randint(0, 1)
+    while i < nbPlaces:
+        # from place 1 to nbPlace + 1
 
-        # if heads
-        if isReserve == 1:
+        # if i is on the pointer
+        if i == pointer:
+            # then flip a coin
+            isReserve = random.randint(0, 1)
 
-            # generates a number of reservations between 1 and 4
-            nbReservation = random.randint(1, 4)
-            # print u"reservation de " + str(nbReservation) + u" places"
+            # if heads
+            if isReserve == 1:
 
-            # pick a random user id
-            userId = random.choice(usersId)
+                # generates a number of reservations between 1 and 4
+                nbReservation = random.randint(1, 4)
+                # print u"reservation de " + str(nbReservation) + u" places"
 
-            # to avoid nbPlace overflow
-            if (pointer + nbReservation > nbPlaces):
-                nbReservation = nbPlaces - pointer
-            for j in range(0, nbReservation):
-                print places[i + j] + u" isReserved by " + str(userId)  # output
+                # pick a random user id
+                userId = random.choice(usersId)
 
-            pointer = i + nbReservation  # pointer moves forward
+                # to avoid nbPlace overflow
+                if (pointer + nbReservation > nbPlaces):
+                    nbReservation = nbPlaces - pointer
+                for j in range(0, nbReservation):
+                    # print places[i + j] + u" isReserved by " + str(userId) + " for performance "+ performance  # output test
+                    # print places[i + j] + u" isReserved by " + str(userId) + " for performance "+ performance  # output test
+                    # print str(userId) + "," + performance + "," + places[i + j] # output test
+                    resa.write(str(userId) + "," + performance + "," +
+                               places[i + j] + "\n")  # output in file
+                pointer = i + nbReservation  # pointer moves forward
 
-        # if tails
-        else:
-            # print u"siege " + str(i) + " libre"
+            # if tails
+            else:
+                # print u"siege " + str(i) + " libre"
 
-            pointer += 1  # nothing happens, the pointer move forward
+                pointer += 1  # nothing happens, the pointer move forward
 
-    i += 1  # i moves forward
+        i += 1  # i moves forward
 
-# resa.close()
+resa.close()  # fermeture du fichier
