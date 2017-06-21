@@ -69,6 +69,22 @@ file.close()
 # output check
 print(places)
 
+'''
+    Amount of performance
+'''
+
+# empty array
+performances = []
+file = open("proj_Representation.csv", "r")
+representationCsv = csv.reader(file)
+for row in representationCsv:
+    # print(row[1])
+    performances.append(row[0])
+
+file.close()
+# output check
+print(performances)
+
 
 # Main algorithme
 idRepresentation = 3
