@@ -37,7 +37,7 @@ import random
 # resa = open('reservations.csv', 'wa')
 
 # Main algorithme
-
+idRepresentation = 3
 nbUtilisateur = 900
 nbPlace = 20
 i = 1
@@ -58,11 +58,14 @@ while i < (nbPlace + 1):
             nbReservation = random.randint(1, 4)
             # print u"reservation de " + str(nbReservation) + u" places"
 
+            # pick a random user id
+            userId = random.randint(0, nbUtilisateur)
+
             # to avoid nbPlace overflow
             if (pointer + nbReservation > nbPlace):
                 nbReservation = nbPlace - pointer
             for j in range(0, nbReservation):
-                print str(i + j) + u" isReserved"  # output
+                print str(i + j) + u" isReserved by " + str(userId)  # output
 
             pointer = i + nbReservation  # pointer moves forward
 
