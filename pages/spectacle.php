@@ -8,29 +8,7 @@ $path_images=$path_root."images/";
 require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
 require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
-// récupération du paramètre passé par la méthode GET
-if(isset($_GET['spectacle'])){
-	$nomSpectacle ="'".htmlspecialchars($_GET['spectacle'])."'";
-}
-if(isset($_GET['idSpectacle'])){
-	$idSpectacle = intval($_GET['idSpectacle']);
-}
-
-
-
-$sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
-				FROM  proj_Representation as r
-				JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
-				WHERE date >= CURRENT_DATE AND spe.idSpectacle = :idSpectacle ORDER BY DATE  ASC' ;
-
-$req = $pdo->prepare($sql);
-if($req->execute(array('idSpectacle' => $idSpectacle))){
-
-		$data = $req->fetch();
-		$req->closeCursor();
-	}
 ?>
-
 <!DOCTYPE html>
 <html lang="fr" class="">
 <?php include($path_structure."head.php"); ?>	<!-- Inclusion <head> -->
@@ -40,6 +18,31 @@ if($req->execute(array('idSpectacle' => $idSpectacle))){
 	<!-- Contenu de la page spectacle -->
 
 	<div class="container" id="main">
+
+<?php
+
+// récupération du paramètre passé par la méthode GET
+if(isset($_GET['spectacle'])){
+	$nomSpectacle ="'".htmlspecialchars($_GET['spectacle'])."'";
+}
+if(isset($_GET['idSpectacle'])){
+	$idSpectacle = intval($_GET['idSpectacle']);
+
+	$sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
+					FROM  proj_Representation as r
+					JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
+					WHERE date >= CURRENT_DATE AND spe.idSpectacle = :idSpectacle ORDER BY DATE  ASC' ;
+
+	$req = $pdo->prepare($sql);
+	if($req->execute(array('idSpectacle' => $idSpectacle))){
+
+			$data = $req->fetch();
+			$req->closeCursor();
+		}
+
+?>
+
+
 		<div class="card mx-auto">
 			<div class="card-block text-center">
 				<h4 class="card-title"><?php echo $data->nom; ?></h4>
@@ -84,7 +87,14 @@ if($req->execute(array('idSpectacle' => $idSpectacle))){
 						</ul>
 				</div>
 		</div>
-	</div>
+
+
+	<?php }
+		else {
+			echo "Page non disponible";
+		}
+	 ?>
+	 </div>
 	<?php include($path_structure."footer.php"); ?>	<!-- Inclusion pied de page -->
 	<?php include($path_structure."JS.php"); ?>	<!-- Inclusion CDN et fichiers javascript -->
 </body>

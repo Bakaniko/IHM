@@ -9,7 +9,7 @@ require_once("$path_structure".'base.php');# inclure la connection à la base de
 require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 
-
+$userId=
 ?>
 
 <!DOCTYPE html>
@@ -88,7 +88,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 		<div class="card mx-auto text-center">
 
-			<!-- Formulaire d'inscription -->
+			<!-- Formulaire de changement de mot de passe-->
       <div class="card-block text-center">
         <h4 class="card-title">Changer de mot de passe</h4>
       </div>
