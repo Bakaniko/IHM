@@ -1,0 +1,7 @@
+#Sql chargement des donnees place
+LOAD DATA LOCAL INFILE 'chemin/new_id.csv'
+INTO TABLE proj_place
+ FIELDS TERMINATED BY ';'
+ LINES TERMINATED BY '\n';
+
+
