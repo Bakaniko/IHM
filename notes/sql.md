@@ -254,6 +254,12 @@ proj_Salle.idSalle, **clé étrangère**
 
 proj_Categorie.idCategorie, **clé étrangère**
 
+### *Handicap*
+
+Indique si la place est accessible aux personnes à mobilité réduite
+
+varchar(3)
+
 ## proj_PrixPlace
 
 Le prix est fonction du spectacle, peut importe la représentation, et de la catégorie.
