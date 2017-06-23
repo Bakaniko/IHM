@@ -59,7 +59,7 @@ print(usersId)
 
 # empty array
 places = []
-file = open("proj_Salle.csv", "r")
+file = open("proj_Place.csv", "r")
 salleCsv = csv.reader(file)
 for row in salleCsv:
     # print(row[1])
