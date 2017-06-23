@@ -42,7 +42,7 @@ $path_images=$path_root."images/";
       <div class="card m-auto">
         <div class="card-block text-center">
           <p class="card-text">Vous n'êtes pas encore inscrit ?</p>
-          <a class="btn btn-secondary" href="<?php echo $path_pages ; ?>inscription.php" role="button">Inscription</a>
+          <a class="btn btn-secondary" href="<?php echo $path_pages ; ?>register.php" role="button">Inscription</a>
         </div>
       </div>
     </div>
