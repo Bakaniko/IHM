@@ -9,14 +9,20 @@ require_once("$path_structure".'base.php');# inclure la connection à la base de
 require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 // récupération du paramètre passé par la méthode GET
-$nomSpectacle ="'".htmlspecialchars($_GET['spectacle'])."'";
-$idSpectacle = intval($_GET['idSpectacle']);
+if(isset($_GET['spectacle'])){
+	$nomSpectacle ="'".htmlspecialchars($_GET['spectacle'])."'";
+}
+if(isset($_GET['idSpectacle'])){
+	$idSpectacle = intval($_GET['idSpectacle']);
+}
+
+
 
 $sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
 				FROM  proj_Representation as r
 				JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
 				WHERE date >= CURRENT_DATE AND spe.idSpectacle = :idSpectacle ORDER BY DATE  ASC' ;
-				
+
 $req = $pdo->prepare($sql);
 if($req->execute(array('idSpectacle' => $idSpectacle))){
 
