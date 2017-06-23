@@ -21,15 +21,14 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 	<!-- Contenu de la page de Compte client -->
 
 	<div class="container" id="main">
-		<div class="card mx-auto text-center>
+		<div class="card mx-auto text-center">
 			<h2>Mes réservations</h2>
 		</div>
-		<div class="card mx-auto text-center>
-			<h2>Mes coordonnées</h2>
+		<div class="card mx-auto text-center">
 
 			<!-- Formulaire d'inscription -->
       <div class="card-block text-center">
-        <h4 class="card-title">Formulaire d'inscription</h4>
+        <h4 class="card-title">Mes Informations</h4>
       </div>
       <form>
         <div class="form-group row">
@@ -81,17 +80,43 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputMotDePasse" class="col-3 col-form-label">Mot de passe</label>
-          <div class="col-9">
-            <input type="password" class="form-control" id="inputMotDePasse" placeholder="************">
-          </div>
-        </div>
-        <div class="form-group row">
-          <button type="submit" class="btn btn-primary mx-auto">Inscription</button>
+          <button type="submit" class="btn btn-primary mx-auto">Modifier</button>
         </div>
       </form>
     </div>
     <!-- Fin du formulaire -->
+
+		<div class="card mx-auto text-center">
+
+			<!-- Formulaire d'inscription -->
+      <div class="card-block text-center">
+        <h4 class="card-title">Changer de mot de passe</h4>
+      </div>
+      <form>
+				<div class="form-group row">
+					<label for="inputMotDePasse" class="col-3 col-form-label">Ancien mot de passe</label>
+					<div class="col-9">
+						<input type="password" class="form-control" id="AncientMotDePasse" placeholder="************">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputMotDePasse" class="col-3 col-form-label">Nouveau mot de passe</label>
+					<div class="col-9">
+						<input type="password" class="form-control" id="inputMotDePasse1" placeholder="************">
+					</div>
+				</div>
+        <div class="form-group row">
+          <label for="inputMotDePasse" class="col-3 col-form-label">Mot de passe</label>
+          <div class="col-9">
+            <input type="password" class="form-control" id="inputMotDePasse2" placeholder="************">
+          </div>
+        </div>
+        <div class="form-group row">
+          <button type="submit" class="btn btn-primary mx-auto">Modifier</button>
+        </div>
+      </form>
+    </div>
+    <!-- Fin du formulaire de changement de mot de passe -->
 		</div>
 
 	</div>
