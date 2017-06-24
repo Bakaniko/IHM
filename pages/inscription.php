@@ -50,7 +50,7 @@ $path_images=$path_root."images/";
         <div class="form-group row">
           <label for="Email" class="col-3 col-form-label">Email</label>
           <div class="col-9">
-            <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" placeholder="pinpin.lapin@gmail.com">
+            <input type="email" class="form-control" name="Email" placeholder="pinpin.lapin@gmail.com">
           </div>
         </div>
         <div class="form-group row">

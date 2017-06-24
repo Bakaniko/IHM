@@ -34,7 +34,7 @@ $path_images=$path_root."images/";
               <!-- Informations de connexion -->
               <div class="form-group">
                   <label for="Login">Login</label>
-                  <input type="text class" class="form-control mx-auto text-center" name="Login" aria-describely="" placeholder="LapinAnonyme">
+                  <input type="text class" class="form-control mx-auto text-center" name="Login" placeholder="LapinAnonyme">
               </div>
               <div class="form-group">
                   <label for="MotDePasse">Mot de passe</label>
