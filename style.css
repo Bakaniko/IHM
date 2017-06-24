@@ -42,7 +42,7 @@ ul .navbar-nav {white-space:nowrap;width:100%;}
 /* index.php */
 li>a.card-link, p.card-text {font-size: 1.1rem;}
 .indexImg {max-height:20rem;}
-.specImg {max-width:20rem;}
+.specImg {max-height:30rem;}
 .card {min-width:11rem;}
 .card, .list-group-item {border: none;}
 a.card-link {color:#000000;}
