@@ -19,7 +19,7 @@ $path_images=$path_root."images/";
       <div class="card-block text-center">
         <h4 class="card-title">Formulaire d'inscription</h4>
       </div>
-      <form>
+      <form method="POST" action="">
         <!-- Informations civiles -->
         <div class="form-group row">
           <label for="Nom" class="col-3 col-form-label">Nom</label>
@@ -56,7 +56,7 @@ $path_images=$path_root."images/";
         <div class="form-group row">
           <label for="Tel" class="col-3 col-form-label">Téléphone</label>
           <div class="col-9">
-            <input type="tel" class="form-control" value="1-(555)-555-5555" name="Tel">
+            <input type="tel" class="form-control" name="Tel" value="1-(555)-555-5555">
           </div>
         </div>
         <!-- Informations de localisation -->
@@ -79,19 +79,19 @@ $path_images=$path_root."images/";
           </div>
         </div>
         <div class="form-group row">
-          <label for="Ville" class="col-3 col-form-label" class="col-2 col-form-label">Ville</label>
+          <label for="Ville" class="col-3 col-form-label">Ville</label>
           <div class="col-9">
             <input type="text" class="form-control" name="Ville" placeholder="Bois-de-Champ">
           </div>
         </div>
         <!-- Boutton d'envoi-->
         <div class="form-group row">
-          <button type="submit" value="Envoyer" class="btn btn-primary mx-auto">Inscription</button>
+          <button type="submit" class="btn btn-primary mx-auto" value="Envoyer">Inscription</button>
         </div>
       </form>
     </div>
   </div>
-  <!-- Fin du formulaire -->
+  <!-- Fin du formulaire d'inscription-->
 </div>
 
 

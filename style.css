@@ -54,7 +54,7 @@ a.card-link:hover {text-decoration:underline;}
 #btnTaillePolice {position:fixed;top:40%;right:0.5rem; z-index:1;}
 
 /* connexion */
-#connexion {max-width:26rem;}
+#cardConnexion {max-width:26rem;}
 /* Programmation */
 .custom-select {min-width: 10rem;}
 /* Réservation */
