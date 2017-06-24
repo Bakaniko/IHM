@@ -31,7 +31,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 		</div>
 
 	-->
-		<div class="card-deck" id="indexImg">
+		<div class="card-deck">
 <?php
 				//date_format(r.date, "%d %M %Y") as date
 				$sql  = $sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage, spe.idSpectacle as id
@@ -48,7 +48,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 									<h4 class="card-title" id="indexTitreSpec"><?php echo $data->nom;?></h4>
 									<h6 class="card-title"><?php echo affDate($data->date);?></h6>
 								</div>
-								<img class="card-img-bottom img-fluid d-block mx-auto" src="<?php echo $path_images.$data->nomImage;?>" alt="<?php echo "Affiche de ".$data->nom;?>">
+								<img class="card-img-bottom img-fluid d-block mx-auto indexImg" src="<?php echo $path_images.$data->nomImage;?>" alt="<?php echo "Affiche de ".$data->nom;?>">
 							</a>
 						</div>
 
