@@ -13,18 +13,18 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 ?>
 
 <!DOCTYPE html>
-<html lang="fr" class="">
+<html lang="fr">
 <?php include($path_structure."head.php"); ?>	<!-- Inclusion <head> -->
-<body class="">
+<body>
 	<?php include($path_structure."menu.php"); ?>	<!-- Inclusion menu -->
 
 	<!-- Contenu de la page de Compte client -->
 
 	<div class="container" id="main">
-		<div class="card mx-auto text-center>
+		<div class="card mx-auto text-center">
 			<h2>Mes réservations</h2>
 		</div>
-		<div class="card mx-auto text-center>
+		<div class="card mx-auto text-center">
 			<h2>Mes coordonnées</h2>
 		</div>
 		

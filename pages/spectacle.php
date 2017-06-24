@@ -26,10 +26,10 @@ if($req->execute(array('idSpectacle' => $idSpectacle))){
 ?>
 
 <!DOCTYPE html>
-<html lang="fr" class="">
-<?php include($path_structure."head.php"); ?>	<!-- Inclusion <head> -->
-<body class="">
-	<?php include($path_structure."menu.php"); ?>	<!-- Inclusion menu -->
+<html lang="fr">
+<?php include($path_structure."head.php"); ?> <!-- Inclusion <head> -->
+<body>
+	<?php include($path_structure."menu.php"); ?> <!-- Inclusion menu -->
 
 	<!-- Contenu de la page spectacle -->
 
@@ -68,7 +68,7 @@ if($req->execute(array('idSpectacle' => $idSpectacle))){
 								// afficher un bouton réserver pour chaque représentation
 								?>
 
-													<li class="list-group-item"><?php echo  affDate($data->date)." : ".$data->nom  ?><a class="btn btn-lg btn-primary" href="<?php echo $path_pages ; ?>reservation.php?idRepresentation=<?php echo $data->representation ; ?>" role="button">Réserver</a></li>
+													<li class="list-group-item"><?php echo  affDate($data->date)." : ".$data->nom  ?><a class="btn btn-primary" href="<?php echo $path_pages ; ?>reservation.php?idRepresentation=<?php echo $data->representation ; ?>" role="button">Réserver</a></li>
 
 								<?php
 							}
