@@ -1,5 +1,15 @@
 /* CSS Document */
 
+/* General */
+html {
+  position: relative;
+  min-height: 100%;
+}
+#main {margin-top: 5rem;}
+body {margin-bottom: 12rem;}
+h1 {font-size:2rem;}
+
+
 /* Menu */
 .navbar-inverse .navbar-toggler {
 	border:none;
@@ -9,7 +19,7 @@ nav button i:hover {color:#FFFFFF;}
 ul .navbar-nav {white-space:nowrap;width:100%;}
 .navbar-brand {margin-right:1rem;margin-left:0rem;}
 .navbar-brand img {height:2.5rem;}
-.nav-item, .navbar-text{display:inline-block;white-space:nowrap;}
+.nav-item, .navbar-text {display:inline-block;white-space:nowrap;}
 .navbar-inverse .navbar-nav .nav-link {
 	font-size    : 1.2rem;
 	color        : #E6E6E6;
@@ -33,19 +43,6 @@ ul .navbar-nav {white-space:nowrap;width:100%;}
   bottom: 0;
 }
 
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-    
-#main {margin-top: 5rem;}
-#connexion {max-width:26rem;}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 12rem;
-}
-h1{font-size:2rem;}
 /* index */
 li>a.card-link, p.card-text {font-size: 1.1rem;}
 .indexImg {max-height:20rem;}
@@ -57,12 +54,10 @@ a.card-link:hover {text-decoration:underline;}
 #btnTaillePolice {position:fixed;top:40%;right:0.5rem; z-index:1;}
 
 /* connexion */
-
+#connexion {max-width:26rem;}
 /* Programmation */
 .custom-select {min-width: 10rem;}
-
 /* Réservation */
-
 /* Infos */
 
 /* Google Font */
