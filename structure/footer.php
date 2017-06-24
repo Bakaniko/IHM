@@ -1,6 +1,6 @@
 <footer class="footer">
   <div class="container d-flex justify-content-center my-4">
-    <a id="retourHaut" href="#">Retour en haut de page</a>
+    <a id="retourHautPage" href="#">Retour en haut de page</a>
   </div>
   <div class="py-3" id="pied">
     <div class="container d-flex flex-row justify-content-around">

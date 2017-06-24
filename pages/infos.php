@@ -62,7 +62,7 @@ if (!empty($_POST)) {
 		 <?php unset($_SESSION['flash']);?>
 		<?php endif;?>
 
-	<div class="container" id="main">
+	<div class="container main" id="infos">
 		<!-- Informations de contact-->
 		<div class="card mx-auto">
 			<div class="card-block">
@@ -99,21 +99,21 @@ if (!empty($_POST)) {
 			                     <h3><? echo' Votre message a bien été envoyé';?></h3>
 				              </div>
 			          	 <?php endif; ?>
-					<form class="" action="" method="POST">
+					<form action="" method="POST">
 						<div class="form-group row">
-							<label class="col-3 col-form-label" for="nom">Nom *</label>
+							<label class="col-3 col-form-label" for="user_name">Nom *</label>
 							<div class="col-9">
 								<input type="text" id="nom" class="form-control" name="user_name"/>
 							</div>
 						</div>	
 						<div class="form-group row">
-							<label class="col-3 col-form-label" for="prenom">Prénom *</label>
+							<label class="col-3 col-form-label" for="user_firstname">Prénom *</label>
 							<div class="col-9">
 								<input type="text" id="prenom"  class="form-control" name="user_firstname"/>
 							</div>
 						</div>														
 						<div class="form-group row">
-							<label class="col-3 col-form-label" for="courriel">Email *</label>
+							<label class="col-3 col-form-label" for="user_email">Email *</label>
 							<div class="col-9">
 								<input type="email" id="courriel" class="form-control" name="user_email"/>
 							</div>

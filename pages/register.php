@@ -59,9 +59,9 @@ if (!empty($_POST)) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="fr" class="">
+<html lang="fr">
 <?php include($path_structure."head.php"); ?> <!-- Inclusion <head> -->
-<body class="">
+<body>
   <?php include($path_structure."menu.php"); ?> <!-- Inclusion menu -->
 
   <!-- Contenu de la page de connexion -->
@@ -73,7 +73,7 @@ if (!empty($_POST)) {
   <?php endforeach;?>
   <?php unset($_SESSION['flash']);?>
 <?php endif;?>
-  <div class="container" id="main">
+  <div class="container main" id="register">">
     <div class="card m-auto">
       <!-- Formulaire de connexion -->
       <div class="card-block text-center">

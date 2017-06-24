@@ -13,7 +13,7 @@ $path_images=$path_root."images/";
 
     <!-- Contenu de la page d'inscription -->
 
-    <div class="container" id="main">
+    <div class="container main" id="inscription">
         <!-- Formulaire d'inscription -->
         <div class="card mx-auto">
             <div class="card-block text-center">

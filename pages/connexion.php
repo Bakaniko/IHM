@@ -46,10 +46,12 @@ if (!empty($_POST)) {
   <?php endforeach;?>
   <?php unset($_SESSION['flash']);?>
 <?php endif;?>
-  <div class="container" id="main">
-    <div class="card m-auto" id="connexion">
-      <div class="card-block text-center">
-        <h4 class="card-title">Formulaire de connexion</h4>
+      <div class="container main" id="connexion">
+        <!-- Formulaire de connexion -->
+        <div class="card mx-auto">
+            <div class="card-block text-center">
+                <h4 class="card-title">Formulaire de connexion</h4>
+            </div>
         <?php if(!empty($warning)):?>
                     <div class="alert alert-danger"> <!-- class bootstrap speciale pour les erreurs -->
                      <p>les champs du  formulaire n'ont pas été remplis correctement car il y a <?php echo count($warning);?> erreurs</p> <!-- mMessage en cas d'erreur(s) -->
@@ -60,9 +62,10 @@ if (!empty($_POST)) {
                       </ol>
                     </div>
                     <?php endif; ?>
-        <form action=""method="POST">
+        <form class="text-center" method="POST" action="">
+          <!-- Informations de connexion -->
           <div class="form-group">
-            <label for=""> Pseudo ou email</label>
+            <label for="user_login"> Pseudonyme ou email</label>
             <input type="text" name="user_login" class="form-control mx-auto text-center" id="user_login"  placeholder="Votre pseudo">
           </div>
           <div class="form-group">
@@ -72,12 +75,14 @@ if (!empty($_POST)) {
           <button type="submit" class="btn btn-primary">Connexion</button>
         </form>
       </div>
+      <!-- Bouton d'envoi -->
       <div class="card m-auto">
         <div class="card-block text-center">
           <p class="card-text">Vous n'êtes pas encore inscrit ?</p>
           <a class="btn btn-secondary" href="<?php echo $path_pages ; ?>register.php" role="button">Inscription</a>
         </div>
-        <!-- Fin du forulaire de connexion -->
+       
+        <!-- Fin du formulaire de connexion -->
       </div>
     </div>
   </div>

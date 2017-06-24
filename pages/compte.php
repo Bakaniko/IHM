@@ -109,7 +109,7 @@ if (!empty($_POST)) {
 <?php include($path_structure."menu.php"); ?>	<!-- Inclusion menu -->
 
   <!-- afficher les message flash s'il y en a-->
-  <?php if (isset($_SESSION['flash'])):?>
+    <?php if (isset($_SESSION['flash'])):?>
 		<?php foreach ($_SESSION['flash'] as $type=>$message):?>
 		 <div class="alert alert-<?=$type;?>">
 		 <?=$message;?>
@@ -118,15 +118,20 @@ if (!empty($_POST)) {
 		 <?php unset($_SESSION['flash']);?>
 		<?php endif;?>
 
-  <div class="container" id="main">
-    <div class="card mx-auto">
+	<div class="container main" id="compte">
+		<div class="card mx-auto text-center">
+			<h2>Mes réservations</h2>
+		</div>
+		<div class="card mx-auto text-center">
+			<h2>Mes coordonnées</h2>
+		</div>
       <!-- Formulaire de modification -->
       <div class="card-block text-center">
         <h4 class="card-title">Modifiez les informations de votre profil</h4>
       </div>
       <form action="" method="POST">
         <div class="form-group row">
-          <label for="inputpseudo" class="col-3 col-form-label">Modifier votre peseudo</label>
+          <label for="inputpseudo" class="col-3 col-form-label">Modifier votre pseudo</label>
           <div class="col-9">
             <input type="text" class="form-control" name="inputpseudo" id="inputpseudo">
           </div>

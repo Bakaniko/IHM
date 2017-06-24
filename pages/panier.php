@@ -8,14 +8,14 @@ $path_pages=$path_root."pages/";
 $path_images=$path_root."images/";
 ?>
 <!DOCTYPE html>
-<html lang="fr" class="">
+<html lang="fr">
 <?php include($path_structure."head.php"); ?>	<!-- Inclusion <head> -->
-<body class="">
+<body>
 	<?php include($path_structure."menu.php"); ?>	<!-- Inclusion menu -->
 
 	<!-- Contenu de la page panier -->
 	
-	<div class="container" id="main">
+	<div class="container main" id="panier">
 		<div class="card mx-auto text-center">
 			<div class="card-block">
 				<h4 class="card-title">Panier</h4>
