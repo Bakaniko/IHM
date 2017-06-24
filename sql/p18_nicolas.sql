@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 20 Juin 2017 à 17:10
+-- Généré le :  Sam 24 Juin 2017 à 21:58
 -- Version du serveur :  10.1.19-MariaDB
 -- Version de PHP :  5.6.24
 
@@ -19,6 +19,28 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `p18_nicolas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messages_contacts`
+--
+
+CREATE TABLE `messages_contacts` (
+  `id_message_contact` bigint(20) UNSIGNED NOT NULL,
+  `Nom_contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Prenom_contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Mail_contact` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Text_message` text COLLATE utf8mb4_unicode_ci,
+  `date_message_contact` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Contenu de la table `messages_contacts`
+--
+
+INSERT INTO `messages_contacts` (`id_message_contact`, `Nom_contact`, `Prenom_contact`, `Mail_contact`, `Text_message`, `date_message_contact`) VALUES
+(1, 'Gosse', 'Bo', 'bo.gosse@gmail.com', 'Message bidon', '2017-06-24');
 
 -- --------------------------------------------------------
 
@@ -55,8 +77,49 @@ INSERT INTO `proj_Categorie` (`idCategorie`, `Categorie`, `idSalle`) VALUES
 CREATE TABLE `proj_Place` (
   `idPlace` varchar(10) COLLATE utf8_roman_ci NOT NULL,
   `idSalle` int(11) NOT NULL,
-  `Categorie` varchar(20) COLLATE utf8_roman_ci NOT NULL
+  `Categorie` varchar(20) COLLATE utf8_roman_ci NOT NULL,
+  `Handicap` varchar(3) COLLATE utf8_roman_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_roman_ci;
+
+--
+-- Contenu de la table `proj_Place`
+--
+
+INSERT INTO `proj_Place` (`idPlace`, `idSalle`, `Categorie`, `Handicap`) VALUES
+('t10', 2, 'loges', 'non'),
+('t11', 2, 'loges', 'non'),
+('t12', 2, 'loges', 'non'),
+('t13', 2, 'loges', 'non'),
+('t14', 2, 'loges', 'non'),
+('t15', 2, 'loges', 'non'),
+('t16', 2, 'loges', 'non'),
+('t17', 2, 'loges', 'non'),
+('t18', 2, 'loges', 'non'),
+('t19', 2, 'loges', 'non'),
+('t20', 2, 'loges', 'non'),
+('t21', 2, 'loges', 'non'),
+('t22', 2, 'loges', 'non'),
+('t23', 2, 'loges', 'non'),
+('t24', 2, 'loges', 'non'),
+('t8', 2, 'loges', 'non'),
+('t9', 2, 'loges', 'non'),
+('u10', 2, 'loges', 'non'),
+('u11', 2, 'loges', 'non'),
+('u12', 2, 'loges', 'non'),
+('u13', 2, 'loges', 'non'),
+('u14', 2, 'loges', 'non'),
+('u15', 2, 'loges', 'non'),
+('u16', 2, 'loges', 'non'),
+('u17', 2, 'loges', 'non'),
+('u18', 2, 'loges', 'non'),
+('u19', 2, 'loges', 'non'),
+('u20', 2, 'loges', 'non'),
+('u21', 2, 'loges', 'non'),
+('u22', 2, 'loges', 'non'),
+('u23', 2, 'loges', 'non'),
+('u24', 2, 'loges', 'non'),
+('u25', 2, 'loges', 'non'),
+('u26', 2, 'loges', 'non');
 
 -- --------------------------------------------------------
 
@@ -136,6 +199,275 @@ CREATE TABLE `proj_Reservation` (
   `idPlace` varchar(10) COLLATE utf8_roman_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_roman_ci;
 
+--
+-- Contenu de la table `proj_Reservation`
+--
+
+INSERT INTO `proj_Reservation` (`idUtilisateur`, `idRepresentation`, `idPlace`) VALUES
+(3, 1, 't11'),
+(2, 3, 't11'),
+(9, 4, 't11'),
+(9, 6, 't11'),
+(3, 7, 't11'),
+(8, 9, 't11'),
+(3, 1, 't12'),
+(2, 3, 't12'),
+(2, 5, 't12'),
+(9, 6, 't12'),
+(3, 7, 't12'),
+(3, 8, 't12'),
+(8, 9, 't12'),
+(2, 11, 't12'),
+(3, 2, 't13'),
+(2, 3, 't13'),
+(3, 4, 't13'),
+(8, 5, 't13'),
+(9, 6, 't13'),
+(3, 7, 't13'),
+(3, 8, 't13'),
+(8, 9, 't13'),
+(2, 11, 't13'),
+(3, 1, 't14'),
+(3, 2, 't14'),
+(2, 3, 't14'),
+(2, 4, 't14'),
+(8, 5, 't14'),
+(9, 6, 't14'),
+(3, 7, 't14'),
+(8, 9, 't14'),
+(3, 10, 't14'),
+(2, 11, 't14'),
+(3, 1, 't15'),
+(3, 2, 't15'),
+(8, 6, 't15'),
+(3, 7, 't15'),
+(3, 10, 't15'),
+(3, 1, 't16'),
+(3, 2, 't16'),
+(9, 5, 't16'),
+(8, 6, 't16'),
+(8, 7, 't16'),
+(8, 9, 't16'),
+(3, 10, 't16'),
+(3, 11, 't16'),
+(3, 1, 't17'),
+(3, 2, 't17'),
+(2, 3, 't17'),
+(9, 5, 't17'),
+(3, 6, 't17'),
+(8, 7, 't17'),
+(9, 8, 't17'),
+(8, 9, 't17'),
+(3, 10, 't17'),
+(3, 11, 't17'),
+(3, 2, 't18'),
+(3, 4, 't18'),
+(2, 5, 't18'),
+(3, 6, 't18'),
+(8, 7, 't18'),
+(3, 8, 't18'),
+(8, 9, 't18'),
+(3, 10, 't18'),
+(3, 11, 't18'),
+(9, 1, 't19'),
+(3, 2, 't19'),
+(3, 4, 't19'),
+(9, 5, 't19'),
+(8, 6, 't19'),
+(3, 8, 't19'),
+(8, 9, 't19'),
+(9, 1, 't20'),
+(2, 2, 't20'),
+(9, 5, 't20'),
+(8, 6, 't20'),
+(8, 7, 't20'),
+(3, 8, 't20'),
+(2, 9, 't20'),
+(2, 10, 't20'),
+(9, 1, 't21'),
+(2, 2, 't21'),
+(8, 4, 't21'),
+(2, 5, 't21'),
+(8, 6, 't21'),
+(8, 7, 't21'),
+(3, 8, 't21'),
+(2, 10, 't21'),
+(9, 1, 't22'),
+(3, 3, 't22'),
+(8, 4, 't22'),
+(2, 5, 't22'),
+(8, 6, 't22'),
+(2, 7, 't22'),
+(9, 8, 't22'),
+(8, 9, 't22'),
+(2, 10, 't22'),
+(8, 4, 't23'),
+(2, 5, 't23'),
+(2, 7, 't23'),
+(9, 8, 't23'),
+(8, 9, 't23'),
+(2, 10, 't23'),
+(9, 11, 't23'),
+(2, 2, 't24'),
+(8, 4, 't24'),
+(2, 5, 't24'),
+(9, 7, 't24'),
+(9, 8, 't24'),
+(9, 11, 't24'),
+(2, 1, 't8'),
+(9, 2, 't8'),
+(9, 3, 't8'),
+(3, 5, 't8'),
+(8, 6, 't8'),
+(9, 7, 't8'),
+(8, 8, 't8'),
+(9, 11, 't8'),
+(2, 1, 't9'),
+(9, 2, 't9'),
+(9, 4, 't9'),
+(3, 5, 't9'),
+(8, 6, 't9'),
+(9, 7, 't9'),
+(9, 9, 't9'),
+(9, 10, 't9'),
+(2, 1, 'u10'),
+(9, 2, 'u10'),
+(8, 3, 'u10'),
+(2, 4, 'u10'),
+(8, 6, 'u10'),
+(3, 7, 'u10'),
+(9, 8, 'u10'),
+(9, 9, 'u10'),
+(3, 10, 'u10'),
+(9, 1, 'u11'),
+(8, 3, 'u11'),
+(8, 4, 'u11'),
+(3, 6, 'u11'),
+(3, 7, 'u11'),
+(9, 8, 'u11'),
+(9, 9, 'u11'),
+(3, 10, 'u11'),
+(9, 11, 'u11'),
+(8, 3, 'u12'),
+(8, 4, 'u12'),
+(3, 5, 'u12'),
+(3, 6, 'u12'),
+(3, 7, 'u12'),
+(9, 9, 'u12'),
+(3, 10, 'u12'),
+(9, 11, 'u12'),
+(8, 1, 'u13'),
+(2, 2, 'u13'),
+(8, 3, 'u13'),
+(8, 4, 'u13'),
+(3, 5, 'u13'),
+(3, 6, 'u13'),
+(8, 7, 'u13'),
+(2, 8, 'u13'),
+(8, 10, 'u13'),
+(2, 11, 'u13'),
+(8, 1, 'u14'),
+(2, 4, 'u14'),
+(3, 5, 'u14'),
+(8, 7, 'u14'),
+(8, 8, 'u14'),
+(9, 10, 'u14'),
+(3, 1, 'u15'),
+(3, 3, 'u15'),
+(2, 4, 'u15'),
+(8, 7, 'u15'),
+(8, 8, 'u15'),
+(9, 10, 'u15'),
+(8, 11, 'u15'),
+(3, 1, 'u16'),
+(3, 3, 'u16'),
+(2, 4, 'u16'),
+(9, 6, 'u16'),
+(9, 7, 'u16'),
+(8, 8, 'u16'),
+(8, 9, 'u16'),
+(2, 11, 'u16'),
+(3, 1, 'u17'),
+(9, 2, 'u17'),
+(2, 4, 'u17'),
+(2, 5, 'u17'),
+(9, 6, 'u17'),
+(9, 7, 'u17'),
+(3, 8, 'u17'),
+(8, 9, 'u17'),
+(2, 11, 'u17'),
+(9, 2, 'u18'),
+(3, 3, 'u18'),
+(3, 4, 'u18'),
+(2, 5, 'u18'),
+(9, 7, 'u18'),
+(3, 8, 'u18'),
+(8, 9, 'u18'),
+(8, 10, 'u18'),
+(9, 2, 'u19'),
+(3, 3, 'u19'),
+(3, 4, 'u19'),
+(8, 6, 'u19'),
+(9, 7, 'u19'),
+(3, 8, 'u19'),
+(8, 10, 'u19'),
+(2, 11, 'u19'),
+(8, 1, 'u20'),
+(9, 2, 'u20'),
+(3, 3, 'u20'),
+(3, 4, 'u20'),
+(8, 6, 'u20'),
+(9, 7, 'u20'),
+(3, 8, 'u20'),
+(8, 10, 'u20'),
+(2, 11, 'u20'),
+(8, 1, 'u21'),
+(9, 4, 'u21'),
+(8, 6, 'u21'),
+(9, 7, 'u21'),
+(2, 10, 'u21'),
+(2, 11, 'u21'),
+(8, 1, 'u22'),
+(3, 2, 'u22'),
+(9, 3, 'u22'),
+(9, 4, 'u22'),
+(3, 6, 'u22'),
+(9, 7, 'u22'),
+(8, 8, 'u22'),
+(2, 9, 'u22'),
+(2, 10, 'u22'),
+(2, 11, 'u22'),
+(3, 2, 'u23'),
+(8, 3, 'u23'),
+(9, 4, 'u23'),
+(3, 5, 'u23'),
+(3, 6, 'u23'),
+(9, 7, 'u23'),
+(8, 8, 'u23'),
+(2, 9, 'u23'),
+(9, 1, 'u24'),
+(8, 3, 'u24'),
+(9, 4, 'u24'),
+(3, 6, 'u24'),
+(8, 8, 'u24'),
+(3, 9, 'u24'),
+(2, 10, 'u24'),
+(2, 11, 'u24'),
+(9, 1, 'u25'),
+(2, 2, 'u25'),
+(9, 3, 'u25'),
+(8, 5, 'u25'),
+(3, 6, 'u25'),
+(2, 8, 'u25'),
+(3, 9, 'u25'),
+(2, 10, 'u25'),
+(2, 2, 'u26'),
+(9, 3, 'u26'),
+(8, 5, 'u26'),
+(2, 8, 'u26'),
+(3, 9, 'u26'),
+(3, 10, 'u26');
+
 -- --------------------------------------------------------
 
 --
@@ -179,9 +511,9 @@ CREATE TABLE `proj_Spectacle` (
 INSERT INTO `proj_Spectacle` (`idSpectacle`, `nom`, `type`, `infos`, `nomImage`) VALUES
 (1, 'Henri Dès En Famille', 'Spectacle pour enfant', 'onnu pour son répertoire de musique pour enfants, Henri Dès est un auteur-compositeur-interprète suisse. Avec 50 ans de carrière au compteur, cet artiste a connu deux grandes périodes: celle des chansons pour adultes, à laquelle il se consacre dans un premier temps, puis celle, plus longue, des oeuvres pour enfants qu''il poursuit encore aujourd''hui avec des albums de compositions originales, des comédies musicales, des concerts, des contes, des livres...\r\n\r\nReprésentant de la Suisse au concours Eurovision de la chanson en 1970, Henri Dès (de son vrai nom Henri Destraz) constitue pour plusieurs générations la référence en matière de comptines pour enfants. Son répertoire regorge de classiques chantées par les "kids" d''aujourd''hui, comme pour leurs parents et les grands-parents: "Les Bêtises à l''école", "La Petite Charlotte", "La Glace au citron", "Le Petit zinzin"…', 'DES_7833565682037481098.jpg'),
 (2, 'Les Contes d''Hoffmann', 'Opéra', 'Opéra fantastique en un prologue, trois actes et un épilogue (1881)\r\n\r\nMusique: Jacques Offenbach \r\nLivret: Jules Barbier\r\n\r\nD’après Jules Barbier, Michel Carré\r\nEn langue française', 'contesHoffman.webp'),
-(3, 'Aida', 'Opéra', '<p>Opéra en quatre actes (1871)</p>\r\n\r\n<p>Musique Giuseppe Verdi</p>\r\n<p>Livret Antonio Ghislanzoni</p> \r\n\r\n<p>D''après Auguste Mariette</p>\r\n<p>En langue italienne</p>', 'aida.jpg'),
+(3, 'Aida', 'Opéra', '<p>Opéra en quatre actes (1871)</p>\n\n<p>Musique Giuseppe Verdi</p>\n<p>Livret Antonio Ghislanzoni</p> \n\n<p>D''après Auguste Mariette</p>\n<p>En langue italienne</p>', 'aida.jpg'),
 (4, 'La Source', 'Ballet', '<p>Son goût pour l’histoire de la danse et ses recherches autour du répertoire du 19ème siècle, ont conduit le danseur étoile de l’Opéra de Paris et chorégraphe Jean-Guillaume Bart à ressusciter un ballet classique, créé en 1866, dont il renouvelle avec bonheur la lettre tout en conservant l’esprit : un pur enchantement.</p>\r\n\r\n<p>Aérienne, poétique, imagée et sophistiquée, la danse littéralement habitée sous une musique réorchestrée par le compositeur Marc Olivier Dupin témoigne d’un élan à la fois créatif, virtuose et naturel</p>\r\n\r\n<p>L’histoire met en scène Naïla, une fée, esprit de la source, et qui s’apparente à la petite sirène. Elle tombe amoureuse d’un mortel, Djémil, le chasseur, qui ne l’aime pas en retour car son cœur bat la chamade pour une mystérieuse Orientale Nouredda, promise au Khan. Naïla sacrifiera alors sa vie et son pouvoir afin de rendre possible l’amour terrestre des deux amoureux où entre temps les rebondissements liés aux incertitudes du cœur et aux jalousies du clan auront fait rage.<p>', 'Affiche-la-source-1.jpg'),
-(5, 'La Balayère', 'Ballet', '\r\n<p>En trois actes</p>\r\n\r\n<p>Musique Ludwig Minkus</p> \r\n<p>Livret Marius Petipa et Serguei Khoudekov </p>\r\n<p>Chorégraphie Rudolf Noureev</p>\r\n\r\n<p>Le guerrier Solor et la belle bayadère Nikiya sont secrètement amants et ont prévu de s''enfuir et de se marier. Mais le Rajah a choisi Solor comme mari pour sa fille Gamzatti, et le Brahmane du temple veut épouser Nikiya.</p>', 'la_balayere.jpg');
+(5, 'La Balayère', 'Ballet', '\n<p>En trois actes</p>\n\n<p>Musique Ludwig Minkus</p> \n<p>Livret Marius Petipa et Serguei Khoudekov </p>\n<p>Chorégraphie Rudolf Noureev</p>\n\n<p>Le guerrier Solor et la belle bayadère Nikiya sont secrètement amants et ont prévu de s''enfuir et de se marier. Mais le Rajah a choisi Solor comme mari pour sa fille Gamzatti, et le Brahmane du temple veut épouser Nikiya.</p>', 'la_balayere.jpg');
 
 -- --------------------------------------------------------
 
@@ -237,59 +569,18 @@ INSERT INTO `proj_utilisateur` (`idUtilisateur`, `login`, `passHash`, `nom`, `pr
 (5, 'bilo', '$2y$10$ThHbq38jbz6KYWNH6cPQwuvY84xHipAmoR1Vj9MeH6CBj6XetZRqG', 'Bilo', 'Bilo', 'Université Paris 8', '2 rue de la Liberté', '93300', 'Saint Denis', 'mail.bidon2@mail.bidon', '9876543210', 'admin', NULL, NULL),
 (6, 'nassim', '$2y$10$nNVq8jN7b25qUz91KDXQbeEXZOhGyiyQ5VfLYqsPlNzX6SQebSWn6', 'Nassim', 'Nassim', 'Université Paris8', '2 rue de la liberté', '93300', 'Saint Denis', 'mail.bidon3@mail.bidon', '365484255475', 'admin', NULL, NULL),
 (8, 'nicoledingo', '$2y$12$316538023593fea21ad22uJhPTdKHZQafwlqV9iGsfqVly9zeuy4e', NULL, NULL, NULL, NULL, NULL, NULL, 'nicolas.roelandt@etud.univ-paris8.fr', NULL, 'user', 'XCJZcEuKb3tqwFCsEsETZJsw5JDsGa6Bb6EDCSvQxjgMIgxoSnDhpgcuaQc8', NULL),
-(9, 'serge', '$2y$12$191970061659403b3369ceHdZ8Q7N0upyBwerMw1ftuPNRiJ8Tq2u', NULL, NULL, NULL, NULL, NULL, NULL, 'serge2yn@hotmail.fr', NULL, 'user', 'nyx2gF6eDmbTd5CrAoxN5GKWGx6e3x0aWrt8RwTRpNFgFz0vUDkZUVwHQGm8', NULL);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `TP3_client`
---
-
-CREATE TABLE `TP3_client` (
-  `ID` int(11) NOT NULL,
-  `nom` varchar(25) NOT NULL,
-  `prenom` varchar(25) NOT NULL,
-  `ville` varchar(60) NOT NULL,
-  `sexe` varchar(1) NOT NULL,
-  `courriel` varchar(60) NOT NULL,
-  `dateInscription` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `TP3_client`
---
-
-INSERT INTO `TP3_client` (`ID`, `nom`, `prenom`, `ville`, `sexe`, `courriel`, `dateInscription`) VALUES
-(2, 'Dupont', 'Marcel', 'Paris', 'M', 'dupont.marcel@free.fr', '2017-04-02'),
-(3, 'Dupond', 'Pierre', 'Marseille', 'M', 'dupondp@mail.com', '2016-04-16'),
-(4, 'North', 'Pierre', 'Paris', 'M', 'north.pierre@pentouse.com', '2015-08-02');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `TP3_commentaire`
---
-
-CREATE TABLE `TP3_commentaire` (
-  `id` int(11) NOT NULL,
-  `idClient` int(11) NOT NULL,
-  `comm` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `TP3_commentaire`
---
-
-INSERT INTO `TP3_commentaire` (`id`, `idClient`, `comm`) VALUES
-(2, 4, 'Premier commentaire'),
-(3, 3, 'Balaala bla'),
-(4, 3, 'Nickel'),
-(5, 3, 'Encore un'),
-(6, 3, 'Le dernier');
+(9, 'serge', '$2y$12$191970061659403b3369ceHdZ8Q7N0upyBwerMw1ftuPNRiJ8Tq2u', NULL, NULL, NULL, NULL, NULL, NULL, 'serge2yn@hotmail.fr', NULL, 'user', 'nyx2gF6eDmbTd5CrAoxN5GKWGx6e3x0aWrt8RwTRpNFgFz0vUDkZUVwHQGm8', NULL),
+(10, 'DominiqueA', '$2y$10$/eKwUo0e0OqCQJ3s0n1BW.r3NW/9vMwlBbAIilictjcVDIADJY25W', NULL, NULL, NULL, NULL, NULL, NULL, 'baka.niko@gmail.com', NULL, 'user', '7PZWFZTbnpAyEO6VcIFiLLgZN6MAE0X2ukc44YS1YpW3Co9kxeB95M9eKDjy', NULL);
 
 --
 -- Index pour les tables exportées
 --
+
+--
+-- Index pour la table `messages_contacts`
+--
+ALTER TABLE `messages_contacts`
+  ADD UNIQUE KEY `idMessage` (`id_message_contact`);
 
 --
 -- Index pour la table `proj_Categorie`
@@ -359,22 +650,14 @@ ALTER TABLE `proj_utilisateur`
   ADD KEY `typeUtilisateur` (`typeUtilisateur`);
 
 --
--- Index pour la table `TP3_client`
---
-ALTER TABLE `TP3_client`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Index pour la table `TP3_commentaire`
---
-ALTER TABLE `TP3_commentaire`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cons_idClient` (`idClient`);
-
---
 -- AUTO_INCREMENT pour les tables exportées
 --
 
+--
+-- AUTO_INCREMENT pour la table `messages_contacts`
+--
+ALTER TABLE `messages_contacts`
+  MODIFY `id_message_contact` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `proj_Categorie`
 --
@@ -399,17 +682,7 @@ ALTER TABLE `proj_Spectacle`
 -- AUTO_INCREMENT pour la table `proj_utilisateur`
 --
 ALTER TABLE `proj_utilisateur`
-  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
---
--- AUTO_INCREMENT pour la table `TP3_client`
---
-ALTER TABLE `TP3_client`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT pour la table `TP3_commentaire`
---
-ALTER TABLE `TP3_commentaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Contraintes pour les tables exportées
 --
@@ -454,12 +727,6 @@ ALTER TABLE `proj_Reservation`
 --
 ALTER TABLE `proj_utilisateur`
   ADD CONSTRAINT `proj_utilisateur_ibfk_1` FOREIGN KEY (`typeUtilisateur`) REFERENCES `proj_Types_Utilisateur` (`TypeUtilisateur`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `TP3_commentaire`
---
-ALTER TABLE `TP3_commentaire`
-  ADD CONSTRAINT `cons_idClient` FOREIGN KEY (`idClient`) REFERENCES `TP3_client` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
