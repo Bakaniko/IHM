@@ -95,5 +95,19 @@ $sql = "INSERT INTO
             $compteur++;
           }
         $req->closeCursor();
+
           ?>
+
+<?php
+  // récupérer les prochaines réservations d'un utilisateur
+
+  $sql = "SELECT u.idUtilisateur, u.nom, rep.date as date, spe.nom, r.idPlace, p.Categorie
+          FROM `proj_Reservation` as r
+          JOIN proj_utilisateur as u ON r.idUtilisateur= u.idUtilisateur
+          JOIN proj_Representation as rep ON r.idRepresentation = rep.idRepresentation
+          JOIN proj_Spectacle as spe ON spe.idSpectacle=rep.idSpectacle
+          JOIN proj_Place as p ON p.idPlace= r.idPlace
+          WHERE u.idUtilisateur = 3 and rep.date >= CURRENT_DATE ORDER BY date ASC";
+
+
  ?>
