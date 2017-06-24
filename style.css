@@ -8,7 +8,7 @@ html {
 .main {margin-top: 5rem;}
 body {margin-bottom: 12rem;}
 
-/* Menu */
+/* menu.php */
 .navbar-inverse .navbar-toggler {
 	border:none;
 }
@@ -28,7 +28,7 @@ ul .navbar-nav {white-space:nowrap;width:100%;}
 .nav-link:hover #badgePanier  {background-color:#5cb85c;color:#FFFFFF;}
 .navbar-inverse .navbar-nav .nav-link:hover {color:#FFFFFF;text-decoration:underline;}
 
-/* Footer */
+/* footer.php */
 #pied {font-size: 1.1rem; color:#6E6E6E; background-color:#F2F2F2; }
 #pied i {color:#6E6E6E;}
 #pied i:hover {text-decoration:underline; color:#000000;}
@@ -39,7 +39,7 @@ ul .navbar-nav {white-space:nowrap;width:100%;}
 	bottom: 0;
 }
 
-/* Index */
+/* index.php */
 li>a.card-link, p.card-text {font-size: 1.1rem;}
 .indexImg {max-height:20rem;}
 .specImg {max-width:20rem;}
@@ -48,12 +48,14 @@ li>a.card-link, p.card-text {font-size: 1.1rem;}
 a.card-link {color:#000000;}
 a.card-link:hover {text-decoration:underline;}
 
-/* connexion */
+/* spectacle.php */
+
+/* connexion.php */
 #connexion .card {max-width:26rem;}
-/* Programmation */
+/* programmation.php */
 .custom-select {min-width: 10rem;}
-/* Réservation */
-/* Infos */
+/* reservation.php */
+/* infos.php */
 
 /* Google Font */
 /* Rules for sizing the icon. */
