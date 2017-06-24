@@ -4,7 +4,7 @@
 #############################################
 # This script generates random reservations #
 # from a few parameters. It delivers it in  #
-# a csv file                                #
+# a csv file and a SQL file                 #
 #                                           #
 # project url:                              #
 # https://github.com/MinMinLight/IHM        #
@@ -22,10 +22,10 @@ Parameters:
 - csv file with user ids
 - csv file with place ids
 
-Outpu format:
+Output format:
 - 1 line = 1 row
-idUtilisateur;idRepresentation;idPlace
-
+- csv: idUtilisateur;idRepresentation;idPlace
+- sql : INSERT INTO proj_Reservation (idUtilisateur, idRepresentation, idPlace) VALUES (idUtilisateur, idRepresentation, idPlace);
 
 encodage de la sortie :
 une_chaine = une_chaine.encode('utf8')
@@ -35,7 +35,8 @@ une_chaine = une_chaine.encode('utf8')
 import random
 import csv
 
-resa = open('reservations.csv', 'wa')
+resaCSV = open('reservations.csv', 'wa')
+resaSQL = open('reservations.sql', 'wa')
 
 '''
     User id loading
@@ -118,8 +119,11 @@ for performance in performances:
                     # print places[i + j] + u" isReserved by " + str(userId) + " for performance "+ performance  # output test
                     # print places[i + j] + u" isReserved by " + str(userId) + " for performance "+ performance  # output test
                     # print str(userId) + "," + performance + "," + places[i + j] # output test
-                    resa.write((str(userId) + "," + performance + "," +
-                                places[i + j] + "\n").encode('utf8'))  # output in file
+                    resaCSV.write((str(userId) + "," + performance + "," +
+                                   places[i + j] + "\n").encode('utf8'))  # output in csv file
+                    resaSQL.write("INSERT INTO proj_Reservation (idUtilisateur, idRepresentation, idPlace) VALUES (" +
+                                  (str(userId) + "," + performance + "," +
+                                   places[i + j] + ");\n").encode('utf8'))  # output in sql file
                 pointer = i + nbReservation  # pointer moves forward
 
             # if tails
@@ -130,4 +134,5 @@ for performance in performances:
 
         i += 1  # i moves forward
 
-resa.close()  # fermeture du fichier
+resaCSV.close()  # fermeture du fichier reservations.csv
+resaSQL.close()  # fermeture du fichier reservations.sql
