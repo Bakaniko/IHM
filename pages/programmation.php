@@ -17,14 +17,14 @@ else{
 ?>
 
 <!DOCTYPE html>
-<html lang="fr" class="">
+<html lang="fr">
 <?php include($path_structure."head.php"); ?>	<!-- Inclusion <head> -->
-<body class="">
+<body>
 	<?php include($path_structure."menu.php"); ?>	<!-- Inclusion menu -->
 
 	<!-- Contenu de la page de programmation -->
 
-	<div class="container" id="main">
+	<div class="container main" id="programmation">
 		<!-- Critères de Recherche -->
 		<div class="card mx-auto">
 			<!-- Titre -->

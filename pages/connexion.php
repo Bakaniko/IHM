@@ -24,9 +24,9 @@ $path_images=$path_root."images/";
 
 	<!-- Contenu de la page de connexion -->
 
-    <div class="container" id="main">
+    <div class="container main" id="connexion">
         <!-- Formulaire de connexion -->
-        <div class="card mx-auto" id="cardConnexion">
+        <div class="card mx-auto">
             <div class="card-block text-center">
                 <h4 class="card-title">Formulaire de connexion</h4>
             </div>

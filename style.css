@@ -2,13 +2,11 @@
 
 /* General */
 html {
-  position: relative;
-  min-height: 100%;
+	position: relative;
+	min-height: 100%;
 }
-#main {margin-top: 5rem;}
+.main {margin-top: 5rem;}
 body {margin-bottom: 12rem;}
-h1 {font-size:2rem;}
-
 
 /* Menu */
 .navbar-inverse .navbar-toggler {
@@ -28,22 +26,20 @@ ul .navbar-nav {white-space:nowrap;width:100%;}
 }
 #badgePanier {background-color:#459145;color::#E6E6E6;}
 .nav-link:hover #badgePanier  {background-color:#5cb85c;color:#FFFFFF;}
-
-
 .navbar-inverse .navbar-nav .nav-link:hover {color:#FFFFFF;text-decoration:underline;}
 
-/* Pied */
+/* Footer */
 #pied {font-size: 1.1rem; color:#6E6E6E; background-color:#F2F2F2; }
 #pied i {color:#6E6E6E;}
 #pied i:hover {text-decoration:underline; color:#000000;}
-#retourHaut {font-size: 1.2rem}
+#retourHautPage {font-size: 1.2rem}
 .footer {
 	width:100%;
-  position: absolute;
-  bottom: 0;
+	position: absolute;
+	bottom: 0;
 }
 
-/* index */
+/* Index */
 li>a.card-link, p.card-text {font-size: 1.1rem;}
 .indexImg {max-height:20rem;}
 .specImg {max-width:20rem;}
@@ -51,10 +47,9 @@ li>a.card-link, p.card-text {font-size: 1.1rem;}
 .card, .list-group-item {border: none;}
 a.card-link {color:#000000;}
 a.card-link:hover {text-decoration:underline;}
-#btnTaillePolice {position:fixed;top:40%;right:0.5rem; z-index:1;}
 
 /* connexion */
-#cardConnexion {max-width:26rem;}
+#connexion .card {max-width:26rem;}
 /* Programmation */
 .custom-select {min-width: 10rem;}
 /* Réservation */

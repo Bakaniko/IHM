@@ -20,7 +20,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
 	<!-- Contenu de la page de Compte client -->
 
-	<div class="container" id="main">
+	<div class="container main" id="compte">
 		<div class="card mx-auto text-center">
 			<h2>Mes réservations</h2>
 		</div>

@@ -13,7 +13,7 @@ $path_images=$path_root."images/";
 
 	<!-- Contenu de la page infos -->
 
-	<div class="container" id="main">
+	<div class="container main" id="infos">
 		<!-- Informations de contact-->
 		<div class="card mx-auto">
 			<div class="card-block">
@@ -37,19 +37,19 @@ $path_images=$path_root."images/";
 					<div class="form-group row">
 						<label class="col-3 col-form-label" for="user_name">Nom</label>
 						<div class="col-9">
-							<input type="text" class="form-control" name="user_name"/>
+							<input type="text" class="form-control" name="user_name" placeholder="Pinpin"/>
 						</div>
 					</div>		
 					<div class="form-group row">
 						<label class="col-3 col-form-label" for="user_firstname">Prénom</label>
 						<div class="col-9">
-							<input type="text" class="form-control" name="user_firstname"/>
+							<input type="text" class="form-control" name="user_firstname" placeholder="Lapin"/>
 						</div>
 					</div>						
 					<div class="form-group row">
 						<label class="col-3 col-form-label" for="user_email">Email</label>
 						<div class="col-9">
-							<input type="email" class="form-control" name="user_email"/>
+							<input type="email" class="form-control" name="user_email" placeholder="pinpin.lapin@gmail.com"/>
 						</div>
 					</div>
 					<div class="form-group row">

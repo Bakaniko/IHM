@@ -13,7 +13,7 @@ $path_images=$path_root."images/";
 
 	<!-- Contenu de la page spectacle -->
 	
-	<div class="container" id="main">
+	<div class="container main" id="reservation">
 		<!-- Interface de Sélection des places -->
 		<div class="card mx-auto">
 			<!-- Titre -->
@@ -33,6 +33,14 @@ $path_images=$path_root."images/";
 								<option value="2"></option>
 								<option value="3"></option>
 								<option value="4"></option>
+								<option value="5"></option>
+								<option value="6"></option>
+								<option value="7"></option>
+								<option value="8"></option>
+								<option value="9"></option>
+								<option value="10"></option>
+								<option value="11"></option>
+								<option value="12"></option>
 							</select>
 						</div>
 						<!-- Sélection rangée -->
@@ -62,6 +70,15 @@ $path_images=$path_root."images/";
 								<option value="1"></option>
 								<option value="2"></option>
 								<option value="3"></option>
+								<option value="4"></option>
+								<option value="5"></option>
+								<option value="6"></option>
+								<option value="7"></option>
+								<option value="8"></option>
+								<option value="9"></option>
+								<option value="10"></option>
+								<option value="11"></option>
+								<option value="12"></option>
 							</select>
 						</div>
 						<!-- Boutton d'envoi -->

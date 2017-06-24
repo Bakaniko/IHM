@@ -33,7 +33,7 @@ if($req->execute(array('idSpectacle' => $idSpectacle))){
 
 	<!-- Contenu de la page spectacle -->
 
-	<div class="container" id="main">
+	<div class="container main" id="spectacle">
 		<div class="card mx-auto">
 			<div class="card-block text-center">
 				<h4 class="card-title"><?php echo $data->nom; ?></h4>
