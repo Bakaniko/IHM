@@ -45,11 +45,12 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 12rem;
 }
+h1{font-size:2rem;}
 /* index */
 li>a.card-link, p.card-text {font-size: 1.1rem;}
 .card img {max-height:30rem;}
 #indexImg img {max-height:20rem;}
-.card {max-width:48rem;}
+.card {max-width:48rem;min-width:11rem;}
 .card, .list-group-item {border: none;}
 a.card-link {color:#000000;}
 a.card-link:hover {text-decoration:underline;}
