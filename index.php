@@ -21,7 +21,7 @@ require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 	<!-- Contenu de la page d'accueil -->
 
 	<div class="container" id="main">
-		<div class="card mx-auto text-center">
+		<div class="card text-center">
 			<h2>Prochaines représentations</h2>
 		</div>
 		<!--
