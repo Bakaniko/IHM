@@ -47,12 +47,12 @@ $path_images=$path_root."images/";
                 <p class="card-text">Vous n'êtes pas encore inscrit ?</p>
                 <a class="btn btn-secondary" href="<?php echo $path_pages ; ?>inscription.php" role="button">Inscription</a>
             </div>
-            <!-- Fin du forulaire de connexion -->
         </div>
+        <!-- Fin du forulaire de connexion -->
     </div>
 
-  <?php include($path_structure."footer.php"); ?> <!-- Inclusion pied de page -->
-  <?php include($path_structure."JS.php"); ?>  <!-- Inclusion CDN et fichiers javascript -->
+    <?php include($path_structure."footer.php"); ?> <!-- Inclusion pied de page -->
+    <?php include($path_structure."JS.php"); ?>  <!-- Inclusion CDN et fichiers javascript -->
 
 </body>
 </html>
