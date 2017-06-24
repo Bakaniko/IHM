@@ -48,7 +48,8 @@ body {
 h1{font-size:2rem;}
 /* index */
 li>a.card-link, p.card-text {font-size: 1.1rem;}
-#indexImg img {max-height:20rem;}
+.indexImg {max-height:20rem;}
+.specImg {max-width:20rem;}
 .card {min-width:11rem;}
 .card, .list-group-item {border: none;}
 a.card-link {color:#000000;}
