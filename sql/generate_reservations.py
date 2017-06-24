@@ -121,9 +121,9 @@ for performance in performances:
                     # print str(userId) + "," + performance + "," + places[i + j] # output test
                     resaCSV.write((str(userId) + "," + performance + "," +
                                    places[i + j] + "\n").encode('utf8'))  # output in csv file
-                    resaSQL.write("INSERT INTO proj_Reservation (idUtilisateur, idRepresentation, idPlace) VALUES (" +
-                                  (str(userId) + "," + performance + "," +
-                                   places[i + j] + ");\n").encode('utf8'))  # output in sql file
+                    resaSQL.write("INSERT INTO `proj_Reservation` (`idUtilisateur`, `idRepresentation`, `idPlace`) VALUES (\'" +
+                                  (str(userId) + "\',\'" + performance + "\',\'" +
+                                   places[i + j] + "\');\n").encode('utf8'))  # output in sql file
                 pointer = i + nbReservation  # pointer moves forward
 
             # if tails
