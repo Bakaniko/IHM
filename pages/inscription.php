@@ -33,6 +33,12 @@ $path_images=$path_root."images/";
           </div>
         </div>
         <div class="form-group row">
+          <label for="inputLogin" class="col-3 col-form-label">Login</label>
+          <div class="col-9">
+            <input type="text" class="form-control" id="inputLogin" placeholder="LapinAnonyme">
+          </div>
+        </div>
+        <div class="form-group row">
           <label for="inputEmail" class="col-3 col-form-label">Adresse email</label>
           <div class="col-9">
             <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="pinpin.lapin@gmail.com">
@@ -47,7 +53,7 @@ $path_images=$path_root."images/";
         <div class="form-group row">
           <label for="inputAdressePostale2" class="col-3 col-form-label">Adresse postale 2</label>
           <div class="col-9">
-          <input type="text" class="form-control" id="inputAdressePostale2" placeholder="Escalier B">
+            <input type="text" class="form-control" id="inputAdressePostale2" placeholder="Escalier B">
           </div>
         </div>
         <div class="form-group row">
