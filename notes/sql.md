@@ -291,6 +291,46 @@ proj_Representation.idRepresentation, **clé étrangère**; **clé primaire**
 ### ***idPlace***
 proj_Place.idPlace, **clé étrangère**; **clé primaire**
 
+## messages_contacts
+
+Cette table est destinée à contenir les messages envoyés à travers la page infos.phpMyAdmin
+
+### id_message_contact
+
+Id unique du message, généré à l'insertion
+
+type *SERIAL*
+
+### Nom_contact
+
+Nom de l'expéditeur
+
+*varchar 30*
+
+### Prenom_contact
+
+Prenom de l'expéditeur
+
+*varchar 255*
+
+### Mail_contact
+
+email de l'expéditeur
+
+*varchar 255*
+
+### Text_message
+
+Texte du message
+
+type *TEXT*
+
+### date_message_contact
+
+Date d'enregistrement du message
+
+type *date*
+
 # Disponibilité des places
 
 Pas besoin de créer une liste spéciale:
