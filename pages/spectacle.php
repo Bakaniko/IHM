@@ -44,11 +44,12 @@ if($req->execute(array('idSpectacle' => $idSpectacle))){
 			</div>
 			<div class="card m-auto" id="spectacleText">
 				<div class="card-block">
+				<h4 class="card-title text-center">Présentation</h4>
 					<p class="card-text text-justify"><?php echo $data->infos;?></p>
 				</div>
-				<div class="card-block text-center">
-					<h4 class="card-title">Prochaines représentations</h4>
-					<ul class="list-group list-group-flush mt-3">
+				<div class="card-block">
+					<h4 class="card-title text-center">Représentations à venir</h4>
+					<ul class="list-group list-group-flush">
 						<?php
 
 			// retourne ma date et le nom des prochaines représentations du spectacle passé par $_GET
@@ -71,7 +72,10 @@ if($req->execute(array('idSpectacle' => $idSpectacle))){
 								// afficher un bouton réserver pour chaque représentation
 							?>
 
-							<li class="list-group-item"><?php echo  affDate($data->date)." : ".$data->nom  ?><a class="btn btn-primary" href="<?php echo $path_pages ; ?>reservation.php?idRepresentation=<?php echo $data->representation ; ?>" role="button">Réserver</a></li>
+							<li class="list-group-item px-0">
+							<div class="col-6 pl-0"><?php echo  affDate($data->date)." : ".$data->nom  ?></div>
+							<div class="col-3 pl-0"><a class="btn btn-primary" href="<?php echo $path_pages ; ?>reservation.php?idRepresentation=<?php echo $data->representation ; ?>" role="button">Réserver</a></div>
+							</li>
 
 							<?php
 						}
