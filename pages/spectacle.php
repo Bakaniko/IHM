@@ -44,7 +44,7 @@ if($req->execute(array('idSpectacle' => $idSpectacle))){
 			</div>
 			<div class="card m-auto" id="spectacleText">
 				<div class="card-block">
-				<h4 class="card-title text-center">Présentation</h4>
+				<h4 class="card-title text-center">Présentation du spectacle</h4>
 					<p class="card-text text-justify"><?php echo $data->infos;?></p>
 				</div>
 				<div class="card-block">
