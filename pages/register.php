@@ -11,9 +11,9 @@ require_once"$path_structure".'captcha.php';
 <!-- PHP qui gère le formulaire -->
 <?php
 if (!empty($_POST)) {
-	$errors=array();  # est un tableau associatif qui contient toutes les erreures eventuelles l'ors de la saisie du formulaire 
+	$errors=array();  # est un tableau associatif qui contient toutes les erreures eventuelles l'ors de la saisie du formulaire
 	require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
-	require_once"$path_structure".'fonctions.php';# inclure la fonction debug  
+	require_once"$path_structure".'fonctions.php';# inclure la fonction debug
 	if (empty($_POST['login'])|| !preg_match('/^[A-Za-z0-9]+$/',$_POST['login'])){
     $errors['login'] = "Votre pseudonyme n'est pas valide !";
   }else{
@@ -21,7 +21,7 @@ if (!empty($_POST)) {
     $req->execute ([$_POST['login']]);
     $iduser=$req->fetch();
     if ($iduser) {
-      $errors['login']='Ce pseudonyme est existe !';	
+      $errors['login']='Ce pseudonyme existe déjà. Veuillez en choisir un autre.';
   }
   }if (empty($_POST['reponse'])|| !preg_match('/^[0-9]+$/',$_POST['reponse'])||  $_SESSION['captcha']!=$_POST['reponse']){
     $errors['reponse'] = "Le résultat du calcul n'est pas valide !";
@@ -40,17 +40,17 @@ if (!empty($_POST)) {
 	}
 	if (empty($errors)) {
 		$req=$pdo->prepare("INSERT INTO proj_utilisateur SET login = ?, adresseMail = ?, passHash = ?, code_confirmation = ?"); # requette préparée pour entrer les infos dans le base de données
-		
-		
+
+
     $code_confirme=generer_code(60);
 		$passehash=password_hash($_POST["passe"], PASSWORD_BCRYPT);
 		$req->execute([$_POST['login'],$_POST['email'],$passehash,$code_confirme]);
     $dernierId=$pdo->lastInsertId(); # Récuperer le dernier Id généré par PDO
-        $message="Votre inscription a bien été prise en compte,\n\n Afin de valider votre compte, veuillez ciliquer sur le lien suivant\n\n http://localhost/IHM/pages/confirmation.php?id=$dernierId&code_confirme=$code_confirme";
+        $message="Votre inscription a bien été prise en compte,\n\n Afin de valider votre compte, veuillez cliquer sur le lien suivant\n\n http://localhost/IHM/pages/confirmation.php?id=$dernierId&code_confirme=$code_confirme";
         $header="MIME-Version:1.0\r\n";
         $header.="From:'nassimyousfi1987@gmail.com'\r\n";
         $header.='Content-Type:text/html;charset="utf-8"'."\n";
-        $header.='Content-transfer-Encoding:8bit'; 
+        $header.='Content-transfer-Encoding:8bit';
     mail($_POST['email'], 'Confirmation de votre inscription à Opéra de Paris',$message, $header);# on envois par mail un lien de confirmation qui contient le code et qui est dirigé vers la page de confirmation
     $_SESSION['flash']['success']='Inscription réussie';
     header('Location:inscription_message.php');
@@ -80,18 +80,18 @@ if (!empty($_POST)) {
           <h4 class="card-title">Formulaire d'inscription</h4>
           <?php if(!empty($errors)):?>
               <div class="alert alert-danger"> <!-- class bootstrap speciale pour les erreurs -->
-               <p>les champs du  formulaire n'ont pas été remplis correctement car il y a <?php echo count($errors);?> erreurs</p> <!-- mMessage en cas d'erreur(s) -->
+               <p>Les champs du  formulaire n'ont pas été remplis correctement car il y a <?php echo count($errors);?> erreur(s)</p> <!-- mMessage en cas d'erreur(s) -->
                  <ol>
-                     <?php foreach ($errors as $error):?> <!-- parcurire la variable d'erreurs -->
+                     <?php foreach ($errors as $error):?> <!-- parcourir la variable d'erreurs -->
                      <li><?=$error;?></li>
                      <?php endforeach; ?>
                 </ol>
               </div>
-           <?php endif; ?>   
+           <?php endif; ?>
           <!-- Formulaire d'inscription -->
         <form action="" method="POST">
           <div class="form-group">
-            <label for="login">Pseudo *</label>
+            <label for="login">Pseudonyme *</label>
             <input type="text" name="login" class="form-control mx-auto text-center" id="inputNom" placeholder="Alphanumérique">
           </div>
           <div class="form-group">
