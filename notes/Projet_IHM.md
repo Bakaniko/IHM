@@ -60,7 +60,22 @@ abstract: |
 ## Plan de salle
 
 
-# GIT {#GIT}
+# Versionnement
+## Logiciels de gestion du versionnement
+### GIT
+### GitKraken
+
+
+## Hébergement
+L'hébergement s'est fait principalement sur nos machines personnelles, puis le site a été déployé sur Handiman.
+
+La version final est visible à cette adresse: []()
+
+La base de code est hébergée et visible sur github : [https://github.com/MinMinLight/IHM](https://github.com/MinMinLight/IHM).
+
+Nous aurions pu utiliser d'autres plate-formes tel que Bitbucket ou Gitlab / framagit; mais GitKraken s'intègre mieux avec Github et Bitbucket.
+De plus, beaucoup de projets libres ont recours à Github, et c'était l'occasion de se familiariser avec son interface.
+ 
 ## avantages
 ## inconvénients
 ## problèmes rencontrés
