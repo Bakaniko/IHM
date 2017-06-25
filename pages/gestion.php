@@ -63,13 +63,35 @@ if(isset($_POST['btn-add-representation']))
 } // fin de si l'utilisateur a valider une nouvelle représentation
 
 
-// Suppression d'un spectacle / Représentation
-if(isset($_POST['btn-rm-objet']))
+// Suppression d'un spectacle
+if(isset($_POST['btn-rm-spectacle']))
 {
-	$_SESSION['flash']['success']= "Le spectacle / la représentation a bien été supprimé(e) !";
+	/*
+	[delete-spectacle] => 6 // idSpectacle
+[btn-rm-spectacle] => */
+
+$req=$pdo->prepare("DELETE FROM proj_Spectacle WHERE idSpectacle = ? LIMIT 1;");
+$req->execute ([htmlspecialchars($_POST['delete-spectacle'])]);
+
+	$_SESSION['flash']['success']= "Le spectacle  a bien été supprimé !";
 		debug($_POST);
 } // fin de si l'utilisateur a supprimer un objet de la base
 
+// Suppression d'une représentation
+if(isset($_POST['btn-rm-representation']))
+{
+	/*
+	[delete-representation] => 1 // idRepresentation
+    [btn-rm-representation] =>
+		*/
+
+		$req=$pdo->prepare("DELETE FROM proj_Representation
+											 WHERE idRepresentation = ? ;");
+	 $req->execute ([htmlspecialchars($_POST['delete-representation'])]);
+
+	$_SESSION['flash']['success']= "La représentation a bien été supprimée !";
+		debug($_POST);
+} // fin de si l'utilisateur a supprimer un objet de la base
 ?>
 
 <!DOCTYPE html>
@@ -126,7 +148,7 @@ if(isset($_POST['btn-rm-objet']))
 
 										while ($data=$req->fetch()) {
 
-													echo "<option value=".$data->type.">".$data->type."</option>\n";
+													echo "\t\t\t\t\t\t\t\t<option value=".$data->type.">".$data->type."</option>\n";
 											}
 										$req->closeCursor();
 											 ?>
@@ -171,7 +193,7 @@ if(isset($_POST['btn-rm-objet']))
 
 										while ($data=$req->fetch()) {
 
-													echo "<option value=".$data->id.">".$data->nom."</option>\n";
+													echo "\t\t\t\t\t\t\t\t<option value=".$data->id.">".$data->nom."</option>\n";
 											}
 										$req->closeCursor();
 											 ?>
@@ -188,16 +210,16 @@ if(isset($_POST['btn-rm-objet']))
 
 										while ($data=$req->fetch()) {
 
-													echo "<option value=".$data->id.">".$data->nom."</option>\n";
+													echo "\t\t\t\t\t\t\t\t<option value=".$data->id.">".$data->nom."</option>\n";
 											}
 										$req->closeCursor();
 											 ?>
 									</select>
 								</div>
 								<div class="form-group row">
-									<label for="dateRepresentation" class="col-3 col-form-label">Date</label>
+									<label for="dateRepresentation" class="col-3 col-form-label">Date (AAAA-MM-JJ)</label>
 									<div class="col-9">
-										<input type="date" class="form-control" id="dateRepresentation" placeholder="" name="dateRepresentation">
+										<input type="date" class="form-control" id="dateRepresentation" value="<?php echo date('Y-m-d')?>" name="dateRepresentation">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -218,36 +240,61 @@ if(isset($_POST['btn-rm-objet']))
 							</div>
 						</form>
 						<!-- Supprimer -->
+							<!-- Spectacle -->
 						<form method="POST" action="">
 							<div class="card-block text-center mx-auto">
-								<h5 class="card-title">Supprimer un spectacle / une représentation</h5>
+								<h5 class="card-title">Supprimer un spectacle</h5>
 								<div class="d-flex flex-row flex-wrap justify-content-center">
-									<!-- Spectacle -->
 									<div class="form-group d-flex flex-column">
 										<label for="specSelect"></label>
-										<select class="custom-select" id="specSelect">
+										<select class="custom-select" id="specSelect" name="delete-spectacle">
 											<option selected>Choisir un spectacle</option>
-											<option value="1">A</option>
-											<option value="2">B</option>
-											<option value="3">C</option>
-											<option value="4">D</option>
-											<option value="5">E</option>
-											<option value="6">F</option>
-											<option value="7">G</option>
-										</select>
-									</div>
-									<!-- Représentation -->
-									<div class="form-group d-flex flex-column">
-										<label for="repreSelect"></label>
-										<select class="custom-select" id="repreSelect">
-											<option selected>Choisir une représentation</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
+											<?php //requête de sélection les options de type de spectacle présents dans la base
+											$sql = "SELECT DISTINCT s.idSpectacle as id, s.nom from proj_Spectacle as s where 1 ORDER BY nom ASC";
+
+											$req = $pdo->query($sql);
+
+											while ($data=$req->fetch()) {
+
+														echo "\t\t\t\t\t\t\t\t<option value=".$data->id.">".$data->nom."</option>\n";
+												}
+											$req->closeCursor();
+												 ?>
 										</select>
 									</div>
 									<div class="form-group d-flex align-items-end">
-										<button type="submit" class="btn btn-danger" name='btn-rm-objet'><i class="fa fa-check mr-2" aria-hidden="true"></i>Suprimer</button>
+										<button type="submit" class="btn btn-danger" name='btn-rm-spectacle'><i class="fa fa-check mr-2" aria-hidden="true"></i>Suprimer</button>
+									</div>
+								</div>
+							</div>
+						</form>
+						<!-- Représentation -->
+						<form method="POST" action="">
+							<div class="card-block text-center mx-auto">
+								<h5 class="card-title">Supprimer une représentation</h5>
+								<div class="d-flex flex-row flex-wrap justify-content-center">
+									<div class="form-group d-flex flex-column">
+										<label for="repreSelect"></label>
+										<select class="custom-select" id="repreSelect" name="delete-representation">
+											<option selected>Choisir une représentation</option>
+											<?php //requête de sélection les options de type de spectacle présents dans la base
+											$sql = "SELECT DISTINCT r.idRepresentation as id, s.nom, r.date
+															from proj_Representation  as r
+															JOIN proj_Spectacle  as s ON s.idSpectacle = r.idSpectacle
+															where 1 ORDER BY date ASC";
+
+											$req = $pdo->query($sql);
+
+											while ($data=$req->fetch()) {
+
+														echo "\t\t\t\t\t\t\t\t<option value=".$data->id.">".$data->date." / ".$data->nom."</option>\n";
+												}
+											$req->closeCursor();
+												 ?>
+										</select>
+									</div>
+									<div class="form-group d-flex align-items-end">
+										<button type="submit" class="btn btn-danger" name='btn-rm-representation'><i class="fa fa-check mr-2" aria-hidden="true"></i>Suprimer</button>
 									</div>
 								</div>
 							</div>
