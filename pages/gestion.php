@@ -30,7 +30,7 @@ if(isset($_POST['btn-add-spectacle']))
 	$req->execute ([htmlspecialchars($_POST['infosSpectacle']),htmlspecialchars($_POST['titreSpectacle']), htmlspecialchars($_POST['nomImage']), htmlspecialchars($_POST['selectSpectacle'])]);
 	$_SESSION['flash']['success']= "Un nouveau spectacle a été ajouté !";
 
-	debug($_POST);
+	//debug($_POST);
 
 
 } // fin de si l'utilisateur a valider un nouveau spectacle
@@ -38,6 +38,26 @@ if(isset($_POST['btn-add-spectacle']))
 // Ajouter une représentation
 if(isset($_POST['btn-add-representation']))
 {
+	/*
+	[specSelect] => 6
+	 [salleSelect] => 2
+	 [dateRepresentation] => 2017-06-23
+	 [horaireDebut] => 20:30
+	 [horaireFin] => 23:30
+	 [btn-add-representation] =>
+	 */
+	 $req=$pdo->prepare("INSERT INTO proj_Representation
+		 									SET date = ?,
+		 									horaireDebut = ?,
+											horaireFin = ?,
+											idSalle = ?,
+											idSpectacle = ?;");
+ 	$req->execute ([htmlspecialchars($_POST['dateRepresentation']),
+									htmlspecialchars($_POST['horaireDebut']),
+									htmlspecialchars($_POST['horaireFin']),
+									htmlspecialchars($_POST['salleSelect']),
+									htmlspecialchars($_POST['specSelect'])]);
+
 	$_SESSION['flash']['success']= "Une nouvelle représentation a été ajoutée !";
 		debug($_POST);
 } // fin de si l'utilisateur a valider une nouvelle représentation
@@ -142,30 +162,54 @@ if(isset($_POST['btn-rm-objet']))
 								<h5 class="card-title">Ajouter une représentation</h5>
 								<div class="form-group row">
 									<label for="specSelect"></label>
-									<select class="custom-select" id="specSelect">
+									<select class="custom-select" id="specSelect" name="specSelect">
 										<option selected>Choisir le spectacle</option>
-										<option value="1">A</option>
-										<option value="2">B</option>
-										<option value="3">C</option>
-										<option value="4">D</option>
-										<option value="5">E</option>
-										<option value="6">F</option>
-										<option value="7">G</option>
+										<?php //requête de sélection les options de type de spectacle présents dans la base
+										$sql = "SELECT DISTINCT s.idSpectacle as id, s.nom from proj_Spectacle as s where 1 ORDER BY nom ASC";
+
+										$req = $pdo->query($sql);
+
+										while ($data=$req->fetch()) {
+
+													echo "<option value=".$data->id.">".$data->nom."</option>\n";
+											}
+										$req->closeCursor();
+											 ?>
 									</select>
 								</div>
 								<div class="form-group row">
-									<label for="specSelect"></label>
-									<select class="custom-select" id="specSelect">
+									<label for="salleSelect"></label>
+									<select class="custom-select" id="salleSelect" name="salleSelect">
 										<option selected>Choisir la salle</option>
-										<option value="1">Salle 1</option>
-										<option value="2">Salle 2</option>
-										<option value="3">Salle 3</option>
+										<?php //requête de sélection les options de type de spectacle présents dans la base
+										$sql = "SELECT DISTINCT s.idSalle as id, s.nom from proj_Salle as s where 1 ORDER BY nom ASC";
+
+										$req = $pdo->query($sql);
+
+										while ($data=$req->fetch()) {
+
+													echo "<option value=".$data->id.">".$data->nom."</option>\n";
+											}
+										$req->closeCursor();
+											 ?>
 									</select>
 								</div>
 								<div class="form-group row">
-									<label for="inputTitre" class="col-3 col-form-label">Date et heure</label>
+									<label for="dateRepresentation" class="col-3 col-form-label">Date</label>
 									<div class="col-9">
-										<input type="datetime-local" value="2011-08-19T13:45:00" class="form-control" id="inputTitre" placeholder="">
+										<input type="date" class="form-control" id="dateRepresentation" placeholder="" name="dateRepresentation">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="HoraireDebut" class="col-3 col-form-label">Heure de début</label>
+									<div class="col-9">
+										<input type="time" class="form-control" id="HoraireDebut" value="20:30" name="horaireDebut">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label for="HoraireFin" class="col-3 col-form-label">Heure de fin</label>
+									<div class="col-9">
+										<input type="time" class="form-control" id="HoraireFin" placeholder="23:30" name="horaireFin">
 									</div>
 								</div>
 								<div class="form-group row">
