@@ -15,19 +15,24 @@ header('Location:connexion.php');
 }
 else {
 	debug($_SESSION);
-	debug($_POST);
 }
 
 ?>
 
 
+<?php
+// Accès à la base
+require_once"$path_structure".'base.php';# cette instruction est déjà effectuée à la ligne 32
+
+?>
 <!-- PHP qui gère le formulaire -->
 <?php
 if (!empty($_POST)) {
 	require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
+	require_once"$path_structure".'fonctions.php';# inclure la fonction debug
 	if (!empty($_POST['inputpseudo']) && !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputpseudo'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau pseudo n'est pas valide !";
-	}else{
+	}else if(!empty($_POST['inputpseudo']) && preg_match('/^[A-Za-z0-9]+$/',$_POST['inputpseudo'])){
 	$user_id=$_SESSION['auth']->idUtilisateur; # Je récupère l'id utilisateur qui vient de se connecter je l'affecte àla variable $user_id que je met en parametre dans ma requete sql pour changer les infos
     $req=$pdo->prepare("UPDATE proj_utilisateur SET login =? WHERE idUtilisateur=?");
     $req->execute ([$_POST['inputpseudo'],$user_id]);
@@ -52,16 +57,16 @@ if (!empty($_POST)) {
 		$_SESSION['flash']['danger']="Votre nouveau mail n'est pas !";
 	}else{
 		$user_id=$_SESSION['auth']->idUtilisateur ;
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET adresseMail =? WHERE idUtilisateur=?");
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET adresseMail =? WHere idUtilisateur=?");
     $req->execute ([$_POST['inputEmail'],$user_id]);
     $_SESSION['flash']['success']= "L'Email a été mis à jour !";
-    }if (isset($_POST['inputMotDePasse']) || $_POST['inputMotDePasse']!= ($_POST['inputMotDePasse2'])){
+  }if (!empty($_POST['inputMotDePasse']) || ($_POST['inputMotDePasse']!= $_POST['inputMotDePasse2'])){
 		$_SESSION['flash']['danger']= "Les mots de passe ne correspondent pas !";
-	}else{
+	}elseif(!empty($_POST['inputMotDePasse']) && ($_POST['inputMotDePasse'] == $_POST['inputMotDePasse2'])){
 		$user_id=$_SESSION['auth']->idUtilisateur ;
 		$hashmod=password_hash($_POST['inputMotDePasse'], PASSWORD_BCRYPT);
     $req=$pdo->prepare("UPDATE proj_utilisateur SET passHash =? WHERE idUtilisateur=?");
-    $req->execute ([$hashmod,$user_id],$user_id);
+    $req->execute ([$hashmod,$user_id]);
     $_SESSION['flash']['success']= "Le mot de passe a été mis à jour !";
     }if (!empty($_POST['inputAdressePostale1']) && !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputAdressePostale1'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau code postale n'est pas valide !";
@@ -101,6 +106,8 @@ if (!empty($_POST)) {
     $req->execute ([$_POST['inputTel'],$user_id]);
     $_SESSION['flash']['success']= "Votre numéro de téléphone a été mis à jour !";
     }
+    header('Location:compte.php');
+    $_SESSION['flash']['success']= "Vos changements ont été pris en compte";
 }
 ?>
 
@@ -141,21 +148,21 @@ if (!empty($_POST)) {
 					<div class="form-group row">
 						<label for="inputpseudo" class="col-3 col-form-label">Modifier votre pseudo</label>
 						<div class="col-9">
-							<input type="text" class="form-control" name="inputpseudo" id="inputpseudo" value=<?php echo $_SESSION['auth']->login; ?>>
+							<input type="text" class="form-control" name="inputpseudo" id="inputpseudo" value="<?php echo $_SESSION['auth']->login; ?>">
 						</div>
 					</div>
-		<div class="form-group row">
-			<label for="inputMotDePasse" class="col-3 col-form-label"> Modifier votre mot de passe</label>
-			<div class="col-9">
-				<input type="password" class="form-control" name="inputMotDePasse" id="inputMotDePasse">
-			</div>
-		</div>
-		 <div class="form-group row">
-			<label for="inputMotDePasse2" class="col-3 col-form-label"> Confirmer le nouveau mot de passe</label>
-			<div class="col-9">
-				<input type="password" class="form-control" name="inputMotDePasse2" id="inputMotDePasse2">
-			</div>
-		</div>
+          <div class="form-group row">
+            <label for="inputMotDePasse" class="col-3 col-form-label"> Modifier votre mot de passe</label>
+            <div class="col-9">
+              <input type="password" class="form-control" name="inputMotDePasse" id="inputMotDePasse">
+            </div>
+          </div>
+           <div class="form-group row">
+            <label for="inputMotDePasse2" class="col-3 col-form-label"> Confirmer le nouveau mot de passe</label>
+            <div class="col-9">
+              <input type="password" class="form-control" name="inputMotDePasse2" id="inputMotDePasse2">
+            </div>
+          </div>
 		<div class="form-group row">
 			<button type="submit" class="btn btn-primary mx-auto">Enregistrer vos modifications</button>
 		</div>
@@ -178,7 +185,7 @@ if (!empty($_POST)) {
         <div class="form-group row">
           <label for="inputPrenom" class="col-3 col-form-label">Prénom</label>
           <div class="col-9">
-            <input type="text" class="form-control" id="inputPrenom" name="inputPrenom" value="<?php echo $_SESSION['auth']->prenom; ?>">
+            <input type="text" class="form-control" id="inputPrenom" name="inputPrenom" value="<?php echo $_SESSION['auth']->prenom; ?> ">
           </div>
         </div>
         <div class="form-group row">
@@ -217,18 +224,7 @@ if (!empty($_POST)) {
             <input class="form-control" type="tel" name="inputTel" id="inputTel" value="<?php echo $_SESSION['auth']->telephone; ?>">
           </div>
         </div>
-        <div class="form-group row">
-          <label for="inputMotDePasse" class="col-3 col-form-label"> Modifier votre mot de passe</label>
-          <div class="col-9">
-            <input type="password" class="form-control" name="inputMotDePasse" id="inputMotDePasse">
-          </div>
-        </div>
-         <div class="form-group row">
-          <label for="inputMotDePasse2" class="col-3 col-form-label"> Confirmer le nouveau mot de passe</label>
-          <div class="col-9">
-            <input type="password" class="form-control" name="inputMotDePasse2" id="inputMotDePasse2">
-          </div>
-        </div>
+
         <div class="form-group row">
           <button type="submit" class="btn btn-primary mx-auto">Enregistrer vos modifications</button>
         </div>
