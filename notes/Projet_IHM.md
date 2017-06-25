@@ -126,6 +126,8 @@ Permet une communication entre les
 
 # Evolutions / points non traités
 
+## fonctionnalités du site
+
 - gestion des achats, paiement de la commande
 
 - renvoi d'un mot de passe temporaire en  cas d'oubli
@@ -133,6 +135,16 @@ Permet une communication entre les
 - charger directement l'image depuis l'interface de gestion
 
 - si un administrateur est connecté, remplacer panier par gestion qui renvoit vers la page gestion.php
+
+## Page gestion.php
+
+- vérifier les saisies administrateur: format de date et horaires
+
+- pouvoir dupliquer les données d'une représentation ou d'un spectacle pour gagner du temps de saisie
+
+## Page spectacle.php
+- spectacle.php : si toutes les dates du spectacles sont passées, afficher quand même les informations, plus représentations passées (sans bouton réservé)
+
 
 # Conclusion
 
