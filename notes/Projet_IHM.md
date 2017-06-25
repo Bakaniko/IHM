@@ -54,12 +54,33 @@ abstract: |
 ## Gestion des sessions {#GESTIONSESSION}
 
 La variable de session contient deux index :
-1- l'index $_SESSION["auth"] (authentification), qui contient tout les attributs liés à l'utilisateur inscrit dans la page d'inscription (register.php)
-ainsi que les informations nécessaires à la validation de son compte affectées dans le fichier confirmation.php.
 
-2- L'index $_SESSION["flash"], qui contient tout les messages d'erreurs et de sucées relatifs à la gestion des formulaires et des redirection.
-pour factoriser l'ouverture de la super variable dans toutes les pages, nous avons effectué cette ouverture dans le fichier menu.php qui est présent dans toute les pages du site, néanmoins nous avons, à cause des nombreuses inclusions de fichiers PHP dont la variable de session est déjà déclarée, du prévenir l'éventualité d'une double ouverture de la session, ce qui engendrerait une erreur.
-En utilisant cette instruction <?php if (session_status()==PHP_SESSION_NONE) {session_start();}?>, nous vérifions d'abord si la variable de session existe déjà, dans le cas contraire et seulement dans ce cas là on ouvre la session.      
+1. l'index
+\colorbox{bleuciel}{\lstinline[basicstyle=\ttfamily\color{black}]{$\_SESSION["auth"]}} (authentification),
+qui contient tout les attributs liés à l'utilisateur inscrit dans la page
+d'inscription (register.php)
+ainsi que les informations nécessaires à la validation de son compte affectées
+dans le fichier confirmation.php.
+
+2. L'index
+\colorbox{bleuciel}{\lstinline[basicstyle=\ttfamily\color{black}]{$\_SESSION["flash"]}},
+ qui contient tous les messages d'erreurs et de
+succès relatifs à la gestion des formulaires et des redirections.
+
+Pour factoriser l'ouverture de la super variable dans toutes les pages, nous
+avons effectué cette ouverture dans le fichier menu.php qui est présent dans
+toutes les pages du site, néanmoins nous avons, à cause des nombreuses inclusions
+de fichiers PHP dont la variable de session est déjà déclarée, du prévenir
+l'éventualité d'une double ouverture de la session, ce qui engendrerait une erreur.
+
+En utilisant cette instruction
+\colorbox{bleuciel}{\lstinline[basicstyle=\ttfamily\color{black}]{<?php if (session_status()==PHP_SESSION_NONE) {session_start();}?>}}
+, nous vérifions d'abord si la variable de session existe déjà, dans le cas
+contraire et seulement dans ce cas là, la session est ouverte.      
+
+
+
+
 
 ## Requêtes en base
 
@@ -90,8 +111,15 @@ Processus d'envoi de mail nécessite *SendMail*
 ## inconvénients
 ## problèmes rencontrés
 
+- envoi de mail, fonctionne sur l'ordinateur de Nassim, ne fonctionne pas sur l'ordinateur de nIcolas ou sur Handiman. La *SendMail* n'est pas installé sur le serveur.
+
 # Evolutions / points non traités
 
+- gestion des achats, paiement de la commande
+
+- renvoi d'un mot de passe temporaire en  cas d'oubli
+
+- charger directement l'image depuis l'interface de gestion
 # Conclusion
 
 \appendix
