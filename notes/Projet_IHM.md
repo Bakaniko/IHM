@@ -16,7 +16,7 @@ responsable: "Responsables de formation: Dominique Archambauld, Isis Truck (Univ
 
 
 subject: Réalisation d'un site web
-tags: [Accessibilité, PHP]
+tags: [Accessibilité, PHP, site web]
 abstract: |
   This is the abstract.
 
@@ -51,6 +51,21 @@ abstract: |
 ## Accessibilité
 
 # PHP {#PHP}
+
+De façon général, nous avons essayé de conserver un maximum d'accessibilité pour
+notre site. Ainsi, nous avons volontairement favoriser l'usage de *PHP* par
+rapport à *Javascript*. Ceci afin de faciliter l'usage du site avec les lecteurs
+d'écrans.
+
+De cette manière, la page de réservation de place comporte deux manières de
+choisir un siège:
+
+- soit par un formulaire;
+
+- soit en cliquant sur la place voulue de la représentation de la salle.
+
+Cette deuxième option a nécessité l'utilisation de Javascript mais peut être
+aisément contournée.
 
 ## Gestion des sessions {#GESTIONSESSION}
 
@@ -95,18 +110,49 @@ contraire et seulement dans ce cas là, la session est ouverte.
 # Versionnement
 ## Logiciels de gestion du versionnement
 ### GIT
+
+Dans le cadre du développement logiciel, la plupart des entreprises utilisent un
+ logiciel de versionnement. Nous avons nous aussi souhaiter versionner notre
+ travail. Nous avons choisi GIT car il est de plus en plus employé dans le monde
+ professionnel et qu'il est open-source. Cela nous a permis  d'acquérir des
+ compétences de gestion de projet et de développement susceptibles d'intéresser
+ un employeur.
+
+De plus, en combinaison avec Github,
+
+Toutefois seu l'un d'entre nous avait déjà une expérience de ce logiciel de
+versionnement. L'apprentissage n'a pas était aisé pour tous mais nous avons tous
+progresser dans notre connaissance de ce logiciel. Afin de faciliter cet
+apprentissage, nous avons eu recours au logiciel **GitKraken** qui propose une
+interface graphique à git.
+
+
 ### GitKraken
 
+Pour nous aider à nous retrouver dans les branches et les dépôts, nous avons eu
+recours au logiciel **GitKraken** édité par la société Axosoft [^axosoft].
+
+[^axosoft]:
+    [https://www.gitkraken.com/](https://www.gitkraken.com/)
+
+![Interface de GitKraken](images/gitkraken.png){ width=100% }
+
+Outre une estétique très travaillée, il permet de réaliser facilement plusieurs
+opérations sans avoir à recourir à ligne de commande (COMMIT, PULL, PUSH, ADD REMOTE)
 
 ## Hébergement
-L'hébergement s'est fait principalement sur nos machines personnelles, puis le site a été déployé sur Handiman.
+
+L'hébergement s'est fait principalement sur nos machines personnelles, puis le
+site a été déployé sur Handiman.
 
 La version final est visible à cette adresse: []()
 
-La base de code est hébergée et visible sur github : [https://github.com/MinMinLight/IHM](https://github.com/MinMinLight/IHM).
+La base de code est hébergée et visible sur github :
+[https://github.com/MinMinLight/IHM](https://github.com/MinMinLight/IHM).
 
 Nous aurions pu utiliser d'autres plate-formes tel que Bitbucket ou Gitlab / framagit; mais GitKraken s'intègre mieux avec Github et Bitbucket.
-De plus, beaucoup de projets libres ont recours à Github, et c'était l'occasion de se familiariser avec son interface.
+De plus, beaucoup de projets libres ont recours à Github, et c'était l'occasion
+de se familiariser avec son interface.
 
 
 
@@ -122,7 +168,9 @@ Permet une communication entre les
 
 ## problèmes rencontrés
 
-- envoi de mail, fonctionne sur l'ordinateur de Nassim, ne fonctionne pas sur l'ordinateur de nIcolas ou sur Handiman. La *SendMail* n'est pas installé sur le serveur.
+- envoi de mail, fonctionne sur l'ordinateur de Nassim, ne fonctionne pas sur
+l'ordinateur de nIcolas ou sur Handiman. La *SendMail* n'est pas installé sur le
+ serveur.
 
 # Evolutions / points non traités
 
@@ -134,16 +182,26 @@ Permet une communication entre les
 
 - charger directement l'image depuis l'interface de gestion
 
-- si un administrateur est connecté, remplacer panier par gestion qui renvoit vers la page gestion.php
+- si un administrateur est connecté, remplacer panier par gestion qui renvoit
+vers la page gestion.php
 
 ## Page gestion.php
 
 - vérifier les saisies administrateur: format de date et horaires
 
-- pouvoir dupliquer les données d'une représentation ou d'un spectacle pour gagner du temps de saisie
+- pouvoir dupliquer les données d'une représentation ou d'un spectacle pour
+gagner du temps de saisie
+
+- insérer un message demandant la confirmation de l'action de suppression d'un
+spectacle ou d'une représentation
+
+- dans l'onglet suppression, trouver un moyen de filtrer les représentations:
+par spectacle, par salle, par mois. Evénentuellement en reprenant le code de la
+page programmation.php
 
 ## Page spectacle.php
-- spectacle.php : si toutes les dates du spectacles sont passées, afficher quand même les informations, plus représentations passées (sans bouton réservé)
+- spectacle.php : si toutes les dates du spectacles sont passées, afficher quand
+ même les informations, plus représentations passées (sans bouton réservé)
 
 
 # Conclusion
