@@ -53,6 +53,14 @@ abstract: |
 
 ## Gestion des sessions {#GESTIONSESSION}
 
+La variable de session contient deux index :
+1- l'index $_SESSION["auth"] (authentification), qui contient tout les attributs liés à l'utilisateur inscrit dans la page d'inscription (register.php)
+ainsi que les informations nécessaires à la validation de son compte affectées dans le fichier confirmation.php.
+
+2- L'index $_SESSION["flash"], qui contient tout les messages d'erreurs et de sucées relatifs à la gestion des formulaires et des redirection.
+pour factoriser l'ouverture de la super variable dans toutes les pages, nous avons effectué cette ouverture dans le fichier menu.php qui est présent dans toute les pages du site, néanmoins nous avons, à cause des nombreuses inclusions de fichiers PHP dont la variable de session est déjà déclarée, du prévenir l'éventualité d'une double ouverture de la session, ce qui engendrerait une erreur.
+En utilisant cette instruction <?php if (session_status()==PHP_SESSION_NONE) {session_start();}?>, nous vérifions d'abord si la variable de session existe déjà, dans le cas contraire et seulement dans ce cas là on ouvre la session.      
+
 ## Requêtes en base
 
 
@@ -75,11 +83,14 @@ La base de code est hébergée et visible sur github : [https://github.com/MinMi
 
 Nous aurions pu utiliser d'autres plate-formes tel que Bitbucket ou Gitlab / framagit; mais GitKraken s'intègre mieux avec Github et Bitbucket.
 De plus, beaucoup de projets libres ont recours à Github, et c'était l'occasion de se familiariser avec son interface.
- 
+
+Processus d'envoi de mail nécessite *SendMail*
+
 ## avantages
 ## inconvénients
 ## problèmes rencontrés
 
+# Evolutions / points non traités
 
 # Conclusion
 
