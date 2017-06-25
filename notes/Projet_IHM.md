@@ -42,33 +42,20 @@ abstract: |
 
 # Réalisation de la base de données
 
-# design du site
 
-## design général
+# design du site {#design-du-site}
 
-##  Accessibilité (-)
+## design général {#designgeneral}
 
-# PHP
+## Accessibilité
 
-## Gestion des sessions
+# PHP {#PHP}
+
+## Gestion des sessions {#GESTIONSESSION}
 
 ## Requêtes en base
 
-~~~~~~~
-if (a > 3) {
-moveShip(5 * gravity, DOWN);
-}
-~~~~~~~
-
-if (a > 3) {
-moveShip(5 * gravity, DOWN);
-}
-
-    if (a > 3) {
-    moveShip(5 * gravity, DOWN);
-    }
-
-# GIT
+# GIT {#GIT}
 ## avantages
 ## inconvénients
 ## problèmes rencontrés
