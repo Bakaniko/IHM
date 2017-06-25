@@ -36,6 +36,9 @@ abstract: |
 
 # conception
 
+Nous nous sommes inspirés du site de l'Opéra national de Paris.
+
+![Site offciel de l'Opéra national de Paris](images/site_officiel.png){ width=100% }
 
 ## maquette préliminiaire
 
@@ -137,22 +140,36 @@ recours au logiciel **GitKraken** édité par la société Axosoft [^axosoft].
 
 ![Interface de GitKraken](images/gitkraken.png){ width=100% }
 
-Outre une estétique très travaillée, il permet de réaliser facilement plusieurs
-opérations sans avoir à recourir à ligne de commande (COMMIT, PULL, PUSH, ADD REMOTE)
+Outre une esthétique très travaillée, il permet de réaliser facilement plusieurs
+opérations courantes sans avoir à recourir à la ligne de commande (COMMIT, PULL,
+ PUSH, ADD REMOTE). Il permet aussi de visualiser les branches des colaborateurs
+ et leur avancement.
 
 ## Hébergement
 
 L'hébergement s'est fait principalement sur nos machines personnelles, puis le
 site a été déployé sur Handiman.
 
-La version final est visible à cette adresse: []()
+La version déployée est visible à cette adresse:
+[http://handiman.univ-paris8.fr/~nicolas/](http://handiman.univ-paris8.fr/~nicolas/)
 
 La base de code est hébergée et visible sur github :
 [https://github.com/MinMinLight/IHM](https://github.com/MinMinLight/IHM).
 
-Nous aurions pu utiliser d'autres plate-formes tel que Bitbucket ou Gitlab / framagit; mais GitKraken s'intègre mieux avec Github et Bitbucket.
+Nous aurions pu utiliser d'autres plate-formes tel que Bitbucket ou Gitlab /
+Framagit; mais GitKraken s'intègre mieux avec Github et Bitbucket.
 De plus, beaucoup de projets libres ont recours à Github, et c'était l'occasion
 de se familiariser avec son interface.
+
+La création et le lancement d'un projet nous ont semblé plus complexe sur des
+plate-formes telles que Gitlab / Framagit. Nous avons donc écarté ces solutions.
+
+Avec du recul, il aurait probablement été plus intéressant d'héberger le code sur
+Bitbucket. En effet, c'est gratuit jusqu'à 5 collaborateurs (nous étions 4) et
+il est possible de rendre le projet privé. En effet, Github propose un  hébergement
+gratuit pour les projets open-source, . Tout ce que nous publions dessus est donc
+ librement accessible sur Internet. Ce qui fait que nousa vons dû faire attention
+ à ne pas publier nos codes d'accès ou nos mails personnels.
 
 
 
@@ -174,9 +191,9 @@ l'ordinateur de nIcolas ou sur Handiman. La *SendMail* n'est pas installé sur l
 
 # Evolutions / points non traités
 
-## fonctionnalités du site
+## Fonctionnalités / Interface du site
 
-- gestion des achats, paiement de la commande
+- gestion des achats (panier), paiement de la commande
 
 - renvoi d'un mot de passe temporaire en  cas d'oubli
 
@@ -196,8 +213,9 @@ gagner du temps de saisie
 spectacle ou d'une représentation
 
 - dans l'onglet suppression, trouver un moyen de filtrer les représentations:
-par spectacle, par salle, par mois. Evénentuellement en reprenant le code de la
-page programmation.php
+par spectacle, par salle, par mois, par année. Evénentuellement en reprenant le
+code de la page programmation.php. Il faudra peut-être avoir recours à Javascript
+et JQuery/Ajax.
 
 ## Page spectacle.php
 - spectacle.php : si toutes les dates du spectacles sont passées, afficher quand
