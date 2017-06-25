@@ -10,53 +10,49 @@ require_once"$path_structure".'fonctions.php';# inclure la fonction debug  <?php
 if (!isset($_SESSION['auth'])){
 $_SESSION['flash']['danger']="Vous n'avez pas le droit d'accèder à cette page";
 header('Location:connexion.php');
+}if (isset($_SESSION['auth']) && ($_SESSION['auth']->typeUtilisateur=='admin')) {
+ header('Location:gestion.php');
 }
 else {
 	debug($_SESSION);
+	debug($_POST);
 }
 
 ?>
 
 
-<?php
-// Accès à la base
-require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
-
-?>
 <!-- PHP qui gère le formulaire -->
 <?php
 if (!empty($_POST)) {
-	$errors=array();  # est un tableau associatif qui contient toutes les erreures eventuelles l'ors de la saisie du formulaire
 	require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
-	require_once"$path_structure".'fonctions.php';# inclure la fonction debug
 	if (!empty($_POST['inputpseudo']) && !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputpseudo'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau pseudo n'est pas valide !";
 	}else{
-	$user_id=$_SESSION['auth']->idUtilisateur;
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET login =? WHERE idUtilisateur=$user_id");
-    $req->execute ([$_POST['inputpseudo']]);
+	$user_id=$_SESSION['auth']->idUtilisateur; # Je récupère l'id utilisateur qui vient de se connecter je l'affecte àla variable $user_id que je met en parametre dans ma requete sql pour changer les infos
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET login =? WHERE idUtilisateur=?");
+    $req->execute ([$_POST['inputpseudo'],$user_id]);
     $_SESSION['flash']['success']= "Votre pseudo a été mis à jour !";
     }if (!empty($_POST['inputNom']) && !preg_match('/^[A-Za-z]+$/',$_POST['inputNom'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau nom n'est pas valide !";
 	}else{
 	$user_id=$_SESSION['auth']->idUtilisateur;
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET nom =? WHERE idUtilisateur=$user_id");
-    $req->execute ([$_POST['inputNom']]);
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET nom =? WHERE idUtilisateur=?");
+    $req->execute ([$_POST['inputNom'],$user_id]);
     $_SESSION['flash']['success']= "Votre nom a été mis à jour !";
 
     }if (!empty($_POST['inputPrenom']) && !preg_match('/^[A-Za-z]+$/',$_POST['inputPrenom'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau prenom n'est pas valide !";
 	}else{
 	$user_id=$_SESSION['auth']->idUtilisateur;
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET prenom =? WHERE idUtilisateur=$user_id");
-    $req->execute ([$_POST['inputPrenom']]);
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET prenom =? WHERE idUtilisateur=?");
+    $req->execute ([$_POST['inputPrenom'],$user_id]);
     $_SESSION['flash']['success']= "Votre nom a été mis à jour !";
 
     }if (!empty($_POST['inputEmail'])&& !filter_var($_POST['inputEmail'],FILTER_VALIDATE_EMAIL)){
 		$_SESSION['flash']['danger']="Votre nouveau mail n'est pas !";
 	}else{
 		$user_id=$_SESSION['auth']->idUtilisateur ;
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET adresseMail =? WHere idUtilisateur=$user_id");
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET adresseMail =? WHERE idUtilisateur=?");
     $req->execute ([$_POST['inputEmail'],$user_id]);
     $_SESSION['flash']['success']= "L'Email a été mis à jour !";
     }if (isset($_POST['inputMotDePasse']) || $_POST['inputMotDePasse']!= ($_POST['inputMotDePasse2'])){
@@ -64,45 +60,45 @@ if (!empty($_POST)) {
 	}else{
 		$user_id=$_SESSION['auth']->idUtilisateur ;
 		$hashmod=password_hash($_POST['inputMotDePasse'], PASSWORD_BCRYPT);
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET passHash =? WHERE idUtilisateur=$user_id ");
-    $req->execute ([$hashmod,$user_id]);
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET passHash =? WHERE idUtilisateur=?");
+    $req->execute ([$hashmod,$user_id],$user_id);
     $_SESSION['flash']['success']= "Le mot de passe a été mis à jour !";
     }if (!empty($_POST['inputAdressePostale1']) && !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputAdressePostale1'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau code postale n'est pas valide !";
 	}else{
 	$user_id=$_SESSION['auth']->idUtilisateur;
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET adressePostale1 =? WHERE idUtilisateur=$user_id");
-    $req->execute ([$_POST['inputAdressePostale1']]);
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET adressePostale1 =? WHERE idUtilisateur=?");
+    $req->execute ([$_POST['inputAdressePostale1'],$user_id]);
     $_SESSION['flash']['success']= "Votre code postale N#1 a été mis à jour !";
     }if (!empty($_POST['inputAdressePostale2']) && !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputAdressePostale2'])){
 		$_SESSION['flash']['danger']= "Votre  nouvelle adresse n'est pas valide !";
 	}else{
 	$user_id=$_SESSION['auth']->idUtilisateur;
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET adressePostale2 =? WHERE idUtilisateur=$user_id");
-    $req->execute ([$_POST['inputAdressePostale2']]);
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET adressePostale2 =? WHERE idUtilisateur=?");
+    $req->execute ([$_POST['inputAdressePostale2'],$user_id]);
     $_SESSION['flash']['success']= "Votre code postale N#2 a été mis à jour !";
 
     }if (!empty($_POST['inputCodePostal']) && !preg_match('/^[0-9]{5}$/',$_POST['inputCodePostal'])){
 		$_SESSION['flash']['danger']= "Votre  nouvelle adresse n'est pas valide !";
 	}else{
 	$user_id=$_SESSION['auth']->idUtilisateur;
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET codePostal =? WHERE idUtilisateur=$user_id");
-    $req->execute ([$_POST['inputCodePostal']]);
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET codePostal =? WHERE idUtilisateur=?");
+    $req->execute ([$_POST['inputCodePostal'],$user_id]);
     $_SESSION['flash']['success']= "Votre code postale a été mis à jour !";
 
     }if (!empty($_POST['inputVille']) && !preg_match('/^[A-Za-z]+$/',$_POST['inputVille'])){
 		$_SESSION['flash']['danger']= "Votre  nouvelle ville de résidence n'est pas valide !";
 	}else{
 	$user_id=$_SESSION['auth']->idUtilisateur;
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET ville =? WHERE idUtilisateur=$user_id");
-    $req->execute ([$_POST['inputVille']]);
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET ville =? WHERE idUtilisateur=?");
+    $req->execute ([$_POST['inputVille'],$user_id]);
     $_SESSION['flash']['success']= "Votre ville de résidence a été mise à jour !";
     }if (!empty($_POST['inputTel']) && !preg_match('/^[0-9]{10}$/',$_POST['inputTel'])){
 		$_SESSION['flash']['danger']= "Votre numéro de téléphone n'est pas valide !";
 	}else{
 	$user_id=$_SESSION['auth']->idUtilisateur;
-    $req=$pdo->prepare("UPDATE proj_utilisateur SET telephone =? WHERE idUtilisateur=$user_id");
-    $req->execute ([$_POST['inputTel']]);
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET telephone =? WHERE idUtilisateur=?");
+    $req->execute ([$_POST['inputTel'],$user_id]);
     $_SESSION['flash']['success']= "Votre numéro de téléphone a été mis à jour !";
     }
 }
@@ -176,49 +172,49 @@ if (!empty($_POST)) {
          <div class="form-group row">
           <label for="inputNom" class="col-3 col-form-label">Nom</label>
           <div class="col-9">
-            <input type="text" class="form-control" id="inputNom" name="inputNom" value=<?php echo $_SESSION['auth']->nom; ?>>
+            <input type="text" class="form-control" id="inputNom" name="inputNom" value="<?php echo $_SESSION['auth']->nom; ?>">
           </div>
         </div>
         <div class="form-group row">
           <label for="inputPrenom" class="col-3 col-form-label">Prénom</label>
           <div class="col-9">
-            <input type="text" class="form-control" id="inputPrenom" name="inputPrenom" value=<?php echo $_SESSION['auth']->prenom; ?>>
+            <input type="text" class="form-control" id="inputPrenom" name="inputPrenom" value="<?php echo $_SESSION['auth']->prenom; ?>">
           </div>
         </div>
         <div class="form-group row">
           <label for="inputEmail" class="col-3 col-form-label">Adresse email</label>
           <div class="col-9">
-            <input type="email" class="form-control" name="inputEmail" id="inputEmail" aria-describedby="emailHelp" value=<?php echo $_SESSION['auth']->adresseMail; ?>>
+            <input type="email" class="form-control" name="inputEmail" id="inputEmail" aria-describedby="emailHelp" value="<?php echo $_SESSION['auth']->adresseMail; ?>">
           </div>
         </div>
         <div class="form-group row">
           <label for="inputAdressePostale1" class="col-3 col-form-label">Adresse postale 1</label>
           <div class="col-9">
-            <input type="text" class="form-control" id="inputAdressePostale1" name="inputAdressePostale1" value=<?php echo $_SESSION['auth']->adressePostale1; ?>>
+            <input type="text" class="form-control" id="inputAdressePostale1" name="inputAdressePostale1" value="<?php echo $_SESSION['auth']->adressePostale1; ?>">
           </div>
         </div>
         <div class="form-group row">
           <label for="inputAdressePostale2" class="col-3 col-form-label">Adresse postale 2</label>
           <div class="col-9">
-          <input type="text" class="form-control" id="inputAdressePostale2"  name="inputAdressePostale2" value=<?php echo $_SESSION['auth']->adressePostale2; ?>>
+          <input type="text" class="form-control" id="inputAdressePostale2"  name="inputAdressePostale2" value="<?php echo $_SESSION['auth']->adressePostale2; ?>">
           </div>
         </div>
         <div class="form-group row">
           <label for="inputCodePostal" class="col-3 col-form-label">Code postal</label>
           <div class="col-9">
-            <input type="text" class="form-control" id="inputCodePostal" name="inputCodePostal" value=<?php echo $_SESSION['auth']->codePostal; ?>>
+            <input type="text" class="form-control" id="inputCodePostal" name="inputCodePostal" value="<?php echo $_SESSION['auth']->codePostal; ?>">
           </div>
         </div>
         <div class="form-group row">
           <label for="inputVille" class="col-3 col-form-label">Ville</label>
           <div class="col-9">
-            <input type="text" class="form-control" id="inputVille" name="inputVille" value=<?php echo $_SESSION['auth']->ville; ?>>
+            <input type="text" class="form-control" id="inputVille" name="inputVille" value="<?php echo $_SESSION['auth']->ville; ?>">
           </div>
         </div>
         <div class="form-group row">
           <label for="inputTel" class="col-3 col-form-label">Téléphone</label>
           <div class="col-9">
-            <input class="form-control" type="tel" value="1-(555)-555-5555" name="inputTel" id="inputTel" value=<?php echo $_SESSION['auth']->telephone; ?>>
+            <input class="form-control" type="tel" name="inputTel" id="inputTel" value="<?php echo $_SESSION['auth']->telephone; ?>">
           </div>
         </div>
         <div class="form-group row">
