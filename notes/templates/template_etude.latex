@@ -1,0 +1,92 @@
+% Appuyez sur la touche [F1] pour compiler ce document
+% Appuyez sur la touche [F6] pour compiler ce document avec PDFLateX
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Memoire de Master
+%%
+%% D'après le modèle de Vincent Labatut 2014-2016
+%%
+%% v1   - 10/2017 : Première ébauche
+%% v2   -
+%%
+%%
+%% À faire :
+%%	- options pour les différentes toc
+%%  - titre sur plusieurs lignes dans page de garde
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{templates/etude}
+%\usepackage{float}
+% le caractère '%' permet d'insérer des commentaires, qui seront
+% ignorés par le compilateur
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Informations générales
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TODO Titre du document, à adapter
+\title{$title$}
+
+%TODO Liste des auteurs
+\author{
+	$for(author)$$author$$sep$, $endfor$
+}
+
+
+%TODO sous-titre du document, à adapter
+%\subtitle{Seine et Marne 2012 - 2030}
+\subtitle{$subtitle$}
+
+%TODO formation concernée : à compléter
+% exemples : Licence Informatique, Master Informatique
+\formation{$formation$}
+
+%TODO parcours ou spécialité de la formation
+% exemples pour la licence : Parcours Systèmes et Réseaux Informatiques, Parcours Ingénierie Logicielle
+% exemples pour le master : Spécialité Ingénierie du Logiciel pour la Société Numérique, Spécialité Réseaux Informatiques et Services Mobiles
+\parcours{$parcours$}
+
+%TODO UE concernée par le rapport (à modifier)
+% exemples : UE
+\classname{$classname$}
+
+%Enseignants
+\responsable{$responsable$}
+
+
+\ifthenelse{\isempty{$chargeDeCours$}}{}{\chargeDeCours{$chargeDeCours$}}
+%\chargeDeCours{$chargedecours$}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\usepackage{longtable}
+
+\begin{document}
+
+
+
+% création de la page de titre
+\maketitle
+
+%% insertion d'une page blanche
+\textcolor{white}{du texte}%
+\newpage%
+
+
+
+% création de la table des matières
+\MyToc
+
+% Justification moins stricte : des mots ne dépasseront pas des paragraphes
+\sloppy
+$body$
+
+
+\MyLof
+
+\MyLot
+
+
+\MyBibliography{bibliographie}
+
+\end{document}
