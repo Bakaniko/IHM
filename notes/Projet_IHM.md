@@ -46,13 +46,27 @@ abstract: |
 
 ## design général
 
-##  Accessibilité
+##  Accessibilité (-)
 
 # PHP
 
 ## Gestion des sessions
 
 ## Requêtes en base
+
+~~~~~~~
+if (a > 3) {
+moveShip(5 * gravity, DOWN);
+}
+~~~~~~~
+
+if (a > 3) {
+moveShip(5 * gravity, DOWN);
+}
+
+    if (a > 3) {
+    moveShip(5 * gravity, DOWN);
+    }
 
 # GIT
 ## avantages
