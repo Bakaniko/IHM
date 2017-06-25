@@ -36,6 +36,7 @@ abstract: |
 
 # conception
 
+
 ## maquette préliminiaire
 
 ## Modèle Conceptuel de Données
@@ -73,8 +74,10 @@ toutes les pages du site, néanmoins nous avons, à cause des nombreuses inclusi
 de fichiers PHP dont la variable de session est déjà déclarée, du prévenir
 l'éventualité d'une double ouverture de la session, ce qui engendrerait une erreur.
 
-En utilisant cette instruction
+En utilisant cette instruction,
+
 \colorbox{bleuciel}{\lstinline[basicstyle=\ttfamily\color{black}]{<?php if (session_status()==PHP_SESSION_NONE) {session_start();}?>}}
+
 , nous vérifions d'abord si la variable de session existe déjà, dans le cas
 contraire et seulement dans ce cas là, la session est ouverte.      
 
@@ -105,10 +108,18 @@ La base de code est hébergée et visible sur github : [https://github.com/MinMi
 Nous aurions pu utiliser d'autres plate-formes tel que Bitbucket ou Gitlab / framagit; mais GitKraken s'intègre mieux avec Github et Bitbucket.
 De plus, beaucoup de projets libres ont recours à Github, et c'était l'occasion de se familiariser avec son interface.
 
-Processus d'envoi de mail nécessite *SendMail*
+
 
 ## avantages
+
+Permet une communication entre les
+
+
 ## inconvénients
+
+- sécurité
+
+
 ## problèmes rencontrés
 
 - envoi de mail, fonctionne sur l'ordinateur de Nassim, ne fonctionne pas sur l'ordinateur de nIcolas ou sur Handiman. La *SendMail* n'est pas installé sur le serveur.
@@ -120,6 +131,9 @@ Processus d'envoi de mail nécessite *SendMail*
 - renvoi d'un mot de passe temporaire en  cas d'oubli
 
 - charger directement l'image depuis l'interface de gestion
+
+- si un administrateur est connecté, remplacer panier par gestion qui renvoit vers la page gestion.php
+
 # Conclusion
 
 \appendix

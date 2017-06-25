@@ -129,7 +129,7 @@
 	\definecolor{DarkGrey}{rgb}{0.83,0.83,0.83}
 	\definecolor{BaseColor}{rgb}{0.58,0.05,0.09}%{0.55,0.70,0.06}%{0.64,0.69,0.31}
 	\definecolor{bleuciel}{rgb}{0.85,0.89,0.93}
-	\definecolor{TextColor}{rgb}{0.44,0.49,0.11}
+	\definecolor{TextColor}{rgb}{0.58,0.05,0.09}%{0.44,0.49,0.11}
 	\definecolor{VertDepartementGeo}{rgb}{0.55,0.70,0.06}
 	\definecolor{jaune}{rgb}{0.92,0.90,0.30}
 	\definecolor{rouge}{rgb}{0.58,0.05,0.09}
