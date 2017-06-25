@@ -110,7 +110,28 @@ servi pour développer le design de notre site.
     [https://www.operadeparis.fr](https://www.operadeparis.fr)
 
 
+Comme le montre les figures \ref{fig:interface1} et \ref{fig:interface2}, le
+design a beaucoup évolué entre les différentes versions.
 
+\clearpage
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.2, angle =90 ]{../interfaces/interface_1.png}
+\caption[Première ébauche du design]{Première ébauche du design}
+\label{fig:interface1}
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.15, angle =90 ]{../interfaces/interface_2.png}
+\caption[Design actuel]{Design actuel}
+\label{fig:interface2}
+\end{figure}
+
+\clearpage
 
 ## Accessibilité
 
