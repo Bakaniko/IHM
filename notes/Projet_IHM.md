@@ -34,22 +34,83 @@ abstract: |
 
 # Introduction
 
-# conception
 
-Nous nous sommes inspirés du site de l'Opéra national de Paris.
+Ce projet nous a été confié dans le cadre du Master *Mathématiques et Informatique
+Appliquées aux Sciences Humaines et Sociales* (**MIASHS**) parcours *Technologie
+et handicap* (**HANDI**). Il s'agit d'un projet associant les cours d'Interface
+Homme Machine (Dominique Archambauld) et Programmation Web Accessible (Isis Truck)
+de la première année.
 
-![Site offciel de l'Opéra national de Paris](images/site_officiel.png){ width=100% }
+L'objectif est de développer un site web permettant la réservation de place de
+spectacle. Le site doit être accessible et donc fonctionnel pour des personnes en
+situation de handicap (visuel ou moteur).
+
+Nous avons voulu travailler sur un cas le plus concret possible, c'est pourquoi
+nous nous sommes inspirés du site de l'Opéra national de Paris.
+
+Si les spectacles présentés dans ce projet ont réellement eu lieu, soit à l'Opéra
+Bastille ou au Palais Garnier, l'inspiration s'arrête là. Le plan de salle, les
+dates de représentation, les clients sont totalement fictifs.
+
+
+Le site présenté ici été développé par une équipe de 4 étudiants:
+
+- Bilo Boury
+
+- Charles Cascio
+
+- Nicolas Roelandt
+
+- Nassim Yousfi
+
+
+
+# Conception
+
+Ce site a été développé majoritairement le soir et le week-end, nous avons donc
+vouu le garder le plus simple et fonctionnel possible. D'une part car dans un
+soucis d'économie de temps et d'énergie, et d'autre part dans un souci d'accessibilité.
+
+
+## Répartition des tâches
+
+1. maquette et design du site (HTML/CSS): Charles Cascio
+
+2. MCD et gestion des places : Bilo Boury
+
+3. Implémentation de la base MySQL et PHP: Nicolas Roelandt
+
+4. Implémentation PHP, gestion des sessions: Nassim Yousfi
 
 ## maquette préliminiaire
 
 ## Modèle Conceptuel de Données
 
+\begin{figure}[H]
+\centering
+\hspace{-10mm}\includegraphics[width=1.15\columnwidth]{images/capture_MCD.png}
+\caption[Modèle Conceptuel de Données]{Modèle Conceptuel de Données}
+\label{fig:MCD}
+\end{figure}
+
+
 # Réalisation de la base de données
 
 
-# design du site {#design-du-site}
+# Design du site {#design-du-site}
 
-## design général {#designgeneral}
+## Design général {#designgeneral}
+
+Si le site officiel [^operaNational] est superbe, nous ne nous en sommes pas
+servi pour développer le design de notre site.
+
+![Site officiel de l'Opéra national de Paris](images/site_officiel.png){ width=100% }
+
+[^operaNational]:
+    [https://www.operadeparis.fr](https://www.operadeparis.fr)
+
+
+
 
 ## Accessibilité
 
@@ -186,10 +247,10 @@ Permet une communication entre les
 ## problèmes rencontrés
 
 - envoi de mail, fonctionne sur l'ordinateur de Nassim, ne fonctionne pas sur
-l'ordinateur de nIcolas ou sur Handiman. La *SendMail* n'est pas installé sur le
+l'ordinateur de Nicolas ou sur Handiman. La *SendMail* n'est pas installé sur le
  serveur.
 
-# Evolutions / points non traités
+# Evolutions possibles / points non traités
 
 ## Fonctionnalités / Interface du site
 
@@ -218,7 +279,10 @@ code de la page programmation.php. Il faudra peut-être avoir recours à Javascr
 et JQuery/Ajax.
 
 ## Page spectacle.php
-- spectacle.php : si toutes les dates du spectacles sont passées, afficher quand
+
+- gérer le cas où l'idSpectacle n'existe pas dans la base,
+
+-  si toutes les dates du spectacles sont passées, afficher quand
  même les informations, plus représentations passées (sans bouton réservé)
 
 
