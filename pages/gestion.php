@@ -8,14 +8,15 @@ $path_images=$path_root."images/";
 
 require_once"$path_structure".'fonctions.php';# inclure la fonction debug  <?php session_start();
 if (!isset($_SESSION['auth'])){
-$_SESSION['flash']['danger']="Vous n'avez pas le droit d'accèder à cette page";
+$_SESSION['flash']['danger']="Vous n'avez pas le droit d'accéder à cette page";
 header('Location:connexion.php');
 }if (isset($_SESSION['auth']) && ($_SESSION['auth']->typeUtilisateur=='admin')) {
  $_SESSION['flash']['success']= "Bienvenue".$_SESSION['auth']->nom." ".$_SESSION['auth']->prenom." !";
- debug($_SESSION);
+ //debug($_SESSION);
 }
 else {
-	debug($_SESSION);
+	//debug($_SESSION);
+	header('Location:connexion.php');
 }
 
 require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
@@ -24,6 +25,9 @@ require_once("$path_structure".'base.php');# inclure la connection à la base de
 // ajouter un spectacle
 if(isset($_POST['btn-add-spectacle']))
 {
+
+	$req=$pdo->prepare("INSERT INTO proj_Spectacle SET infos = ?, nom = ?, nomImage = ?, type = ?;");
+	$req->execute ([htmlspecialchars($_POST['infosSpectacle']),htmlspecialchars($_POST['titreSpectacle']), htmlspecialchars($_POST['nomImage']), htmlspecialchars($_POST['selectSpectacle'])]);
 	$_SESSION['flash']['success']= "Un nouveau spectacle a été ajouté !";
 
 	debug($_POST);
