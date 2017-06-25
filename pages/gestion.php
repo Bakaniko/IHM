@@ -3,6 +3,10 @@ $path_root="../";
 $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
 $path_images=$path_root."images/";
+
+require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
+require_once("$path_structure".'fonctions.php');# inclure la fonction debug
+
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +14,7 @@ $path_images=$path_root."images/";
 <?php include($path_structure."head.php"); ?>	<!-- Inclusion <head> -->
 <body class="">
 	<?php include($path_structure."menu.php"); ?>	<!-- Inclusion menu -->
+
 
 	<!-- Contenu de la page de gestion -->
 
@@ -51,7 +56,7 @@ $path_images=$path_root."images/";
 										<option value="7">G</option>
 									</select>
 								</div>
-								
+
 								<div class="form-group row">
 									<label for="inputTitre" class="col-3 col-form-label">Titre</label>
 									<div class="col-9">
