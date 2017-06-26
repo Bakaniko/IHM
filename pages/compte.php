@@ -15,7 +15,7 @@ header('Location:connexion.php');
 }
 else {
    $_SESSION['flash']['success']= "Bienvenue".$_SESSION['auth']->nom." ".$_SESSION['auth']->prenom." !";
-	debug($_SESSION);
+	//debug($_SESSION);
 }
 
 ?>
