@@ -96,7 +96,12 @@ soucis d'économie de temps et d'énergie, et d'autre part dans un souci d'acces
 
 # Réalisation de la base de données
 
+La base de données a été implémentée avec MySQL, car cet implémentation est courante
+pour des sites web. Il est donc aisé de trouver de la documentation à ce sujet
+ainsi que des packs logiciels fournissant la base de données et le serveur web pour
+un usage local.
 
+Enfin, il s'agit de la base de donnée installée sur le serveur Handiman.
 # Design du site {#design-du-site}
 
 ## Design général {#designgeneral}
@@ -310,3 +315,9 @@ et JQuery/Ajax.
 # Conclusion
 
 \appendix
+
+# Annexes
+
+## Documentation de la base de données
+
+\includepdf[pages = -]{sql.pdf}
