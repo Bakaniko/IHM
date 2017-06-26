@@ -31,24 +31,24 @@ require_once"$path_structure".'base.php';# cette instruction est déjà effectu�
 if (!empty($_POST)) {
 	require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
 	require_once"$path_structure".'fonctions.php';# inclure la fonction debug
-	if (!empty($_POST['inputpseudo']) && !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputpseudo'])){
+	if (!empty($_POST['inputpseudo']) && !preg_match('#^[a-zA-Z0-9 -]+$#',$_POST['inputpseudo'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau pseudo n'est pas valide !";
-	}else if(!empty($_POST['inputpseudo']) && preg_match('/^[A-Za-z0-9]+$/',$_POST['inputpseudo'])){
+	}else if(!empty($_POST['inputpseudo']) && preg_match('#^[a-zA-Z0-9 -]+$#',$_POST['inputpseudo'])){
 	$user_id=$_SESSION['auth']->idUtilisateur; # Je récupère l'id utilisateur qui vient de se connecter je l'affecte àla variable $user_id que je met en parametre dans ma requete sql pour changer les infos
     $req=$pdo->prepare("UPDATE proj_utilisateur SET login =? WHERE idUtilisateur=?");
     $req->execute ([htmlspecialchars($_POST['inputpseudo']),$user_id]);
     $_SESSION['flash']['success']= "Votre pseudo a été mis à jour !";
-    }if (!empty($_POST['inputNom']) && !preg_match('/^[A-Za-z]+$/',$_POST['inputNom'])){
+    }if (!empty($_POST['inputNom']) && !preg_match('#^[a-zA-Z -]+$#',$_POST['inputNom'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau nom n'est pas valide !";
-	}else{
+	}else if (!empty($_POST['inputNom']) && preg_match('#^[a-zA-Z -]+$#',$_POST['inputNom'])){
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET nom =? WHERE idUtilisateur=?");
     $req->execute ([htmlspecialchars($_POST['inputNom']),$user_id]);
     $_SESSION['flash']['success']= "Votre nom a été mis à jour !";
 
-    }if (!empty($_POST['inputPrenom']) && !preg_match('/^[A-Za-z]+$/',$_POST['inputPrenom'])){
+    }if (!empty($_POST['inputPrenom']) && !preg_match('#^[a-zA-Z -]+$#',$_POST['inputPrenom'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau prenom n'est pas valide !";
-	}else{
+	}else if (!empty($_POST['inputPrenom']) && preg_match('#^[a-zA-Z -]+$#',$_POST['inputPrenom'])){
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET prenom =? WHERE idUtilisateur=?");
     $req->execute ([htmlspecialchars($_POST['inputPrenom']),$user_id]);
@@ -56,7 +56,7 @@ if (!empty($_POST)) {
 
     }if (!empty($_POST['inputEmail'])&& !filter_var($_POST['inputEmail'],FILTER_VALIDATE_EMAIL)){
 		$_SESSION['flash']['danger']="Votre nouveau mail n'est pas !";
-	}else{
+	}else if (!empty($_POST['inputEmail'])&& filter_var($_POST['inputEmail'],FILTER_VALIDATE_EMAIL)){
 		$user_id=$_SESSION['auth']->idUtilisateur ;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET adresseMail =? WHere idUtilisateur=?");
     $req->execute ([htmlspecialchars($_POST['inputEmail']),$user_id]);
@@ -69,16 +69,17 @@ if (!empty($_POST)) {
     $req=$pdo->prepare("UPDATE proj_utilisateur SET passHash =? WHERE idUtilisateur=?");
     $req->execute ([$hashmod,$user_id]);
     $_SESSION['flash']['success']= "Le mot de passe a été mis à jour !";
-    }if (!empty($_POST['inputAdressePostale1']) && !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputAdressePostale1'])){
+    }if (!empty($_POST['inputAdressePostale1']) && !preg_match('#^[a-zA-Z -]+$#',$_POST['inputAdressePostale1'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau code postale n'est pas valide !";
-	}else{
+	}else if (!empty($_POST['inputAdressePostale1']) && preg_match('#^[a-zA-Z -]+$#',$_POST['inputAdressePostale1'])){
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET adressePostale1 =? WHERE idUtilisateur=?");
     $req->execute ([htmlspecialchars($_POST['inputAdressePostale1']),$user_id]);
     $_SESSION['flash']['success']= "Votre code postale N#1 a été mis à jour !";
-    }if (!empty($_POST['inputAdressePostale2']) && !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputAdressePostale2'])){
+
+    }if (!empty($_POST['inputAdressePostale2']) && !preg_match('#^[a-zA-Z -]+$#',$_POST['inputAdressePostale2'])){
 		$_SESSION['flash']['danger']= "Votre  nouvelle adresse n'est pas valide !";
-	}else{
+	}else if (!empty($_POST['inputAdressePostale2']) && preg_match('#^[a-zA-Z -]+$#',$_POST['inputAdressePostale2'])){
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET adressePostale2 =? WHERE idUtilisateur=?");
     $req->execute ([htmlspecialchars($_POST['inputAdressePostale2']),$user_id]);
