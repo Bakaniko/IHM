@@ -254,6 +254,24 @@ proj_Salle.idSalle, **clé étrangère**
 
 proj_Categorie.idCategorie, **clé étrangère**
 
+## Handicap
+
+Détermine si la place est accessible ou non.
+
+varchar (3)
+
+## Rang
+
+Rangée à laquelle la place appartient
+
+varchar (5)
+
+## Numero
+
+Numéro de la place: concaténation Rang + idPlace
+
+varchar(10)
+
 ## proj_PrixPlace
 
 Le prix est fonction du spectacle, peut importe la représentation, et de la catégorie.

@@ -320,4 +320,5 @@ et JQuery/Ajax.
 
 ## Documentation de la base de données
 
-\includepdf[pages = -]{sql.pdf}
+
+\input{sql}
