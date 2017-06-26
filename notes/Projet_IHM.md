@@ -79,7 +79,7 @@ soucis d'économie de temps et d'énergie, et d'autre part dans un souci d'acces
 
 1. maquette et design du site (HTML/CSS): Charles Cascio
 
-2. MCD et gestion des places : Bilo Boury
+2. MCD et gestion des places et réservations : Bilo Boury
 
 3. Implémentation de la base MySQL et PHP: Nicolas Roelandt
 
@@ -157,8 +157,8 @@ choisir un siège:
 
 - soit en cliquant sur la place voulue de la représentation de la salle.
 
-Cette deuxième option a nécessité l'utilisation de Javascript mais peut être
-aisément contournée.
+Cette deuxième option a nécessité l'utilisation de Javascript mais n'est pas
+obligatoire.
 
 ## Gestion des sessions {#GESTIONSESSION}
 
@@ -232,8 +232,8 @@ recours au logiciel **GitKraken** édité par la société Axosoft [^axosoft].
 
 Outre une esthétique très travaillée, il permet de réaliser facilement plusieurs
 opérations courantes sans avoir à recourir à la ligne de commande (COMMIT, PULL,
- PUSH, ADD REMOTE). Il permet aussi de visualiser les branches des colaborateurs
- et leur avancement.
+ PUSH, ADD REMOTE). Il permet aussi de visualiser les branches des autres
+ collaborateurs et leur avancement.
 
 ## Hébergement
 
@@ -263,15 +263,18 @@ gratuit pour les projets open-source, . Tout ce que nous publions dessus est don
 
 
 
-## avantages
+## Avantages
 
-Permet une communication entre les
+L'avantage principal a été le fait d'avoir une distribution distribuée du code.
+Cela a aussi permis d'utiliser le code le plus à jour possible.
+Github permet une communication entre les participants à travers les Pull Request,
+mais nous avons peu exploiter cette possibilité.
 
+## Inconvénients
 
-## inconvénients
-
-- sécurité
-
+Le fait du publier quelque chose sur github, de façon gratuite, fait qu'il a
+fallu faire attention à la sécurité. Afin de ne pas publier de mots de passe sur
+internet
 
 ## problèmes rencontrés
 
