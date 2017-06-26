@@ -14,8 +14,8 @@ header('Location:connexion.php');
  header('Location:gestion.php');
 }
 else {
+   $_SESSION['flash']['success']= "Bienvenue".$_SESSION['auth']->nom." ".$_SESSION['auth']->prenom." !";
 	debug($_SESSION);
-  debug($_POST);
 }
 
 ?>
@@ -31,57 +31,58 @@ require_once"$path_structure".'base.php';# cette instruction est déjà effectu�
 if (!empty($_POST)) {
 	require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
 	require_once"$path_structure".'fonctions.php';# inclure la fonction debug
-	if (!empty($_POST['inputpseudo']) || !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputpseudo'])){
+	if (!empty($_POST['inputpseudo']) && !preg_match('#^[a-zA-Z0-9 -]+$#',$_POST['inputpseudo'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau pseudo n'est pas valide !";
-	}else{
+	}else if(!empty($_POST['inputpseudo']) && preg_match('#^[a-zA-Z0-9 -]+$#',$_POST['inputpseudo'])){
 	$user_id=$_SESSION['auth']->idUtilisateur; # Je récupère l'id utilisateur qui vient de se connecter je l'affecte àla variable $user_id que je met en parametre dans ma requete sql pour changer les infos
     $req=$pdo->prepare("UPDATE proj_utilisateur SET login =? WHERE idUtilisateur=?");
-    $req->execute ([$_POST['inputpseudo'],$user_id]);
+    $req->execute ([htmlspecialchars($_POST['inputpseudo']),$user_id]);
     $_SESSION['flash']['success']= "Votre pseudo a été mis à jour !";
-    }if (!empty($_POST['inputNom']) && !preg_match('/^[A-Za-z]+$/',$_POST['inputNom'])){
+    }if (!empty($_POST['inputNom']) && !preg_match('#^[a-zA-Z -]+$#',$_POST['inputNom'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau nom n'est pas valide !";
-	}else{
+	}else if (!empty($_POST['inputNom']) && preg_match('#^[a-zA-Z -]+$#',$_POST['inputNom'])){
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET nom =? WHERE idUtilisateur=?");
-    $req->execute ([$_POST['inputNom'],$user_id]);
+    $req->execute ([htmlspecialchars($_POST['inputNom']),$user_id]);
     $_SESSION['flash']['success']= "Votre nom a été mis à jour !";
 
-    }if (!empty($_POST['inputPrenom']) && !preg_match('/^[A-Za-z]+$/',$_POST['inputPrenom'])){
+    }if (!empty($_POST['inputPrenom']) && !preg_match('#^[a-zA-Z -]+$#',$_POST['inputPrenom'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau prenom n'est pas valide !";
-	}else{
+	}else if (!empty($_POST['inputPrenom']) && preg_match('#^[a-zA-Z -]+$#',$_POST['inputPrenom'])){
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET prenom =? WHERE idUtilisateur=?");
-    $req->execute ([$_POST['inputPrenom'],$user_id]);
+    $req->execute ([htmlspecialchars($_POST['inputPrenom']),$user_id]);
     $_SESSION['flash']['success']= "Votre nom a été mis à jour !";
 
     }if (!empty($_POST['inputEmail'])&& !filter_var($_POST['inputEmail'],FILTER_VALIDATE_EMAIL)){
 		$_SESSION['flash']['danger']="Votre nouveau mail n'est pas !";
-	}else{
+	}else if (!empty($_POST['inputEmail'])&& filter_var($_POST['inputEmail'],FILTER_VALIDATE_EMAIL)){
 		$user_id=$_SESSION['auth']->idUtilisateur ;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET adresseMail =? WHere idUtilisateur=?");
-    $req->execute ([$_POST['inputEmail'],$user_id]);
+    $req->execute ([htmlspecialchars($_POST['inputEmail']),$user_id]);
     $_SESSION['flash']['success']= "L'Email a été mis à jour !";
-    }if (isset($_POST['inputMotDePasse']) || $_POST['inputMotDePasse']!= ($_POST['inputMotDePasse2'])){
+  }if (!empty($_POST['inputMotDePasse']) || ($_POST['inputMotDePasse']!= $_POST['inputMotDePasse2'])){
 		$_SESSION['flash']['danger']= "Les mots de passe ne correspondent pas !";
-	}else{
+	}elseif(!empty($_POST['inputMotDePasse']) && ($_POST['inputMotDePasse'] == $_POST['inputMotDePasse2'])){
 		$user_id=$_SESSION['auth']->idUtilisateur ;
 		$hashmod=password_hash($_POST['inputMotDePasse'], PASSWORD_BCRYPT);
     $req=$pdo->prepare("UPDATE proj_utilisateur SET passHash =? WHERE idUtilisateur=?");
-    $req->execute ([$hashmod,$user_id],$user_id);
+    $req->execute ([$hashmod,$user_id]);
     $_SESSION['flash']['success']= "Le mot de passe a été mis à jour !";
-    }if (!empty($_POST['inputAdressePostale1']) && !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputAdressePostale1'])){
+    }if (!empty($_POST['inputAdressePostale1']) && !preg_match('#^[a-zA-Z -]+$#',$_POST['inputAdressePostale1'])){
 		$_SESSION['flash']['danger']= "Votre  nouveau code postale n'est pas valide !";
-	}else{
+	}else if (!empty($_POST['inputAdressePostale1']) && preg_match('#^[a-zA-Z -]+$#',$_POST['inputAdressePostale1'])){
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET adressePostale1 =? WHERE idUtilisateur=?");
-    $req->execute ([$_POST['inputAdressePostale1'],$user_id]);
+    $req->execute ([htmlspecialchars($_POST['inputAdressePostale1']),$user_id]);
     $_SESSION['flash']['success']= "Votre code postale N#1 a été mis à jour !";
-    }if (!empty($_POST['inputAdressePostale2']) && !preg_match('/^[A-Za-z0-9]+$/',$_POST['inputAdressePostale2'])){
+
+    }if (!empty($_POST['inputAdressePostale2']) && !preg_match('#^[a-zA-Z -]+$#',$_POST['inputAdressePostale2'])){
 		$_SESSION['flash']['danger']= "Votre  nouvelle adresse n'est pas valide !";
-	}else{
+	}else if (!empty($_POST['inputAdressePostale2']) && preg_match('#^[a-zA-Z -]+$#',$_POST['inputAdressePostale2'])){
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET adressePostale2 =? WHERE idUtilisateur=?");
-    $req->execute ([$_POST['inputAdressePostale2'],$user_id]);
+    $req->execute ([htmlspecialchars($_POST['inputAdressePostale2']),$user_id]);
     $_SESSION['flash']['success']= "Votre code postale N#2 a été mis à jour !";
 
     }if (!empty($_POST['inputCodePostal']) && !preg_match('/^[0-9]{5}$/',$_POST['inputCodePostal'])){
@@ -89,7 +90,7 @@ if (!empty($_POST)) {
 	}else{
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET codePostal =? WHERE idUtilisateur=?");
-    $req->execute ([$_POST['inputCodePostal'],$user_id]);
+    $req->execute ([htmlspecialchars($_POST['inputCodePostal']),$user_id]);
     $_SESSION['flash']['success']= "Votre code postale a été mis à jour !";
 
     }if (!empty($_POST['inputVille']) && !preg_match('/^[A-Za-z]+$/',$_POST['inputVille'])){
@@ -97,16 +98,18 @@ if (!empty($_POST)) {
 	}else{
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET ville =? WHERE idUtilisateur=?");
-    $req->execute ([$_POST['inputVille'],$user_id]);
+    $req->execute ([htmlspecialchars($_POST['inputVille']),$user_id]);
     $_SESSION['flash']['success']= "Votre ville de résidence a été mise à jour !";
     }if (!empty($_POST['inputTel']) && !preg_match('/^[0-9]{10}$/',$_POST['inputTel'])){
 		$_SESSION['flash']['danger']= "Votre numéro de téléphone n'est pas valide !";
 	}else{
 	$user_id=$_SESSION['auth']->idUtilisateur;
     $req=$pdo->prepare("UPDATE proj_utilisateur SET telephone =? WHERE idUtilisateur=?");
-    $req->execute ([$_POST['inputTel'],$user_id]);
+    $req->execute ([htmlspecialchars($_POST['inputTel']),$user_id]);
     $_SESSION['flash']['success']= "Votre numéro de téléphone a été mis à jour !";
     }
+    header('Location:compte.php');
+    $_SESSION['flash']['success']= "Vos changements ont été pris en compte";
 }
 ?>
 
@@ -150,18 +153,18 @@ if (!empty($_POST)) {
 							<input type="text" class="form-control" name="inputpseudo" id="inputpseudo" value="<?php echo $_SESSION['auth']->login; ?>">
 						</div>
 					</div>
-		<div class="form-group row">
-			<label for="inputMotDePasse" class="col-3 col-form-label"> Modifier votre mot de passe</label>
-			<div class="col-9">
-				<input type="password" class="form-control" name="inputMotDePasse" id="inputMotDePasse">
-			</div>
-		</div>
-		 <div class="form-group row">
-			<label for="inputMotDePasse2" class="col-3 col-form-label"> Confirmer le nouveau mot de passe</label>
-			<div class="col-9">
-				<input type="password" class="form-control" name="inputMotDePasse2" id="inputMotDePasse2">
-			</div>
-		</div>
+          <div class="form-group row">
+            <label for="inputMotDePasse" class="col-3 col-form-label"> Modifier votre mot de passe</label>
+            <div class="col-9">
+              <input type="password" class="form-control" name="inputMotDePasse" id="inputMotDePasse">
+            </div>
+          </div>
+           <div class="form-group row">
+            <label for="inputMotDePasse2" class="col-3 col-form-label"> Confirmer le nouveau mot de passe</label>
+            <div class="col-9">
+              <input type="password" class="form-control" name="inputMotDePasse2" id="inputMotDePasse2">
+            </div>
+          </div>
 		<div class="form-group row">
 			<button type="submit" class="btn btn-primary mx-auto">Enregistrer vos modifications</button>
 		</div>
@@ -220,21 +223,10 @@ if (!empty($_POST)) {
         <div class="form-group row">
           <label for="inputTel" class="col-3 col-form-label">Téléphone</label>
           <div class="col-9">
-            <input class="form-control" type="tel" value="1-(555)-555-5555" name="inputTel" id="inputTel" value="<?php echo $_SESSION['auth']->telephone; ?>">
+            <input class="form-control" type="tel" name="inputTel" id="inputTel" value="<?php echo $_SESSION['auth']->telephone; ?>">
           </div>
         </div>
-        <div class="form-group row">
-          <label for="inputMotDePasse" class="col-3 col-form-label"> Modifier votre mot de passe</label>
-          <div class="col-9">
-            <input type="password" class="form-control" name="inputMotDePasse" id="inputMotDePasse">
-          </div>
-        </div>
-         <div class="form-group row">
-          <label for="inputMotDePasse2" class="col-3 col-form-label"> Confirmer le nouveau mot de passe</label>
-          <div class="col-9">
-            <input type="password" class="form-control" name="inputMotDePasse2" id="inputMotDePasse2">
-          </div>
-        </div>
+
         <div class="form-group row">
           <button type="submit" class="btn btn-primary mx-auto">Enregistrer vos modifications</button>
         </div>

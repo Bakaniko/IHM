@@ -4,16 +4,18 @@ $path_root="../";
 $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
 $path_images=$path_root."images/";
-$connect = mysqli_connect('mysql:dbname=p18_nicolas;host=localhost','nicolas','omkivyeik8');; ?> <!-- connexion a la base-->
+
+require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
+?>
 <?php
 $categorie = '';
-$query = "SELECT Categorie FROM proj_Place
-			where proj_Place.idPlace NOT IN (SELECT proj_reservation.idPlace FROM proj_reservation)
+$sql = "SELECT Categorie FROM proj_Place
+			where proj_Place.idPlace NOT IN (SELECT proj_Reservation.idPlace FROM proj_Reservation)
 			 Group by Categorie "or die(print_r($bd->errorInfo()));
-$result = mysqli_query($connect, $query);
-while($row = mysqli_fetch_array($result))
+$req = $pdo->query($sql);
+while($row = $req->fetch())
 {
- $categorie.= '<option value="'.$row["Categorie"].'">'.$row["Categorie"].'</option>';
+ $categorie.= '<option value="'.$row->Categorie.'">'.$row->Categorie.'</option>';
 }
 ?>
 <!DOCTYPE html>
@@ -23,7 +25,7 @@ while($row = mysqli_fetch_array($result))
 	<?php include($path_structure."menu.php"); ?> <!-- Inclusion menu -->
 
 	<!-- Contenu de la page spectacle -->
-	
+
 	<div class="container main">
 		<!-- Interface de Sélection des places -->
 		<div class="card mx-auto">
@@ -45,23 +47,23 @@ while($row = mysqli_fetch_array($result))
 						</div>
 						<!-- Sélection Handicap -->
 						<div class="form-group d-flex flex-column">
-							<label for="handicap">Accessibilité</label>
+							<label for="handicap">Accessibilité requise ?</label>
 							<select class="custom-select action" name="handicap" id="handicap">
-								<option value="">Chosir</option>
+								<option value=""> Choisir</option>
 							</select>
 						</div>
 						<!-- Sélection rangée -->
 						<div class="form-group d-flex flex-column">
-							<label for="ranger">Rangé</label>
+							<label for="ranger">Rangée</label>
 							<select class="custom-select action" name="ranger" id="ranger">
-								<option value="">Chosir</option>
+								<option value=""> Choisir</option>
 							</select>
 						</div>
 						<!-- Sélection numéro -->
 						<div class="form-group d-flex flex-column">
 							<label for="numero">Numéro</label>
 							<select class="custom-select" name="numero" id="numero">
-								<option value="">Chosir</option>
+								<option value=""> Choisir</option>
 							</select>
 						</div>
 						<!-- Boutton d'envoi -->
@@ -95,5 +97,3 @@ while($row = mysqli_fetch_array($result))
 <script>
 <?php include($path_pages."recherche_place.js"); ?> <!-- Inclusion la page js de requête de recherche de place-->
 </script>
-
-

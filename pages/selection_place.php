@@ -1,44 +1,53 @@
 <?php
-//fetch.php
+$path_root="../";
+$path_structure=$path_root."structure/";
+$path_pages=$path_root."pages/";
+$path_images=$path_root."images/";
+
+require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
+
+
 if(isset($_POST["action"]))
 {
- $connect = mysqli_connect('mysql:dbname=p18_nicolas;host=localhost','nicolas','omkivyeik8');
+ $connect = $pdo;
  $output = '';
 
  if($_POST["action"] == "categorie")
  {
-  $query = "SELECT Distinct Handicap FROM proj_Place WHERE proj_Place.idPlace NOT IN (SELECT proj_reservation.idPlace FROM proj_reservation) 
-							AND Categorie = '".$_POST["query"]."'ORDER BY Handicap";
-  $result = mysqli_query($connect, $query);
+  $sql = "SELECT Distinct Handicap FROM proj_Place WHERE proj_Place.idPlace NOT IN (SELECT proj_Reservation.idPlace FROM proj_Reservation)
+							AND Categorie = '".$_POST["sql"]."' ORDER BY Handicap";
+
+
+  $req = $pdo->query($sql);
   $output .= '<option value="">Selectionner le type</option>';
-  while($row = mysqli_fetch_array($result))
+  while($row = $req->fetch())
   {
-   $output .= '<option value="'.$row["Handicap"].'">'.$row["Handicap"].'</option>';
+   $output .= '<option value="'.$row->Handicap.'">'.$row->Handicap.'</option>';
   }
  }
  if($_POST["action"] == "handicap")
  {
-  $query = "SELECT Distinct Rang FROM proj_Place WHERE proj_Place.idPlace NOT IN (SELECT proj_reservation.idPlace FROM proj_reservation) 
-							AND Handicap ='".$_POST["query"]."'ORDER BY Rang" or die(print_r($bd->errorInfo())); 
-  $result = mysqli_query($connect, $query);
+  $sql = "SELECT Distinct Rang FROM proj_Place WHERE proj_Place.idPlace NOT IN (SELECT proj_Reservation.idPlace FROM proj_Reservation)
+							AND Handicap ='".$_POST["sql"]."'ORDER BY Rang" or die(print_r($bd->errorInfo()));
+  $req = $pdo->query($sql);
   $output .= '<option value="">Choisir votre rangé</option>';
-  while($row = mysqli_fetch_array($result))
+  while($row = $req->fetch())
   {
-   $output .= '<option value="'.$row["Rang"].'">'.$row["Rang"].'</option>';
+   $output .= '<option value="'.$row->Rang.'">'.$row->Rang.'</option>';
   }
-  
+
  }
  if($_POST["action"] == "ranger")
  {
-  $query = "SELECT Distinct Numero FROM proj_Place WHERE proj_Place.idPlace NOT IN (SELECT proj_reservation.idPlace FROM proj_reservation) 
-							AND Ranger ='".$_POST["query"]."'ORDER BY Numero" or die(print_r($bd->errorInfo())); 
-  $result = mysqli_query($connect, $query);
+  $sql = "SELECT Distinct Numero FROM proj_Place WHERE proj_Place.idPlace NOT IN (SELECT proj_Reservation.idPlace FROM proj_Reservation)
+							AND Ranger ='".$_POST["sql"]."'ORDER BY Numero" or die(print_r($bd->errorInfo()));
+    $req = $pdo->query($sql);
   $output .= '<option value="">Selectionner votre place</option>';
-  while($row = mysqli_fetch_array($result))
+  while($row = $req->fetch())
   {
-   $output .= '<option value="'.$row["Numero"].'">'.$row["Numero"].'</option>';
+   $output .= '<option value="'.$row->Numero.'">'.$row->Numero.'</option>';
   }
- }
+}
  echo $output;
 }
 ?>
