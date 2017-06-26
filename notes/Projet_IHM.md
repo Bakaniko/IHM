@@ -63,6 +63,9 @@ Le site présenté ici été développé par une équipe de 4 étudiants:
 
 - Nassim Yousfi
 
+#### Cahier des charges
+
+Développer un site de réservation de places de spectacle le plus accessible possible.
 
 
 # Conception
@@ -317,8 +320,6 @@ et JQuery/Ajax.
 \appendix
 
 # Annexes
-
-## Documentation de la base de données
 
 
 \input{sql}

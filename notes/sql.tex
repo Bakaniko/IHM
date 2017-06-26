@@ -1,12 +1,13 @@
-\section{Notes sur le SQL}\label{notes-sur-le-sql}
+\subsection{Documentation de la base de données
+1}\label{documentation-de-la-base-de-donnuxe9es-1}
 
 Notes table par table
 
 Toutes les tables commencent par le préfix ``proj\_''
 
-\subsection{proj\_TypeUtilisateur}\label{projux5ftypeutilisateur}
+\subsubsection{proj\_TypeUtilisateur}\label{projux5ftypeutilisateur}
 
-\subsubsection{\texorpdfstring{\textbf{TypeUtilisateur}}{TypeUtilisateur}}\label{typeutilisateur}
+\paragraph{\texorpdfstring{\textbf{TypeUtilisateur}}{TypeUtilisateur}}\label{typeutilisateur}
 
 Défini les types d'utilisateurs possibles:
 
@@ -26,15 +27,15 @@ seul un admin peut changer le type d'un utilisateur.
 
 varchar 10
 
-\subsection{proj\_Utilisateur}\label{projux5futilisateur}
+\subsubsection{proj\_Utilisateur}\label{projux5futilisateur}
 
-\subsubsection{\texorpdfstring{\textbf{IDU}}{IDU}}\label{idu}
+\paragraph{\texorpdfstring{\textbf{IDU}}{IDU}}\label{idu}
 
 Identifiant Unique utilisateur, \textbf{clé primaire}
 
 type numérique auto-incrémenté
 
-\subsubsection{login}\label{login}
+\paragraph{login}\label{login}
 
 Identifiant de l'utilisateur (pseudo, adresse mail)
 
@@ -42,50 +43,50 @@ Varchar 30, \textbf{UNIQUE}
 
 Il ne doit pas y avoir 2 login identiques dans la base
 
-\subsubsection{passHash}\label{passhash}
+\paragraph{passHash}\label{passhash}
 
 Mot de passe haché par la fonction password\_hash() de PHP; doit être
 utilisé directement par password\_verify().
 
 varchar 255 NOT NULL
 
-\subsubsection{nom}\label{nom}
+\paragraph{nom}\label{nom}
 
 Nom de l'utilisateur
 
 Varchar 30
 
-\subsubsection{prenom}\label{prenom}
+\paragraph{prenom}\label{prenom}
 
 Prenom de l'utilisateur
 
 Varchar 30
 
-\subsubsection{adressePostale1}\label{adressepostale1}
+\paragraph{adressePostale1}\label{adressepostale1}
 
 Première ligne de l'adresse postale
 
 Varchar 50
 
-\subsubsection{adressePostale2}\label{adressepostale2}
+\paragraph{adressePostale2}\label{adressepostale2}
 
 Deuxième ligne de l'adresse postale
 
 Varchar 50
 
-\subsubsection{codePostal}\label{codepostal}
+\paragraph{codePostal}\label{codepostal}
 
 Code postal : traité comme string pour les client étrangers
 
 Varchar 10
 
-\subsubsection{ville}\label{ville}
+\paragraph{ville}\label{ville}
 
 Ville de résidence
 
 Varchar 15
 
-\subsubsection{adresseMail}\label{adressemail}
+\paragraph{adresseMail}\label{adressemail}
 
 email de contact, \emph{devra correspondre à un certain format}
 
@@ -93,14 +94,14 @@ email de contact, \emph{devra correspondre à un certain format}
 
 varchar 50
 
-\subsubsection{telephone}\label{telephone}
+\paragraph{telephone}\label{telephone}
 
 telephone de contact, traité comme string pour les numéros étrangers,
 \emph{devra correspondre à un certain format}
 
 varchar 15
 
-\subsubsection{\texorpdfstring{\emph{typeUtilisateur}}{typeUtilisateur}}\label{typeutilisateur-1}
+\paragraph{\texorpdfstring{\emph{typeUtilisateur}}{typeUtilisateur}}\label{typeutilisateur-1}
 
 référence le type d'utilisateur
 
@@ -111,17 +112,17 @@ Clé étrangère sur \textbf{proj\_TypeUtilisateur.TypeUtilisateur}
 
 varchar 10
 
-\subsection{proj\_Spectacle}\label{projux5fspectacle}
+\subsubsection{proj\_Spectacle}\label{projux5fspectacle}
 
 Référence tous les spectacles proposés (faits, en cours, à venir)
 
-\subsubsection{\texorpdfstring{\textbf{idSpectacle}}{idSpectacle}}\label{idspectacle}
+\paragraph{\texorpdfstring{\textbf{idSpectacle}}{idSpectacle}}\label{idspectacle}
 
 Identifiant unique auto-incrémenté, \textbf{clé primaire}
 
 Int
 
-\subsubsection{nom}\label{nom-1}
+\paragraph{nom}\label{nom-1}
 
 Nom du spectacle
 
@@ -129,7 +130,7 @@ varchar 50
 
 (unique ?)
 
-\subsubsection{type}\label{type}
+\paragraph{type}\label{type}
 
 Référence le type de spectacle: concert, pièce de théatre, danse
 \ldots{}
@@ -138,7 +139,7 @@ Suggestion: Les valeurs devraient venir d'une table externe
 
 varchar 30
 
-\subsubsection{infos}\label{infos}
+\paragraph{infos}\label{infos}
 
 contient les informations du spectacle:
 
@@ -156,90 +157,90 @@ suggestion : peut être divisé en plusieurs champs dans un vrai site
 
 TEXT
 
-\subsection{proj\_Salle}\label{projux5fsalle}
+\subsubsection{proj\_Salle}\label{projux5fsalle}
 
 Une salle est composée de places et appartient à un lieu
 
-\subsubsection{\texorpdfstring{\textbf{idSalle}}{idSalle}}\label{idsalle}
+\paragraph{\texorpdfstring{\textbf{idSalle}}{idSalle}}\label{idsalle}
 
 Identifiant unique
 
 Numérique INT auto-incrémenté \textbf{clé primaire}
 
-\subsubsection{nom}\label{nom-2}
+\paragraph{nom}\label{nom-2}
 
 nom de la salle (salle n°3; Théatre Odéon; etc)
 
 varchar 30
 
-\subsubsection{adresse}\label{adresse}
+\paragraph{adresse}\label{adresse}
 
 adresse postale
 
 TEXT
 
-\subsubsection{type}\label{type-1}
+\paragraph{type}\label{type-1}
 
 type de salle: salle de concert, théatre, piste de cirque\ldots{}
 
 varchar 20
 
-\subsection{proj\_Representation}\label{projux5frepresentation}
+\subsubsection{proj\_Representation}\label{projux5frepresentation}
 
 Une représentation est identifiée par un spectacle (auteur, acteurs,
 etc), une salle, un horaire et une date. Un spectacle peut avoir
 plusieurs représentations dans la même salle.
 
-\subsubsection{\texorpdfstring{\textbf{idRepresentation}}{idRepresentation}}\label{idrepresentation}
+\paragraph{\texorpdfstring{\textbf{idRepresentation}}{idRepresentation}}\label{idrepresentation}
 
 Identifiant unique
 
 Numérique INT auto-incrémenté \textbf{clé primaire}
 
-\subsubsection{\texorpdfstring{\emph{idSalle}}{idSalle}}\label{idsalle-1}
+\paragraph{\texorpdfstring{\emph{idSalle}}{idSalle}}\label{idsalle-1}
 
 proj\_Salle.idSalle, \textbf{clé étrangère}
 
-\subsubsection{\texorpdfstring{\emph{idSpectacle}}{idSpectacle}}\label{idspectacle-1}
+\paragraph{\texorpdfstring{\emph{idSpectacle}}{idSpectacle}}\label{idspectacle-1}
 
 proj\_Spectacle.idSpectacle, \textbf{clé étrangère}
 
-\subsubsection{date}\label{date}
+\paragraph{date}\label{date}
 
 date de la représentation, séparée du temps pour être plus simple à
 dupliquer
 
 DATE
 
-\subsubsection{HoraireDebut}\label{horairedebut}
+\paragraph{HoraireDebut}\label{horairedebut}
 
 Début de la représentation
 
 TIME
 
-\subsubsection{HoraireFin}\label{horairefin}
+\paragraph{HoraireFin}\label{horairefin}
 
 Fin de la représentation
 
 TIME
 
-\subsection{proj\_Categorie}\label{projux5fcategorie}
+\subsubsection{proj\_Categorie}\label{projux5fcategorie}
 
 Catégories disponibles pour une salle
 
-\subsubsection{\texorpdfstring{\textbf{idCategorie}}{idCategorie}}\label{idcategorie}
+\paragraph{\texorpdfstring{\textbf{idCategorie}}{idCategorie}}\label{idcategorie}
 
 Identifiant unique
 
 Numérique INT auto-incrémenté \textbf{clé primaire}
 
-\subsubsection{Categorie}\label{categorie}
+\paragraph{Categorie}\label{categorie}
 
 Nom de la categorie
 
 varchar 20
 
-\subsubsection{\texorpdfstring{\emph{idSalle}}{idSalle}}\label{idsalle-2}
+\paragraph{\texorpdfstring{\emph{idSalle}}{idSalle}}\label{idsalle-2}
 
 Les salles ont certaines catégories mais pas toutes. Il faut séparer les
 catégories de chaque salle, car la même catégorie n'aura pas le même
@@ -247,64 +248,64 @@ prix dans un théatre que dans un opéra.
 
 proj\_Salle.idSalle, \textbf{clé étrangère}
 
-\subsection{proj\_Place}\label{projux5fplace}
+\subsubsection{proj\_Place}\label{projux5fplace}
 
-\subsubsection{\texorpdfstring{\textbf{idPlace}}{idPlace}}\label{idplace}
+\paragraph{\texorpdfstring{\textbf{idPlace}}{idPlace}}\label{idplace}
 
 Identifiant unique
 
 Numérique INT auto-incrémenté \textbf{clé primaire}
 
-\subsubsection{\texorpdfstring{\emph{idSalle}}{idSalle}}\label{idsalle-3}
+\paragraph{\texorpdfstring{\emph{idSalle}}{idSalle}}\label{idsalle-3}
 
 Une place appartient toujours à une salle
 
 proj\_Salle.idSalle, \textbf{clé étrangère}
 
-\subsubsection{\texorpdfstring{\emph{idCategorie}}{idCategorie}}\label{idcategorie-1}
+\paragraph{\texorpdfstring{\emph{idCategorie}}{idCategorie}}\label{idcategorie-1}
 
 proj\_Categorie.idCategorie, \textbf{clé étrangère}
 
-\subsection{Handicap}\label{handicap}
+\paragraph{Handicap}\label{handicap}
 
 Détermine si la place est accessible ou non.
 
 varchar (3)
 
-\subsection{Rang}\label{rang}
+\paragraph{Rang}\label{rang}
 
 Rangée à laquelle la place appartient
 
 varchar (5)
 
-\subsection{Numero}\label{numero}
+\paragraph{Numero}\label{numero}
 
 Numéro de la place: concaténation Rang + idPlace
 
 varchar(10)
 
-\subsection{proj\_PrixPlace}\label{projux5fprixplace}
+\subsubsection{proj\_PrixPlace}\label{projux5fprixplace}
 
 Le prix est fonction du spectacle, peut importe la représentation, et de
 la catégorie. La catégorie permet de remonter à la salle.
 
-\subsubsection{\texorpdfstring{\textbf{\emph{idCategorie}}}{idCategorie}}\label{idcategorie-2}
+\paragraph{\texorpdfstring{\textbf{\emph{idCategorie}}}{idCategorie}}\label{idcategorie-2}
 
 proj\_Categorie.idCategorie, \textbf{clé étrangère}; \textbf{clé
 primaire}
 
-\subsubsection{\texorpdfstring{\textbf{\emph{idSpectacle}}}{idSpectacle}}\label{idspectacle-2}
+\paragraph{\texorpdfstring{\textbf{\emph{idSpectacle}}}{idSpectacle}}\label{idspectacle-2}
 
 proj\_Spectacle.idSpectacle, \textbf{clé étrangère}; \textbf{clé
 primaire}
 
-\subsubsection{prix}\label{prix}
+\paragraph{prix}\label{prix}
 
 Prix en euros
 
 Décimal
 
-\subsection{proj\_Reservation}\label{projux5freservation}
+\subsubsection{proj\_Reservation}\label{projux5freservation}
 
 Une réservation prend en compte 1 et 1 seule place, pour une unique
 réprésentation, par un unique utilisateur /client.
@@ -312,68 +313,69 @@ réprésentation, par un unique utilisateur /client.
 Avec le couple idPlace et idRepresentation, il est possible de retrouver
 le prix
 
-\subsubsection{\texorpdfstring{\textbf{\emph{IDU}}}{IDU}}\label{idu-1}
+\paragraph{\texorpdfstring{\textbf{\emph{IDU}}}{IDU}}\label{idu-1}
 
 proj\_Utilisateur.IDU, \textbf{clé étrangère}; \textbf{clé primaire}
 
-\subsubsection{\texorpdfstring{\textbf{\emph{idRepresentation}}}{idRepresentation}}\label{idrepresentation-1}
+\paragraph{\texorpdfstring{\textbf{\emph{idRepresentation}}}{idRepresentation}}\label{idrepresentation-1}
 
 proj\_Representation.idRepresentation, \textbf{clé étrangère};
 \textbf{clé primaire}
 
-\subsubsection{\texorpdfstring{\textbf{\emph{idPlace}}}{idPlace}}\label{idplace-1}
+\paragraph{\texorpdfstring{\textbf{\emph{idPlace}}}{idPlace}}\label{idplace-1}
 
 proj\_Place.idPlace, \textbf{clé étrangère}; \textbf{clé primaire}
 
-\subsection{messages\_contacts}\label{messagesux5fcontacts}
+\subsubsection{messages\_contacts}\label{messagesux5fcontacts}
 
 Cette table est destinée à contenir les messages envoyés à travers la
 page infos.phpMyAdmin
 
-\subsubsection{id\_message\_contact}\label{idux5fmessageux5fcontact}
+\paragraph{id\_message\_contact}\label{idux5fmessageux5fcontact}
 
 Id unique du message, généré à l'insertion
 
 type \emph{SERIAL}
 
-\subsubsection{Nom\_contact}\label{nomux5fcontact}
+\paragraph{Nom\_contact}\label{nomux5fcontact}
 
 Nom de l'expéditeur
 
 \emph{varchar 30}
 
-\subsubsection{Prenom\_contact}\label{prenomux5fcontact}
+\paragraph{Prenom\_contact}\label{prenomux5fcontact}
 
 Prenom de l'expéditeur
 
 \emph{varchar 255}
 
-\subsubsection{Mail\_contact}\label{mailux5fcontact}
+\paragraph{Mail\_contact}\label{mailux5fcontact}
 
 email de l'expéditeur
 
 \emph{varchar 255}
 
-\subsubsection{Text\_message}\label{textux5fmessage}
+\paragraph{Text\_message}\label{textux5fmessage}
 
 Texte du message
 
 type \emph{TEXT}
 
-\subsubsection{date\_message\_contact}\label{dateux5fmessageux5fcontact}
+\paragraph{date\_message\_contact}\label{dateux5fmessageux5fcontact}
 
 Date d'enregistrement du message
 
 type \emph{date}
 
-\section{Disponibilité des places}\label{disponibilituxe9-des-places}
+\subsubsection{Disponibilité des
+places}\label{disponibilituxe9-des-places}
 
 Pas besoin de créer une liste spéciale:
 
 Il suffit de trier les places pour le spectacle concerné où il y a (ou
 pas) de réservations de faite.
 
-\section{Clés étrangères}\label{cluxe9s-uxe9tranguxe8res}
+\subsubsection{Clés étrangères}\label{cluxe9s-uxe9tranguxe8res}
 
 proj\_Utilisateur(typeUtilisateur) -\textgreater{}
 proj\_TypeUtilisateur(typeUtilisateur)
