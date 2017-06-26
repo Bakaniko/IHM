@@ -1,10 +1,21 @@
 <?php // Définition des chemins d'accès aux fichiers
+session_start();
 $path_root="../";
 $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
 $path_images=$path_root."images/";
+$connect = mysqli_connect('mysql:dbname=p18_nicolas;host=localhost','nicolas','omkivyeik8');; ?> <!-- connexion a la base-->
+<?php
+$categorie = '';
+$query = "SELECT Categorie FROM proj_Place
+			where proj_Place.idPlace NOT IN (SELECT proj_reservation.idPlace FROM proj_reservation)
+			 Group by Categorie "or die(print_r($bd->errorInfo()));
+$result = mysqli_query($connect, $query);
+while($row = mysqli_fetch_array($result))
+{
+ $categorie.= '<option value="'.$row["Categorie"].'">'.$row["Categorie"].'</option>';
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <?php include($path_structure."head.php"); ?> <!-- Inclusion <head> -->
@@ -13,7 +24,7 @@ $path_images=$path_root."images/";
 
 	<!-- Contenu de la page spectacle -->
 	
-	<div class="container main" id="reservation">
+	<div class="container main">
 		<!-- Interface de Sélection des places -->
 		<div class="card mx-auto">
 			<!-- Titre -->
@@ -22,63 +33,35 @@ $path_images=$path_root."images/";
 			</div>
 			<!-- Formulaire de sélection des places -->
 			<div class="card-block text-center mx-auto">
-				<form method="POST" action="#">
+				<form>
 					<div class="d-flex flex-row flex-wrap justify-content-center">
 						<!-- Sélection catégorie -->
 						<div class="form-group d-flex flex-column">
 							<label for="categorie">Catégorie</label>
-							<select class="custom-select" name="categorie">
-								<option selected>Choisir...</option>
-								<option value="1"></option>
-								<option value="2"></option>
-								<option value="3"></option>
-								<option value="4"></option>
-								<option value="5"></option>
-								<option value="6"></option>
-								<option value="7"></option>
-								<option value="8"></option>
-								<option value="9"></option>
-								<option value="10"></option>
-								<option value="11"></option>
-								<option value="12"></option>
+							<select class="custom-select action" name="categorie" id="categorie">
+								<option value="">Choisir</option>
+									<?php echo $categorie;?>
+							</select>
+						</div>
+						<!-- Sélection Handicap -->
+						<div class="form-group d-flex flex-column">
+							<label for="handicap">Accessibilité</label>
+							<select class="custom-select action" name="handicap" id="handicap">
+								<option value="">Chosir</option>
 							</select>
 						</div>
 						<!-- Sélection rangée -->
 						<div class="form-group d-flex flex-column">
-							<label for="rangee">Rangée</label>
-							<select class="custom-select" name="rangee">
-								<option selected>Choisir...</option>
-								<option value="1"></option>
-								<option value="2"></option>
-								<option value="3"></option>
-								<option value="4"></option>
-								<option value="5"></option>
-								<option value="6"></option>
-								<option value="7"></option>
-								<option value="8"></option>
-								<option value="9"></option>
-								<option value="10"></option>
-								<option value="11"></option>
-								<option value="12"></option>
+							<label for="ranger">Rangé</label>
+							<select class="custom-select action" name="ranger" id="ranger">
+								<option value="">Chosir</option>
 							</select>
 						</div>
 						<!-- Sélection numéro -->
 						<div class="form-group d-flex flex-column">
 							<label for="numero">Numéro</label>
-							<select class="custom-select" name="numero">
-								<option selected>Choisir...</option>
-								<option value="1"></option>
-								<option value="2"></option>
-								<option value="3"></option>
-								<option value="4"></option>
-								<option value="5"></option>
-								<option value="6"></option>
-								<option value="7"></option>
-								<option value="8"></option>
-								<option value="9"></option>
-								<option value="10"></option>
-								<option value="11"></option>
-								<option value="12"></option>
+							<select class="custom-select" name="numero" id="numero">
+								<option value="">Chosir</option>
 							</select>
 						</div>
 						<!-- Boutton d'envoi -->
@@ -109,3 +92,8 @@ $path_images=$path_root."images/";
 	<?php include($path_structure."JS.php"); ?>	<!-- Inclusion CDN et fichiers javascript -->
 </body>
 </html>
+<script>
+<?php include($path_pages."recherche_place.js"); ?> <!-- Inclusion la page js de requête de recherche de place-->
+</script>
+
+
