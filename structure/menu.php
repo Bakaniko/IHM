@@ -46,3 +46,24 @@
     </ul>
   </div>
 </nav>
+
+<noscript>
+<li>
+   <a href="<?php echo $path_root ; ?>index.php">Accueil</a>
+ </li>
+ <li>
+ <a href="<?php echo $path_pages ; ?>programmation.php">Programmation</a>
+ </li>
+ <li>
+   <a href="<?php echo $path_pages ; ?>compte.php">Mon compte</a>
+ </li>
+ <li>
+   <a href="<?php echo $path_pages ; ?>logout.php">Se déconnecter</a>
+ </li>
+ <li>
+   <a href="<?php echo $path_pages ; ?>panier.php">Panier</a>
+ </li>
+ <li>
+   <a href="<?php echo $path_pages ; ?>infos.php">Nous contacter</a>
+ </li>
+</noscript>
