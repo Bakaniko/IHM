@@ -99,9 +99,12 @@ avec la base à l'aide de PHP et Javascript.
 ## Design général {#designgeneral}
 
 Si le site officiel [^operaNational] est superbe (voir fig. \ref{siteOfficiel}), nous ne nous en sommes pas
-servi pour développer le design de notre site.
+servi pour développer le design de notre site. Les deux sites sont comparables
+en figure \ref{siteOfficiel} et \ref{acceuil}.
 
 ![Site officiel de l'Opéra national de Paris \label{siteOfficiel}](images/site_officiel.png){ width=100% }
+
+![Page d'acceuil du projet \label{acceuil}](images/acceuil.png){ width=100% }
 
 [^operaNational]:
     [https://www.operadeparis.fr](https://www.operadeparis.fr)
@@ -151,6 +154,8 @@ Le menu a été conçu de manière à être le plus simple et le plus lisible po
 Seuls les liens qui doivent être accessibles depuis n'importe quelle page
 ont été placés dans le menu. Ainsi l'ajout de sous menus n'a donc pas été nécessaire.
 
+![Barre de menu \label{menu}](images/menu.png){ width=100% }
+
 ### L'accueil
 
 L'importance a été donné aux images sur la page d'accueil de facon à accueillir
@@ -158,7 +163,7 @@ le visiteur de manière agréable et engageante.
 Cette première page propose directement des spectacles à découvrir et donne envie
 au visiteur de parcourir le reste du site.
 
-![Page d'acceuil \label{acceuil}](images/acceuil.png){ width=100% }
+La page d'acceuil est visible en figure \ref{acceuil}.
 
 ### Une carte pour prévoir son déplacement
 
@@ -168,13 +173,6 @@ degrés de l'intérieur de l'opéra.
 
 ![Page Nous contacter \label{Contact}](images/contact.png){ width=100% }
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.2, angle =90 ]{../interfaces/interface_1.png}
-\caption[Première ébauche du design]{Première ébauche du design}
-\label{fig:interface1}
-\end{figure}
-
 ## Les apports visuels
 
 ### L'interraction au service de la lisibilité
@@ -183,6 +181,10 @@ Les liens sont soulignés au passage de la souris et s'éclairent. En plus de
 donner des informations
 sur les éléments survolés par la souris, le visiteur a un retour direct sur son
 interraction avec les éléments du site.
+
+
+
+
 
 ### Des éléments visuels pour apporter davantage de sens
 
@@ -197,9 +199,9 @@ page de façon à utiliser
 l'espace au maximum tout en aérant le plus possible le contenu.
 Les pages sont peu chargées, seules les informations nécessaires sont présentes.
 Ce choix de mise en page permet également d'éviter les ascenseurs horizontaux
-et donc de limiter
-les efforts des personnes à handicap moteur.
+et donc de limiter les efforts des personnes à handicap moteur.
 
+Un lien en bas de page permet de remonter en haut de page dans le cas où la page est trop longue.
 
 ## Le responsive
 
@@ -249,15 +251,22 @@ lors du parcours du site avec la touche de tabulation.
 
 
 
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.2, angle =90 ]{../interfaces/interface_1.png}
+\caption[Première ébauche du design]{Première ébauche du design}
+\label{fig:interface1}
+\end{figure}
+
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.15, angle =90 ]{../interfaces/interface_2.png}
 \caption[Design actuel]{Design actuel}
 \label{fig:interface2}
 \end{figure}
-
-
-
 
 \clearpage
 
@@ -489,7 +498,12 @@ else {
 
 # Gestion des réservations
 
+Elle se fait à partir de la page reservation.php, elle est accessible depuis la
+page spectacle.php en cliquant sur le lien **Réserver** qui envoit par la méthode
+*GET* l'ID de la représentation.
+
 ![Page de Réservation \label{reservation}](images/reservation.png){ width=100% }
+
 ## Plan de salle
 
 
@@ -621,6 +635,8 @@ par spectacle, par salle, par mois, par année. Evénentuellement en reprenant l
 code de la page programmation.php. Il faudra peut-être avoir recours à Javascript
 et JQuery/Ajax.
 
+La page est visible en figure \ref{gestion}.
+
 ![Page de gestion des représentations \label{gestion}](images/gestion.png){ width=100% }
 
 ## Page spectacle.php
@@ -630,12 +646,16 @@ et JQuery/Ajax.
 -  si toutes les dates du spectacles sont passées, afficher quand
  même les informations, plus représentations passées (sans bouton réservé)
 
+ La page est visible en figure \ref{Spectacle}.
+
  ![Page Spectacle \label{Spectacle}](images/spectacle.png){ width=100% }
 
 ## Page reservation.php
 
 Cette page a nécessité l'utilisation d'un formulaire php et d'une image svg,
 ainsi que du code mélant javascript, PHP et SQL.
+
+La page est visible en figure \ref{reservation}.
 
 Toutefois, bien que fonctionnelle sur l'ordinateur de la personne qui l'a développé,
 nous avons eu des soucis à l'intégration. En effet, les serveurs locaux présentaient
@@ -652,9 +672,11 @@ sont insérées dans la variable
 Bien qu'existante, la page panier.php n'est pas fonctionnelle car elle dépend
 directement de la page reservation.php qui n'est pas pleinement fonctionnelle.
 
+La page est visible en figure \ref{panier}.
+
 
  ![Page Panier \label{panier}](images/panier.png){ width=100% }
- 
+
 # Conclusion
 
 Bien que n'étant pas complètement terminé la réalisation de ce projet a été
