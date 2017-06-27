@@ -506,6 +506,22 @@ page spectacle.php en cliquant sur le lien **Réserver** qui envoit par la méth
 
 ## Plan de salle
 
+## Selection au niveau du formulaire
+
+Une liste liée a été mise en place dans un formulaire avec les options de sélection récupérées directement dans la base.
+
+- la sélection de la catégorie de place est d'abord demandée et le SELECT est rempli avec les valeurs en base avec PHP;
+
+- Ensuite on demande la sélection du type de place (accessible ou non) et elle se fera en fonction de la valeur de
+catégorie c'est-à-dire les valeurs possibles de sélection sont les places de cette catégorie. Cette modification
+se fait grâce à Javascript et Ajax, initialement sur le tableau associatif renvoyé en développement. Par contre Handiman renvoit
+les informations sous forme d'objets et l'adaptation du code n'a pas été possible;
+
+- ensuite une sélection de la rangée souhaitée des demandes dont les options de sélections seront les rangées
+de la catégorie et du type déjà sélectionnés;
+
+- enfin une sélection du numéro de la place est demandée qui se fera en fonction de la catégorie, du type, et de
+la rangée sélectionnés auparavant.
 
 # Versionnement
 ## Logiciels de gestion du versionnement
