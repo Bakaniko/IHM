@@ -114,6 +114,93 @@ Comme le montre les figures \ref{fig:interface1} et \ref{fig:interface2}, le
 design a beaucoup évolué entre les différentes versions.
 
 
+## Explication technique des éléments et des transitions entre les éléments de l’interface.
+
+
+### Barre de navigation :
+
+Le menu fait la liste de plusieurs liens pointant vers les principales pages du site :
+
+- Le lien Accueil renvoie vers la page index.php.
+
+- Le lien Programmation pointe vers la page programmation.php
+
+- Le lien Connexion pointe vers la page reservation.php
+
+- Le lien Panier pointe vers la page panier.php
+
+- Len lien Nous contacter pointe vers la page infos.php
+
+### Parcours 1 (utilisateur) :
+
+Sur la page index.php est affiché la liste des prochaines représentations avec le titre et l’image
+correspondant au spectacle ainsi que la date de la représentation.
+Le visiteur peut choisir la représentation qui l’intéresse en cliquant soit sur l’image, soit sur le texte,
+il est ensuite redirigé automatiquement vers la page spectacle.php.
+La page spectacle.php  affiche la même image en plus grand et ajoute des détails sur le spectacle sélectionné
+ainsi que la liste des représentations pour ce spectacle.
+
+Le visiteur peut à partir de cette page sélectionner la date de la représentation qui l’intéresse grâce au
+bouton Réserver.
+L’utilisateur passe ensuite sur la page reservation.php à partir de laquelle il peut sélectionner une ou
+plusieurs places soit à partir d’un formulaire, soit graphiquement à partir de l'image svg de la salle de
+spectacle.
+
+Lorsque le visiteur clique sur le bouton Ajouter au panier les informations de la place sélectionnée à
+partir du formulaire sont envoyée à \colorbox{bleuciel}{\lstinline[basicstyle=\ttfamily\color{black}]{$\_SESSION ['panier']}}.
+L’utilisateur peut ensuite continuer sa réservation en cliquant sur le lien Aller au panier qui redirige
+vers la page panier.php.
+Sur cette nouvelle page le client peut alors cocher ou décocher les places qu’il a ajouté au panier,
+visualiser le montant total, puis confirmer sa réservation en cliquant sur le bouton Enregistrer les
+modifications (qui envoie à la base de donnée les informations finales de réservation).
+L’utilisateur peut ensuite choisir de continuer ses réservations avec le lien Poursuivre mes achats ou
+alors de procéder au paiement avec le lien Payer.
+Une fois que le client a cliqué sur le lien Payer, s’il n’est pas connecté il est renvoyé sur la page
+connexion.php, s’il n’est pas encore inscrit il est redirigé vers la page register.php à partir duquel il
+peut s’inscrire. Enfin si l’utilisateur est inscrit, il peut procéder directement au paiement.
+L’utilisateur peut à tout moment se déconnecter à partir du lien Se désinscrire situé dans le menu.
+
+### Parcours 2 (utilisateur):
+
+Le visiteur peut choisir de cliquer sur le lien Programmation du menu s’il souhaite accéder à une
+liste plus détaillée des représentations. Le formulaire de sélection de la page programmation.php
+permet au visiteur de chercher une représentation selon ses goût (type de représentation, salle) et
+ses disponibilités (mois). Une fois qu’il clique sur le bouton Chercher, une requête renvoie les
+informations filtrées de la base de donnée en dessous du formulaire sous forme de liste. L’utilisateur
+peut ensuite cliquer sur la représentation qui l’intéresse qui pointe vers la page de réservation.
+Le parcours standard du client peut ensuite reprendre.
+
+### Parcours de l’administrateur :
+
+L’administrateur se connecte à son compte via le lien du menu Se connecter (qui est le même que celui de l’utilisateur lambda).
+Il accède alors à la page gestion.php et peut à partir de deux onglets, soit gérer les représentations, soit gérer les réservations.
+Pour ajouter ou supprimer des réservations, deux formulaires distincts sont disponibles.
+L’interface pour gérer les réservations n’a pas pu être implémenté par manque de temps.
+
+### Fonctionnalités supplémentaires
+
+- Demande d’informations ou d’aide :
+
+    La page Info ou Nous contacter permet de prendre contact avec l’administrateur du site afin de demander des informations ou de l’aide.
+
+- Inscription directe :
+
+    Le visiteur peut choisir de s’inscrire ou de se connecter avant de cliquer sur le lien Payer
+    (étape du parcours 1) directement à partir du formulaire de connexion ou du lien Inscription de la page connexion.php.
+
+
+### Utilisation des méthodes http :
+
+Les deux méthodes http utilisées sont $\_GET et $\_POST.
+
+- $\_GET est utilisée pour transmettre les informations de la représentation sélectionnée vers la page spectacle.php.
+    Cette méthode est également utilisée sur la page spectacle.php pour transmettre les informations pour
+    l’id de la représentation vers la page réservation à partir du bouton Réserver.
+
+- $\_POST est utilisée pour la récupération des informations saisies dans les formulaires.
+
+
+
 
 ## La charte graphique
 
@@ -423,23 +510,23 @@ Un message flash est alors envoyé pour indiquer que l'opération s'est bien dé
 \begin{lstlisting}[language=php]
 
 
-if (!empty($\_POST['inputpseudo']) && !preg_match('#^[a-zA-Z0-9 -]+$#',$\_POST['inputpseudo'])){
+if (!empty($_POST['inputpseudo']) && !preg_match('#^[a-zA-Z0-9 -]+$#',$_POST['inputpseudo'])){
 
     $\_SESSION['flash']['danger']= "Votre  nouveau pseudo n'est pas valide !";
 
-}else if(!empty($\_POST['inputpseudo']) && preg_match('#^[a-zA-Z0-9 -]+$#',$\_POST['inputpseudo'])){
+}else if(!empty($_POST['inputpseudo']) && preg_match('#^[a-zA-Z0-9 -]+$#',$_POST['inputpseudo'])){
 
     // Je récupère l'id utilisateur qui vient de se connecter
     // je l'affecte à la variable $user_id que je met en parametre dans ma requete
     // sql pour changer les infos
 
-    $user_id=$\_SESSION['auth']->idUtilisateur;
+    $user_id=$_SESSION['auth']->idUtilisateur;
 
     $req=$pdo->prepare("UPDATE proj_utilisateur SET login =? WHERE idUtilisateur=?");
 
-    $req->execute ([htmlspecialchars($\_POST['inputpseudo']),$user_id]);
+    $req->execute ([htmlspecialchars($_POST['inputpseudo']),$user_id]);
 
-    $\_SESSION['flash']['success']= "Votre pseudo a été mis à jour !";
+    $_SESSION['flash']['success']= "Votre pseudo a été mis à jour !";
 }
 
 \end{lstlisting}
@@ -482,15 +569,15 @@ Si l'utilisateur qui se connecte est de type admin, il est redirigé vers la pag
 
 
 \begin{lstlisting}[language=php]
-if (!isset($\_SESSION['auth'])){
-$\_SESSION['flash']['danger']="Vous n'avez pas le droit d'accèder à cette page";
+if (!isset($_SESSION['auth'])){
+$_SESSION['flash']['danger']="Vous n'avez pas le droit d'accèder à cette page";
 header('Location:connexion.php');
-}if (isset($\_SESSION['auth']) && ($\_SESSION['auth']->typeUtilisateur=='admin')) {
+}if (isset($_SESSION['auth']) && ($\_SESSION['auth']->typeUtilisateur=='admin')) {
  header('Location:gestion.php');
 }
 else {
-   $\_SESSION['flash']['success']= "Bienvenue".$\_SESSION['auth']->nom." ".$\_SESSION['auth']->prenom." !";
-	//debug($\_SESSION);
+   $_SESSION['flash']['success']= "Bienvenue".$_SESSION['auth']->nom." ".$_SESSION['auth']->prenom." !";
+	//debug($_SESSION);
 }
 
 ?>
