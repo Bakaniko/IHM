@@ -11,7 +11,7 @@ author:
 formation: "Mathématiques et Informatique Appliquées aux Sciences Humaines et Sociales (MIASHS)"
 parcours: "Technologie et handicap (HANDI)"
 classname: "Interface Homme - Machine / Programmation Web Accessible"
-responsable: "Responsables de formation: Dominique Archambauld, Isis Truck (Université Paris 8)"
+responsable: "Responsables de formation: Dominique Archambault, Isis Truck (Université Paris 8)"
 #chargeDeCours: "Chargé de cours: ???"
 
 
@@ -46,13 +46,13 @@ de la première année.
 
 Le site présenté ici été développé par une équipe de 4 étudiants:
 
-- Bilo Boury
+- Bilo Boury (M1 G2M)
 
-- Charles Cascio
+- Charles Cascio (M1 G2M)
 
-- Nicolas Roelandt
+- Nicolas Roelandt (M1 G2M)
 
-- Nassim Yousfi
+- Nassim Yousfi (M1 MIASHS)
 
 #### Cahier des charges
 
@@ -782,7 +782,7 @@ La page est visible en figure \ref{panier}.
 
 # Conclusion
 
-Bien que n'étant pas complètement terminé la réalisation de ce projet a été
+Bien que n'étant pas complètement terminée, la réalisation de ce projet a été
 enrichissante à plusieurs niveaux.
 
 Nous avons pu en effet apprendre à développer tous les composants d'un site web,
