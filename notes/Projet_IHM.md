@@ -105,6 +105,7 @@ ainsi que des packs logiciels fournissant la base de données et le serveur web 
 un usage local.
 
 Enfin, il s'agit de la base de donnée installée sur le serveur Handiman.
+
 # Design du site {#design-du-site}
 
 ## Design général {#designgeneral}
@@ -121,23 +122,6 @@ servi pour développer le design de notre site.
 Comme le montre les figures \ref{fig:interface1} et \ref{fig:interface2}, le
 design a beaucoup évolué entre les différentes versions.
 
-\clearpage
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.2, angle =90 ]{../interfaces/interface_1.png}
-\caption[Première ébauche du design]{Première ébauche du design}
-\label{fig:interface1}
-\end{figure}
-
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.15, angle =90 ]{../interfaces/interface_2.png}
-\caption[Design actuel]{Design actuel}
-\label{fig:interface2}
-\end{figure}
 
 
 ## La charte graphique
@@ -168,100 +152,8 @@ Bootstrap choisit par défault la meilleure police en fonction du naviguateur.
 La taille de la police d'écriture a été choisi relativement grande pour un
 maximum de confort à la lecture.
 
-## Les composants
-
-### La barre de navigation comme repère
-
-Le menu a été conçu de manière à être le plus simple et le plus lisible possible.
-Seuls les liens qui doivent être accessibles depuis nimporte quelle page
-ont été placés dans le menu. Ainsi l'ajout de sous menus n'a donc pas été nécessaire.
-
-### L'acceuil
-
-L'importance a été donné aux images sur la page d'accueil de facon à acceuillir
-le visiteur de manière agréable et engageante.
-Cette première page propose directement des spectacles à découvrir et donne envie
-au visiteur de parcourir le reste du site.
-
-### Une carte pour prévoir son déplacement
-
-une carte a été ajoutée pour donner un point de repère géographique imédiat.
-Google maps a été préféré à leaflet pour l'accès à streetView et la visite à 360
-degres de l'intérieur de l'opéra.
 
 
-
-## Les apports visuels
-
-### L'interraction au service de la lisibilité
-
-Les liens sont soulignés au passage de la souris et s'éclairent. En plus de
-donner des informations
-sur les éléments survolés par la souris, le visiteur a un retour direct sur son
-interraction avec les éléments du site.
-
-### Des éléments visuels pour apporter d'avantage de sens
-
-Des icônes ont été ajoutés aux éléments importants comme les boutons d'action ou
-les liens principaux afin de se repérer
-aisément et de donner d'avantage de sens à ces éléments.
-
-### Une mise en page réfléchie
-
-Une attention particulière a été portée sur le placement des éléments dans la
-page de façon à utiliser
-l'espace au maximum tout en aérant le plus possible le contenu.
-les pages sont peu chargées, seules les informations nécéssaires sont présentes.
-Ce choix de mise en page permet également d'éviter les ascensseurs horizontaux
-et donc de limiter
-les efforts des personnes à handicap moteur.
-
-
-## Le responsive
-
-Un site pour tous les types d'écrans et tous les navigateurs.
-Les pages ont été pensées pour être totalement responsive, chose qui est facilité
-par le modèle en grille de bootstrap
-et les flexboxs de HTML5.
-Ensuite le site a été conçu pour fonctionner sur tous les naviguateurs (même IE8).
-
-
-
-## Retour et éléments de réflexion
-
-Les premiers choix de design n'ont pas toujours étés respectés pour des raisons
-de faisabilité (partie PHP).
-En outre il était prévu d'ajouter un lien d'évitement sur le menu et le pied de
-page.
-Toutefois, le menu et pied de page ont peu de liens. C'est pourquoi ils ne sont
-pas très gênants
-lors du parcours du site avec la touche de tabulation.## La charte graphique
-
-### Le choix des couleurs
-
-Les couleurs ont d'abord été choisi pour correspondre aux goûts de la population
-ciblée CSP+.
-Le noir est la couleur du luxe, du haut de gamme. Le noir et le blanc sont des
-couleurs classiques, sobres.
-Ce choix de couleur permet de distinguer aisément le menu du reste de la page et
-donc se repérer facilement.
-Enfin ce thème blanc et noir a l'avantage de présenter de forts contrastes qui
-facilitent la lecture du texte.
-
-En outre le pied de page en gris clair est discret.
-Il permet de faire le lien avec les autres présences sur le web de l'Opéra
-National de Paris sans effacer
-le contenu des pages. En effet il donne accès aux différents réseaux sociaux de
-l'opéra de paris.
-Le vert a été choisi pour les boutons de validation et le bleu pour les boutons
-marquant le franchissement
-d'une étape ou l'envoi d'un formulaire.
-
-### Le choix de la police
-
-Bootstrap choisit par défault la meilleure police en fonction du naviguateur.
-La taille de la police d'écriture a été choisi relativement grande pour un
-maximum de confort à la lecture.
 
 ## Les composants
 
@@ -284,7 +176,12 @@ une carte a été ajoutée pour donner un point de repère géographique imédia
 Google maps a été préféré à leaflet pour l'accès à streetView et la visite à 360
 degres de l'intérieur de l'opéra.
 
-
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.2, angle =90 ]{../interfaces/interface_1.png}
+\caption[Première ébauche du design]{Première ébauche du design}
+\label{fig:interface1}
+\end{figure}
 
 ## Les apports visuels
 
@@ -295,11 +192,11 @@ donner des informations
 sur les éléments survolés par la souris, le visiteur a un retour direct sur son
 interraction avec les éléments du site.
 
-### Des éléments visuels pour apporter d'avantage de sens
+### Des éléments visuels pour apporter davantage de sens
 
 Des icônes ont été ajoutés aux éléments importants comme les boutons d'action ou
 les liens principaux afin de se repérer
-aisément et de donner d'avantage de sens à ces éléments.
+aisément et de donner davantage de sens à ces éléments.
 
 ### Une mise en page réfléchie
 
@@ -331,9 +228,22 @@ page.
 Toutefois, le menu et pied de page ont peu de liens. C'est pourquoi ils ne sont
 pas très gênants
 lors du parcours du site avec la touche de tabulation.
-\clearpage
 
-## Accessibilité
+
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.15, angle =90 ]{../interfaces/interface_2.png}
+\caption[Design actuel]{Design actuel}
+\label{fig:interface2}
+\end{figure}
+
+
+
+
+\clearpage
 
 # PHP {#PHP}
 
@@ -351,6 +261,62 @@ choisir un siège:
 
 Cette deuxième option a nécessité l'utilisation de Javascript mais n'est pas
 obligatoire.
+
+
+
+~~~
+<?php
+
+	require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos existent ou pas
+	require_once"$path_structure".'fonctions.php';# inclure la fonction debug  <?php session_start();
+?>
+
+~~~
+
+Nous avons aussi utilisé PHP pour rendre le site dynamique à l'aide de requêtes
+au sein de la base de données et pour gérer les sessions utilisateurs.
+
+
+
+## Requêtes en base
+
+### Les listes déroulantes
+
+Pour limiter les soucis de cohérences sur les requêtes, les listes déroulantes étaient
+fiwées avec les valeurs déjà présentes en base. Donc derrière chaque liste déroulante,
+il y a une requête de type *query* qui va chercher des informations précises dans
+la base et pré-rempli les balises html de type *SELECT*.
+
+
+\begin{lstlisting}[language=php]
+
+<!-- Type -->
+<div class="form-group d-flex flex-column">
+    <label for="typeSelect">Type</label>
+    <select class="custom-select" id="typeSelect" name="typeSelect">
+        <option selected>Choisir...</option>
+
+        <?php
+        // requête de sélection des options de
+        // type de spectacle présents dans la base
+        $sql = "SELECT DISTINCT (s.type) AS type
+                FROM proj_Spectacle AS s WHERE 1 ORDER BY type ASC";
+
+        $req = $pdo->query($sql);
+
+        while ($data=$req->fetch()) {
+
+                    echo "<option value=".$data->type.">".$data->type."</option>\n";
+            }
+        $req->closeCursor();
+             ?>
+
+    </select>
+</div>
+\end{lstlisting}
+
+
+### Les entrées
 
 ## Gestion des sessions {#GESTIONSESSION}
 
@@ -381,13 +347,6 @@ En utilisant cette instruction,
 , nous vérifions d'abord si la variable de session existe déjà, dans le cas
 contraire et seulement dans ce cas là, la session est ouverte.      
 
-
-
-
-
-## Requêtes en base
-
-
 # Gestion des réservations
 ## Plan de salle
 
@@ -405,9 +364,9 @@ Dans le cadre du développement logiciel, la plupart des entreprises utilisent u
 
 De plus, en combinaison avec Github,
 
-Toutefois seu l'un d'entre nous avait déjà une expérience de ce logiciel de
+Toutefois seul l'un d'entre nous avait déjà une expérience de ce logiciel de
 versionnement. L'apprentissage n'a pas était aisé pour tous mais nous avons tous
-progresser dans notre connaissance de ce logiciel. Afin de faciliter cet
+progressé dans notre connaissance de ce logiciel. Afin de faciliter cet
 apprentissage, nous avons eu recours au logiciel **GitKraken** qui propose une
 interface graphique à git.
 
@@ -512,9 +471,45 @@ et JQuery/Ajax.
 
 # Conclusion
 
+Bien que n'étant pas complètement terminé la réalisation de ce projet a été
+enrichissante à plusieurs niveaux.
+
+Nous avons pu en effet apprendre à développer tous les composants d'un site web,
+en interfaçant son squelette à une base de données graĉe à PHP, afin de le rendre dynamique.
+Nous avons rencontré un certain nombre de problèmes et essayé de trouver les meilleures solutions
+pour y remédier (fournir une alternative, avoir recours à un autre langage, un autre outil).
+
+
+
+Nous avons aussi appris à collaborer pour réaliser ce site, notamment durant les phases
+d'intégration des différentes parties de chacun. En effet, nous n'avons pas toujours eu
+les mêmes pratiques de code et l'harmonisation n'a pas toujours été heureuse.
+ Nous avons aussi progresser dans
+notre maîtrise de l'outil de versionnement Git.
+
+
+
+
+\clearpage
+
 \appendix
 
 # Annexes
 
+
+## Usecases
+
+\input{jeanmarc}
+
+\input{Marcelle_Jacques}
+
+\input{philippe}
+
+\clearpage
+
+## Code python générant un jeu de test de réservations
+\lstinputlisting[language=python]{../sql/generate_reservations.py}
+
+\clearpage
 
 \input{sql}

@@ -1,5 +1,5 @@
 ---
-title:  'Use case : Phillippe'
+title:  'Use case : Philippe'
 author:
 - Bilo Boury
 - Charles Cascio
@@ -8,6 +8,8 @@ author:
 tags: [Use case, Philippe]
 geometry: a4paper, margin=2cm
 ...
+
+## Philippe, administrateur
 
 Philippe est un des administrateurs de l'Opéra National de Paris.
 C'est lui qui ajoute de nouveaux spectacles et plannifie les représentations en accord avec le Directeur.
