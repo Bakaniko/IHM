@@ -140,7 +140,6 @@ if (!empty($_POST)) {
 			<h2>Mes réservations</h2>
 		</div>
 		<div class="card mx-auto text-center">
-			<h2>Mes coordonnées</h2>
 		</div>
       <!-- Formulaire de modification -->
       <div class="card-block text-center">
@@ -171,7 +170,6 @@ if (!empty($_POST)) {
 	</form>
 
 		<div class="card mx-auto text-center">
-			<h2>Mes coordonnées</h2>
 		</div>
       <!-- Formulaire de modification -->
       <div class="card-block text-center">
