@@ -1,78 +1,96 @@
-# La charte graphique
+## La charte graphique
 
-## Le choix des couleurs
+### Le choix des couleurs
 
-Les couleurs ont d'abord été choisi pour correspondre aux goût de la population ciblée CSP+.
-Le noir est la couleur du luxe, du haut de gamme. Le noir et le blanc sont des couleurs classiques, sobres.
-Ce choix de couleur permet de distinguer aisément le menu du reste de la page et donc se repérer facilement.
-Enfin ce thème blanc et noir a l'avantage de présenter de forts contrastes qui facilitent la lecture du texte.
+Les couleurs ont d'abord été choisi pour correspondre aux goûts de la population
+ciblée CSP+.
+Le noir est la couleur du luxe, du haut de gamme. Le noir et le blanc sont des
+couleurs classiques, sobres.
+Ce choix de couleur permet de distinguer aisément le menu du reste de la page et
+donc se repérer facilement.
+Enfin ce thème blanc et noir a l'avantage de présenter de forts contrastes qui
+facilitent la lecture du texte.
 
 En outre le pied de page en gris clair est discret.
-Il permet de faire le lien avec les autres présences sur le web de l'Opéra Nationnal de Paris sans effacer
-le contenu des pages. En effet il donne accès aux différents réseaux sociaux de l'opéra de paris.
-Le vert a été choisit pour les boutons de validation et le bleu pour les boutons marquant le franchissement
+Il permet de faire le lien avec les autres présences sur le web de l'Opéra
+National de Paris sans effacer
+le contenu des pages. En effet il donne accès aux différents réseaux sociaux de
+l'opéra de paris.
+Le vert a été choisi pour les boutons de validation et le bleu pour les boutons
+marquant le franchissement
 d'une étape ou l'envoi d'un formulaire.
 
-## Le choix de la police
+### Le choix de la police
 
 Bootstrap choisit par défault la meilleure police en fonction du naviguateur.
-La taille de la police d'écriture a été choisi relativement grande pour un maximum de confort à la lecture.
+La taille de la police d'écriture a été choisi relativement grande pour un
+maximum de confort à la lecture.
 
+## Les composants
 
-
-# Les composants
-
-## La barre de navigation comme repère
+### La barre de navigation comme repère
 
 Le menu a été conçu de manière à être le plus simple et le plus lisible possible.
 Seuls les liens qui doivent être accessibles depuis nimporte quelle page
 ont été placés dans le menu. Ainsi l'ajout de sous menus n'a donc pas été nécessaire.
 
-## L'acceuil
+### L'acceuil
 
-L'importance a été donné aux images sur la page d'accueil de facon à acceuillir le visiteur de manière agréable et engageante.
-Cette première page propose directement des spectacles à découvrir et donne envie au visiteur de parcourir le reste du site.
+L'importance a été donné aux images sur la page d'accueil de facon à acceuillir
+le visiteur de manière agréable et engageante.
+Cette première page propose directement des spectacles à découvrir et donne envie
+au visiteur de parcourir le reste du site.
 
-## Une carte pour prévoir son déplacement
+### Une carte pour prévoir son déplacement
 
 une carte a été ajoutée pour donner un point de repère géographique imédiat.
-Google maps a été préféré à leaflet pour l'accès à streetView et la visite à 360 degres de l'intérieur de l'opéra.
+Google maps a été préféré à leaflet pour l'accès à streetView et la visite à 360
+degres de l'intérieur de l'opéra.
 
 
 
-# Les apports visuels
+## Les apports visuels
 
-## L'interraction au service de la lisibilité
+### L'interraction au service de la lisibilité
 
-Les liens sont soulignés au passage de la souris et s'éclairent. En plus de donner des informations
-sur les éléments survolés par la souris, le visiteur a un retour direct sur son interraction avec les éléments du site.
+Les liens sont soulignés au passage de la souris et s'éclairent. En plus de
+donner des informations
+sur les éléments survolés par la souris, le visiteur a un retour direct sur son
+interraction avec les éléments du site.
 
-## Des éléments visuels pour apporter d'avantage de sens
+### Des éléments visuels pour apporter d'avantage de sens
 
-Des icons ont été ajoutés aux éléments importants comme les boutons d'action ou les liens principaux afin de se repérer
+Des icônes ont été ajoutés aux éléments importants comme les boutons d'action ou
+les liens principaux afin de se repérer
 aisément et de donner d'avantage de sens à ces éléments.
 
-## Une mise en page réfléchie
+### Une mise en page réfléchie
 
-Une attention particulière a été portée sur le placement des éléments dans la page de façon à utiliser
+Une attention particulière a été portée sur le placement des éléments dans la
+page de façon à utiliser
 l'espace au maximum tout en aérant le plus possible le contenu.
 les pages sont peu chargées, seules les informations nécéssaires sont présentes.
-Ce choix de mise en page permet également d'éviter les ascensseurs horizontaux et donc de limiter
+Ce choix de mise en page permet également d'éviter les ascensseurs horizontaux
+et donc de limiter
 les efforts des personnes à handicap moteur.
 
 
-# Le responsive
+## Le responsive
 
 Un site pour tous les types d'écrans et tous les navigateurs.
-Les pages ont été pensées pour être totalement responsive, chose qui est facilité par le modèle en grille de bootstrap
+Les pages ont été pensées pour être totalement responsive, chose qui est facilité
+par le modèle en grille de bootstrap
 et les flexboxs de HTML5.
 Ensuite le site a été conçu pour fonctionner sur tous les naviguateurs (même IE8).
 
 
 
-# Retour et éléments de réflexion
+## Retour et éléments de réflexion
 
-Les premiers choix de design n'ont pas toujours étés respectés pour des raisons de faisabilité (partie PHP).
-En outre il était prévu d'ajouter un lien d'évitement sur le menu et le pied de page.
-Toutefois, le menu et pied de page ont peu de liens. C'est pourquoi ils ne sont pas très gênants
+Les premiers choix de design n'ont pas toujours étés respectés pour des raisons
+de faisabilité (partie PHP).
+En outre il était prévu d'ajouter un lien d'évitement sur le menu et le pied de
+page.
+Toutefois, le menu et pied de page ont peu de liens. C'est pourquoi ils ne sont
+pas très gênants
 lors du parcours du site avec la touche de tabulation.
