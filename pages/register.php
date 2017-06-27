@@ -44,7 +44,7 @@ if (!empty($_POST)) {
 
     $code_confirme=generer_code(60);
 		$passehash=password_hash($_POST["passe"], PASSWORD_BCRYPT);
-		$req->execute([$_POST['login'],$_POST['email'],$passehash,$code_confirme]);
+		$req->execute([htmlspecialchars($_POST['login']),htmlspecialchars($_POST['email']),$passehash,$code_confirme]);
     $dernierId=$pdo->lastInsertId(); # Récuperer le dernier Id généré par PDO
         $message="Votre inscription a bien été prise en compte,\n\n Afin de valider votre compte, veuillez cliquer sur le lien suivant\n\n http://localhost/IHM/pages/confirmation.php?id=$dernierId&code_confirme=$code_confirme";
         $header="MIME-Version:1.0\r\n";

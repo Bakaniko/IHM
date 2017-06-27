@@ -7,13 +7,13 @@ $path_images=$path_root."images/";
 ?>
 <?php
 if (!empty($_POST)) {
-  $warning=array();  # est un tableau associatif qui contient toutes les erreures eventuelles l'ors de la saisie du formulaire 
+  $warning=array();  # est un tableau associatif qui contient toutes les erreures eventuelles l'ors de la saisie du formulaire
   require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
-  require_once"$path_structure".'fonctions.php';# inclure la fonction debug  
+  require_once"$path_structure".'fonctions.php';# inclure la fonction debug
 
     if (empty($_POST['user_login'])){
     $warning['login'] = "Veuillez entrer votre pseudo !";
-  } elseif (empty($_POST['inputMotDePasse'])){
+  } else if (empty($_POST['inputMotDePasse'])){
     $warning['inputMotDePasse'] = "Veuillez sasir votre mot de passe !";
   }else{
     $req=$pdo->prepare('SELECT * FROM proj_utilisateur WHERE (login= :user_login OR adresseMail= :user_login) and date_confirmation IS NOT NULL'); # verifier si le login existe en et que le compte est confirmé
@@ -25,7 +25,8 @@ if (!empty($_POST)) {
           header('Location:compte.php');
            exit();
       }else {
-       $_SESSION['flash']['danger']='Identifiant ou mot de passe incorrecte !'; 
+       $_SESSION['flash']['danger']='Identifiant ou mot de passe incorrecte !';
+       $warning['login']='Identifiant ou mot de passe incorrecte !';
       }
   }
 }
@@ -81,7 +82,7 @@ if (!empty($_POST)) {
           <p class="card-text">Vous n'êtes pas encore inscrit ?</p>
           <a class="btn btn-secondary" href="<?php echo $path_pages ; ?>register.php" role="button">Inscription</a>
         </div>
-       
+
         <!-- Fin du formulaire de connexion -->
       </div>
     </div>

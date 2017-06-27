@@ -8,22 +8,9 @@ $path_images=$path_root."images/";
 require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
 require_once("$path_structure".'fonctions.php');# inclure la fonction debug
 
-// récupération du paramètre passé par la méthode GET
-$nomSpectacle ="'".htmlspecialchars($_GET['spectacle'])."'";
-$idSpectacle = intval($_GET['idSpectacle']);
 
-$sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
-FROM  proj_Representation as r
-JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
-WHERE date >= CURRENT_DATE AND spe.idSpectacle = :idSpectacle ORDER BY DATE  ASC' ;
-
-$req = $pdo->prepare($sql);
-if($req->execute(array('idSpectacle' => $idSpectacle))){
-
-	$data = $req->fetch();
-	$req->closeCursor();
-}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,6 +24,26 @@ if($req->execute(array('idSpectacle' => $idSpectacle))){
 		<div class="card-deck">
 			<div class="card m-auto">
 				<div class="card-block text-center">
+					<?php
+					// récupération du paramètre passé par la méthode GET
+					if(isset($_GET['idSpectacle'])){
+						//$nomSpectacle ="'".htmlspecialchars($_GET['spectacle'])."'";
+						$idSpectacle = intval($_GET['idSpectacle']);
+
+
+
+					$sql  = 'SELECT spe.nom, r.date as date, spe.type, spe.infos, spe.nomImage
+					FROM  proj_Representation as r
+					JOIN proj_Spectacle as spe ON r.idSpectacle = spe.idSpectacle
+					WHERE date >= CURRENT_DATE AND spe.idSpectacle = :idSpectacle ORDER BY DATE  ASC' ;
+
+					$req = $pdo->prepare($sql);
+					if($req->execute(array('idSpectacle' => $idSpectacle))){
+
+						$data = $req->fetch();
+						$req->closeCursor();
+						?>
+
 					<h3 class="card-title"><?php echo $data->nom; ?></h3>
 					<h5 class="card-title">Prochaine représentation : <?php echo affDate($data->date);?></h5>
 				</div>
@@ -80,9 +87,19 @@ if($req->execute(array('idSpectacle' => $idSpectacle))){
 							<?php
 						}
 						$req->closeCursor();
-					} // fin du if?>
+					} // fin du if
+				} //fin du si la requête retourne des informations
+				else {
+					?><h3 class="card-title">Spectacle indisponible</h3><?php
+				}
+				?>
 
 				</ul>
+			<?php }// fin du if isset
+			else{ // la requête retourne une erreur.( par exemple spectacle inexistant)
+				?><h3 class="card-title">Spectacle indisponible</h3><?php
+			}
+			?>
 			</div>
 		</div>
 	</div>
