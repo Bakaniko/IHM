@@ -370,6 +370,8 @@ Puis la requête est préparée et exécutée avec les valeurs passées en param
 La saisie est contrôlée à ce moment avec *htmlspecialchars* pour éviter l'injection de
 code sql.
 
+Un message flash est alors envoyé pour indiquer que l'opération s'est bien déroulée.
+
     \begin{lstlisting}[language=php]
 
     #
@@ -459,13 +461,17 @@ Dans le cadre du développement logiciel, la plupart des entreprises utilisent u
  compétences de gestion de projet et de développement susceptibles d'intéresser
  un employeur.
 
-De plus, en combinaison avec Github,
+De plus, en combinaison avec Github, cela nous permet d'avoir un version sauvegardée
+du code en ligne, palliant ainsi à d'éventuels soucis matériels.
 
 Toutefois seul l'un d'entre nous avait déjà une expérience de ce logiciel de
 versionnement. L'apprentissage n'a pas était aisé pour tous mais nous avons tous
 progressé dans notre connaissance de ce logiciel. Afin de faciliter cet
 apprentissage, nous avons eu recours au logiciel **GitKraken** qui propose une
 interface graphique à git.
+
+Au moment de la rédaction de ces lignes, 206 commits avaient été enregistrés, sur
+12 branches différentes.
 
 
 ### GitKraken
@@ -486,7 +492,9 @@ opérations courantes sans avoir à recourir à la ligne de commande (COMMIT, PU
 ## Hébergement
 
 L'hébergement s'est fait principalement sur nos machines personnelles, puis le
-site a été déployé sur Handiman.
+site a été déployé sur Handiman. Ainsi, chaque *Pull Request* était testée dans
+un serveur local avant d'être fusionnée à la branche *master*. Enfin, la branche
+*master* était téléchargée sur Handiman.
 
 La version déployée est visible à cette adresse:
 [http://handiman.univ-paris8.fr/~nicolas/](http://handiman.univ-paris8.fr/~nicolas/)
@@ -514,8 +522,10 @@ gratuit pour les projets open-source, . Tout ce que nous publions dessus est don
 ## Avantages
 
 L'avantage principal a été le fait d'avoir une distribution distribuée du code.
-Cela a aussi permis d'utiliser le code le plus à jour possible.
-Github permet une communication entre les participants à travers les Pull Request,
+Cela a aussi permis d'utiliser le code le plus à jour possible pour démarrer une
+nouvelle branche.
+
+Github permet une communication entre les participants à travers les *Pull Request*,
 mais nous avons peu exploiter cette possibilité.
 
 ## Inconvénients
@@ -526,9 +536,14 @@ internet.
 
 ## Problèmes rencontrés
 
-- envoie de mail, fonctionne sur l'ordinateur de Nassim, ne fonctionne pas sur
+- L'envoi de mail, fonctionne sur l'ordinateur de Nassim, ne fonctionne pas sur
 l'ordinateur de Nicolas ou sur Handiman. La *SendMail* n'est pas installé sur le
  serveur.
+
+- un certain nombre de fichiers n'ont pas pu être chargés sur Handiman, des erreurs
+se produisaient. Par la suite, il n'était plus possible de supprimer ou remplacer
+les fichiers vides ou incomplets présents sur Handiman. Nous avons donc utiliser
+un serveur local pour terminer le projet.
 
 # Evolutions possibles / points non traités
 
