@@ -41,16 +41,7 @@ et handicap* (**HANDI**). Il s'agit d'un projet associant les cours d'Interface
 Homme Machine (Dominique Archambauld) et Programmation Web Accessible (Isis Truck)
 de la première année.
 
-L'objectif est de développer un site web permettant la réservation de place de
-spectacle. Le site doit être accessible et donc fonctionnel pour des personnes en
-situation de handicap (visuel ou moteur).
 
-Nous avons voulu travailler sur un cas le plus concret possible, c'est pourquoi
-nous nous sommes inspirés du site de l'Opéra national de Paris.
-
-Si les spectacles présentés dans ce projet ont réellement eu lieu, soit à l'Opéra
-Bastille ou au Palais Garnier, l'inspiration s'arrête là. Le plan de salle, les
-dates de représentation, les clients sont totalement fictifs.
 
 
 Le site présenté ici été développé par une équipe de 4 étudiants:
@@ -67,12 +58,23 @@ Le site présenté ici été développé par une équipe de 4 étudiants:
 
 Développer un site de réservation de places de spectacle le plus accessible possible.
 
+L'objectif est de développer un site web permettant la réservation de place de
+spectacle. Le site doit être accessible et donc fonctionnel pour des personnes en
+situation de handicap (visuel ou moteur).
+
+Nous avons voulu travailler sur un cas le plus concret possible, c'est pourquoi
+nous nous sommes inspirés du site de l'Opéra national de Paris.
+
+Si les spectacles présentés dans ce projet ont réellement eu lieu, soit à l'Opéra
+Bastille ou au Palais Garnier, l'inspiration s'arrête là. Le plan de salle, les
+dates de représentation, les clients sont totalement fictifs.
 
 # Conception
 
-Ce site a été développé majoritairement le soir et le week-end, nous avons donc
-vouu le garder le plus simple et fonctionnel possible. D'une part car dans un
-soucis d'économie de temps et d'énergie, et d'autre part dans un souci d'accessibilité.
+Ce site a été développé majoritairement le soir et le week-end, sur une période
+d'un mois et demi environ, nous avons donc voulu le garder le plus simple et
+fonctionnel possible. D'une part car dans un soucis d'économie de temps et
+d'énergie, et d'autre part dans un souci d'accessibilité.
 
 
 ## Répartition des tâches
@@ -85,26 +87,12 @@ soucis d'économie de temps et d'énergie, et d'autre part dans un souci d'acces
 
 4. Implémentation PHP, gestion des sessions: Nassim Yousfi
 
-## maquette préliminiaire
 
-## Modèle Conceptuel de Données
+Dans un premier temps, nous avons développé le design et le  squelette du site
+et, parralèllement, le modèle de la base de données et son
+implémentation. Enfin, nous avons rendu le site dynamique en interfaçant le site
+avec la base à l'aide de PHP et Javascript.
 
-\begin{figure}[H]
-\centering
-\hspace{-10mm}\includegraphics[width=1.15\columnwidth]{images/capture_MCD.png}
-\caption[Modèle Conceptuel de Données]{Modèle Conceptuel de Données}
-\label{fig:MCD}
-\end{figure}
-
-
-# Réalisation de la base de données
-
-La base de données a été implémentée avec MySQL, car cet implémentation est courante
-pour des sites web. Il est donc aisé de trouver de la documentation à ce sujet
-ainsi que des packs logiciels fournissant la base de données et le serveur web pour
-un usage local.
-
-Enfin, il s'agit de la base de donnée installée sur le serveur Handiman.
 
 # Design du site {#design-du-site}
 
@@ -244,6 +232,29 @@ lors du parcours du site avec la touche de tabulation.
 
 
 \clearpage
+
+
+
+
+
+# Réalisation de la base de données
+
+La base de données a été implémentée avec MySQL, car cet implémentation est courante
+pour des sites web. Il est donc aisé de trouver de la documentation à ce sujet
+ainsi que des packs logiciels fournissant la base de données et le serveur web pour
+un usage local.
+
+Enfin, il s'agit de la base de donnée installée sur le serveur Handiman.
+
+## Modèle Conceptuel de Données
+
+\begin{figure}[H]
+\centering
+\hspace{-10mm}\includegraphics[width=1.15\columnwidth]{images/capture_MCD.png}
+\caption[Modèle Conceptuel de Données]{Modèle Conceptuel de Données}
+\label{fig:MCD}
+\end{figure}
+
 
 # PHP {#PHP}
 
