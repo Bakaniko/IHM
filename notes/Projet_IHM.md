@@ -264,14 +264,15 @@ obligatoire.
 
 
 
-~~~
+\begin{lstlisting}[language=php]
+
 <?php
 
 	require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos existent ou pas
 	require_once"$path_structure".'fonctions.php';# inclure la fonction debug  <?php session_start();
 ?>
 
-~~~
+\end{lstlisting}
 
 Nous avons aussi utilisé PHP pour rendre le site dynamique à l'aide de requêtes
 au sein de la base de données et pour gérer les sessions utilisateurs.
@@ -346,6 +347,27 @@ En utilisant cette instruction,
 
 , nous vérifions d'abord si la variable de session existe déjà, dans le cas
 contraire et seulement dans ce cas là, la session est ouverte.      
+
+Un exemple de code de gestion des session vérifiant l'authentification de l'utilisateur est visible si dessous.
+
+Il vérifie que le variable *auth* a bien été remplie à la connexion et sinon redirige, vers la page de connexion.
+Si l'utilisateur qui se connecte est de type admin, il est redirigé vers la page d'administration.
+
+
+\begin{lstlisting}[language=php]
+if (!isset($\_SESSION['auth'])){
+$\_SESSION['flash']['danger']="Vous n'avez pas le droit d'accèder à cette page";
+header('Location:connexion.php');
+}if (isset($\_SESSION['auth']) && ($\_SESSION['auth']->typeUtilisateur=='admin')) {
+ header('Location:gestion.php');
+}
+else {
+   $\_SESSION['flash']['success']= "Bienvenue".$\_SESSION['auth']->nom." ".$\_SESSION['auth']->prenom." !";
+	//debug($\_SESSION);
+}
+
+?>
+\end{lstlisting}
 
 # Gestion des réservations
 ## Plan de salle
