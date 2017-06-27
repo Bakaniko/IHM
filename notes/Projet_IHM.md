@@ -110,10 +110,10 @@ Enfin, il s'agit de la base de donnée installée sur le serveur Handiman.
 
 ## Design général {#designgeneral}
 
-Si le site officiel [^operaNational] est superbe, nous ne nous en sommes pas
+Si le site officiel [^operaNational] est superbe (voir fig. \ref{siteOfficiel}), nous ne nous en sommes pas
 servi pour développer le design de notre site.
 
-![Site officiel de l'Opéra national de Paris](images/site_officiel.png){ width=100% }
+![Site officiel de l'Opéra national de Paris \label{siteOfficiel}](images/site_officiel.png){ width=100% }
 
 [^operaNational]:
     [https://www.operadeparis.fr](https://www.operadeparis.fr)
@@ -585,6 +585,25 @@ et JQuery/Ajax.
 -  si toutes les dates du spectacles sont passées, afficher quand
  même les informations, plus représentations passées (sans bouton réservé)
 
+## Page reservation.php
+
+Cette page a nécessité l'utilisation d'un formulaire php et d'une image svg,
+ainsi que du code mélant javascript, PHP et SQL.
+
+Toutefois, bien que fonctionnelle sur l'ordinateur de la personne qui l'a développé,
+nous avons eu des soucis à l'intégration. En effet, les serveurs locaux présentaient
+des disparités de logiciels et de versions. Cette page ayant nécessité un temps de
+développement long, il ne nous restait plus de temps pour régler les problèmes découverts
+à l'intégration.
+
+Après le choix de la place par le biais du formulaire ou de l'image, les informations
+sont insérées dans la variable
+\colorbox{bleuciel}{\lstinline[basicstyle=\ttfamily\color{black}]{$\_SESSION["panier"]}}
+
+## Page panier.php
+
+Bien qu'existante, la page panier.php n'est pas fonctionnelle car elle dépend
+directement des .
 
 # Conclusion
 
