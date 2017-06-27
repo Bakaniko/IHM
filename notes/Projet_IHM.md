@@ -140,7 +140,7 @@ facilitent la lecture du texte.
 En outre le pied de page en gris clair est discret.
 Il permet de faire le lien avec les autres présences sur le web de l'Opéra
 National de Paris sans effacer
-le contenu des pages. En effet il donne accès aux différents réseaux sociaux de
+le contenu des pages. En effet, il donne accès aux différents réseaux sociaux de
 l'opéra de paris.
 Le vert a été choisi pour les boutons de validation et le bleu pour les boutons
 marquant le franchissement
@@ -148,7 +148,7 @@ d'une étape ou l'envoi d'un formulaire.
 
 ### Le choix de la police
 
-Bootstrap choisit par défault la meilleure police en fonction du naviguateur.
+Bootstrap choisit par défault la meilleure police en fonction du navigateur.
 La taille de la police d'écriture a été choisi relativement grande pour un
 maximum de confort à la lecture.
 
@@ -160,21 +160,21 @@ maximum de confort à la lecture.
 ### La barre de navigation comme repère
 
 Le menu a été conçu de manière à être le plus simple et le plus lisible possible.
-Seuls les liens qui doivent être accessibles depuis nimporte quelle page
+Seuls les liens qui doivent être accessibles depuis n'importe quelle page
 ont été placés dans le menu. Ainsi l'ajout de sous menus n'a donc pas été nécessaire.
 
 ### L'acceuil
 
-L'importance a été donné aux images sur la page d'accueil de facon à acceuillir
+L'importance a été donné aux images sur la page d'accueil de facon à accueillir
 le visiteur de manière agréable et engageante.
 Cette première page propose directement des spectacles à découvrir et donne envie
 au visiteur de parcourir le reste du site.
 
 ### Une carte pour prévoir son déplacement
 
-une carte a été ajoutée pour donner un point de repère géographique imédiat.
+Une carte a été ajoutée pour donner un point de repère géographique immédiat.
 Google maps a été préféré à leaflet pour l'accès à streetView et la visite à 360
-degres de l'intérieur de l'opéra.
+degrés de l'intérieur de l'opéra.
 
 \begin{figure}[H]
 \centering
@@ -203,8 +203,8 @@ aisément et de donner davantage de sens à ces éléments.
 Une attention particulière a été portée sur le placement des éléments dans la
 page de façon à utiliser
 l'espace au maximum tout en aérant le plus possible le contenu.
-les pages sont peu chargées, seules les informations nécéssaires sont présentes.
-Ce choix de mise en page permet également d'éviter les ascensseurs horizontaux
+Les pages sont peu chargées, seules les informations nécessaires sont présentes.
+Ce choix de mise en page permet également d'éviter les ascenseurs horizontaux
 et donc de limiter
 les efforts des personnes à handicap moteur.
 
@@ -212,10 +212,10 @@ les efforts des personnes à handicap moteur.
 ## Le responsive
 
 Un site pour tous les types d'écrans et tous les navigateurs.
-Les pages ont été pensées pour être totalement responsive, chose qui est facilité
+Les pages ont été pensées pour être totalement responsive, chose qui est facilitée
 par le modèle en grille de bootstrap
 et les flexboxs de HTML5.
-Ensuite le site a été conçu pour fonctionner sur tous les naviguateurs (même IE8).
+Ensuite le site a été conçu pour fonctionner sur tous les navigateurs (même IE8).
 
 
 
@@ -264,7 +264,8 @@ obligatoire.
 
 Le block de code ci-dessous montre diverses techniques utilisées pour factoriser
 le code en insérant définissant des chemins relatifs vers les fichiers à inclure et en insérant
-le code nécessaire à la connexion à la base de données, à l'insertion du menu et du header.
+le code nécessaire à la connexion à la base de données, à l'insertion du menu, du
+head, du footer et des fonctions Javascript.
 
 \begin{lstlisting}[language=php]
 
@@ -288,12 +289,26 @@ le code nécessaire à la connexion à la base de données, à l'insertion du me
 
 <!DOCTYPE html>
 <html lang="fr">
-<?php include($path_structure."head.php"); ?>	<!-- Inclusion <head> -->
+<!-- Inclusion <head> -->
+<?php include($path_structure."head.php"); ?>
 <body>
-<?php include($path_structure."menu.php"); ?>	<!-- Inclusion menu -->
+<!-- Inclusion menu -->
+<?php include($path_structure."menu.php"); ?>
 
+...
+
+<!-- Inclusion pied de page -->
+<?php include($path_structure."footer.php"); ?>
+<!-- Inclusion CDN et fichiers javascript -->
+<?php include($path_structure."JS.php"); ?>  
+
+</body>
+</html>
 \end{lstlisting}
 
+
+Le fait de procéder de cette manière favorise l'homogénéité du site et facilite
+la création et la maintenance des pages de notre site.
 Nous avons aussi utilisé PHP pour rendre le site dynamique à l'aide de requêtes
 au sein de la base de données et pour gérer les sessions utilisateurs.
 
@@ -334,10 +349,47 @@ la base et pré-rempli les balises html de type *SELECT*.
 
     </select>
 </div>
+
 \end{lstlisting}
 
 
-### Les entrées
+### Les saisies utilisateurs
+
+Pour toutes les requêtes nécessitant une saisie de l'utilisateur (champ texte par
+    exemple), nous avons contrôlé la saisie à l'aide d'expressions régulières si
+    besoin, toutes les saisies sont passées dans la fonction php *htmlspecialchars*.
+
+    Puis toutes les requêtes sont préparées avant d'être exécutées.
+
+L'expmple de code ci-dessous montre le cas où un utilisateur souhaite changer son
+login. Tout d'abord, le remplissage de la variable $\_POST['inputpseudo'] est testé,
+la valeur fournie doit répondre à l'expression régulière définie. Sinon un message
+flash de type *danger* est affiché disant que le nouveau login n'est pas valide.
+
+Puis
+    \begin{lstlisting}[language=php]
+
+    #
+    if (!empty($\_POST['inputpseudo']) && !preg_match('#^[a-zA-Z0-9 -]+$#',$\_POST['inputpseudo'])){
+
+        $\_SESSION['flash']['danger']= "Votre  nouveau pseudo n'est pas valide !";
+
+    }else if(!empty($\_POST['inputpseudo']) && preg_match('#^[a-zA-Z0-9 -]+$#',$\_POST['inputpseudo'])){
+
+    # Je récupère l'id utilisateur qui vient de se connecter
+    # je l'affecte à la variable $user_id que je met en parametre dans ma requete
+    # sql pour changer les infos
+
+    $user_id=$\_SESSION['auth']->idUtilisateur;
+
+    $req=$pdo->prepare("UPDATE proj_utilisateur SET login =? WHERE idUtilisateur=?");
+
+    $req->execute ([htmlspecialchars($\_POST['inputpseudo']),$user_id]);
+
+    $\_SESSION['flash']['success']= "Votre pseudo a été mis à jour !";
+
+
+    \end{lstlisting}
 
 ## Gestion des sessions {#GESTIONSESSION}
 
@@ -479,14 +531,19 @@ l'ordinateur de Nicolas ou sur Handiman. La *SendMail* n'est pas installé sur l
 
 ## Fonctionnalités / Interface du site
 
-- gestion des achats (panier), paiement de la commande
+- gestion des achats (panier), paiement de la commande;
 
-- renvoi d'un mot de passe temporaire en  cas d'oubli
+- renvoi d'un mot de passe temporaire en  cas d'oubli;
 
-- charger directement l'image depuis l'interface de gestion
+- charger directement l'image depuis l'interface de gestion;
 
 - si un administrateur est connecté, remplacer panier par gestion qui renvoit
-vers la page gestion.php
+vers la page gestion.php;
+
+- ajout d'un fil d'ariane en dessous du menu pour aider l'utilisateur à naviguer
+dans le site;
+
+-
 
 ## Page gestion.php
 
@@ -550,7 +607,11 @@ notre maîtrise de l'outil de versionnement Git.
 \clearpage
 
 ## Code python générant un jeu de test de réservations
-\lstinputlisting[language=python]{../sql/generate_reservations.py}
+
+\lstdefinestyle{numbers}
+{numbers=left, stepnumber=5, numberstyle=\tiny, numbersep=10pt}
+
+\lstinputlisting[language=python, style=numbers]{../sql/generate_reservations.py}
 
 \clearpage
 
