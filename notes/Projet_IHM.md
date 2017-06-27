@@ -163,7 +163,7 @@ Le menu a été conçu de manière à être le plus simple et le plus lisible po
 Seuls les liens qui doivent être accessibles depuis n'importe quelle page
 ont été placés dans le menu. Ainsi l'ajout de sous menus n'a donc pas été nécessaire.
 
-### L'acceuil
+### L'accueil
 
 L'importance a été donné aux images sur la page d'accueil de facon à accueillir
 le visiteur de manière agréable et engageante.
@@ -361,7 +361,7 @@ Pour toutes les requêtes nécessitant une saisie de l'utilisateur (champ texte 
 
     Puis toutes les requêtes sont préparées avant d'être exécutées.
 
-L'expmple de code ci-dessous montre le cas où un utilisateur souhaite changer son
+L'exemple de code ci-dessous montre le cas où un utilisateur souhaite changer son
 login. Tout d'abord, le remplissage de la variable $\_POST['inputpseudo'] est testé,
 la valeur fournie doit répondre à l'expression régulière définie. Sinon un message
 flash de type *danger* est affiché disant que le nouveau login n'est pas valide.
@@ -372,18 +372,18 @@ code sql.
 
 Un message flash est alors envoyé pour indiquer que l'opération s'est bien déroulée.
 
-    \begin{lstlisting}[language=php]
+\begin{lstlisting}[language=php]
 
-    #
-    if (!empty($\_POST['inputpseudo']) && !preg_match('#^[a-zA-Z0-9 -]+$#',$\_POST['inputpseudo'])){
 
-        $\_SESSION['flash']['danger']= "Votre  nouveau pseudo n'est pas valide !";
+if (!empty($\_POST['inputpseudo']) && !preg_match('#^[a-zA-Z0-9 -]+$#',$\_POST['inputpseudo'])){
 
-    }else if(!empty($\_POST['inputpseudo']) && preg_match('#^[a-zA-Z0-9 -]+$#',$\_POST['inputpseudo'])){
+    $\_SESSION['flash']['danger']= "Votre  nouveau pseudo n'est pas valide !";
 
-    # Je récupère l'id utilisateur qui vient de se connecter
-    # je l'affecte à la variable $user_id que je met en parametre dans ma requete
-    # sql pour changer les infos
+}else if(!empty($\_POST['inputpseudo']) && preg_match('#^[a-zA-Z0-9 -]+$#',$\_POST['inputpseudo'])){
+
+    // Je récupère l'id utilisateur qui vient de se connecter
+    // je l'affecte à la variable $user_id que je met en parametre dans ma requete
+    // sql pour changer les infos
 
     $user_id=$\_SESSION['auth']->idUtilisateur;
 
@@ -392,9 +392,9 @@ Un message flash est alors envoyé pour indiquer que l'opération s'est bien dé
     $req->execute ([htmlspecialchars($\_POST['inputpseudo']),$user_id]);
 
     $\_SESSION['flash']['success']= "Votre pseudo a été mis à jour !";
+}
 
-
-    \end{lstlisting}
+\end{lstlisting}
 
 ## Gestion des sessions {#GESTIONSESSION}
 
