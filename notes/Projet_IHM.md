@@ -262,15 +262,35 @@ choisir un siège:
 Cette deuxième option a nécessité l'utilisation de Javascript mais n'est pas
 obligatoire.
 
-
+Le block de code ci-dessous montre diverses techniques utilisées pour factoriser
+le code en insérant définissant des chemins relatifs vers les fichiers à inclure et en insérant
+le code nécessaire à la connexion à la base de données, à l'insertion du menu et du header.
 
 \begin{lstlisting}[language=php]
 
+<?php if (session_status()==PHP_SESSION_NONE) {session_start();}?>
 <?php
+    // Définition des chemins d'accès aux fichiers
+    $path_root="../";
+    $path_structure=$path_root."structure/";
+    $path_pages=$path_root."pages/";
+    $path_images=$path_root."images/";
 
-	require_once"$path_structure".'base.php';# inclure la connection à la base de données pour vérifier si les infos existent ou pas
-	require_once"$path_structure".'fonctions.php';# inclure la fonction debug  <?php session_start();
+
+    # inclure la connection à la base de données pour vérifier si les infos existent ou pas
+	require_once"$path_structure".'base.php';
+
+    # inclure la fonction debug  
+	require_once"$path_structure".'fonctions.php';
 ?>
+
+...
+
+<!DOCTYPE html>
+<html lang="fr">
+<?php include($path_structure."head.php"); ?>	<!-- Inclusion <head> -->
+<body>
+<?php include($path_structure."menu.php"); ?>	<!-- Inclusion menu -->
 
 \end{lstlisting}
 
