@@ -366,7 +366,10 @@ login. Tout d'abord, le remplissage de la variable $\_POST['inputpseudo'] est te
 la valeur fournie doit répondre à l'expression régulière définie. Sinon un message
 flash de type *danger* est affiché disant que le nouveau login n'est pas valide.
 
-Puis
+Puis la requête est préparée et exécutée avec les valeurs passées en paramètres.
+La saisie est contrôlée à ce moment avec *htmlspecialchars* pour éviter l'injection de
+code sql.
+
     \begin{lstlisting}[language=php]
 
     #
