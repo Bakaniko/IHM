@@ -8,6 +8,7 @@ $path_images=$path_root."images/";
 //require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
 ?>
 <?php
+//$connect = mysqli_connect("localhost", "nicolas", "omkivyeik8", "p18_nicolas");
 $connect = mysqli_connect("localhost", "bilo", "defvearsh7", "p18_bilo");
 $categorie = '';
 $handi='';
@@ -37,7 +38,7 @@ while($row = mysqli_fetch_array($result))
    $rang .= '<option value="'.$row["Ranger"].'">'.$row["Ranger"].'</option>';
   }
  
-$query = "SELECT DISTINCT Numero FROM proj_Place where proj_Place.idPlace NOT IN ((SELECT  proj_Reservation.idRepresentation FROM proj_Reservation join
+$query = "SELECT DISTINCT Numero FROM proj_Place where proj_Place.idPlace NOT IN (SELECT  proj_Reservation.idRepresentation FROM proj_Reservation join
 			 proj_Representation on proj_Reservation.idRepresentation =proj_Representation.idRepresentation) GROUP BY Numero";
   $result = mysqli_query($connect, $query);
    while($row = mysqli_fetch_array($result))
@@ -77,7 +78,7 @@ $query = "SELECT DISTINCT Numero FROM proj_Place where proj_Place.idPlace NOT IN
 						<div class="form-group d-flex flex-column">
 							<label for="handicap">Accessibilité requise ?</label>
 							<select class="custom-select action" name="handicap" id="handicap">
-								<option value=""> Choisir</option>
+								<option value="">Choisir</option>
 									<?php echo $handi;?>
 							</select>
 						</div>
@@ -85,7 +86,7 @@ $query = "SELECT DISTINCT Numero FROM proj_Place where proj_Place.idPlace NOT IN
 						<div class="form-group d-flex flex-column">
 							<label for="ranger">Rangée</label>
 							<select class="custom-select action" name="ranger" id="ranger">
-								<option value=""> Choisir</option>
+								<option value="">Rangées disponibles</option>
 									<?php echo $rang;?>
 							</select>
 						</div>
@@ -93,7 +94,7 @@ $query = "SELECT DISTINCT Numero FROM proj_Place where proj_Place.idPlace NOT IN
 						<div class="form-group d-flex flex-column">
 							<label for="numero">Numéro</label>
 							<select class="custom-select" name="numero" id="numero">
-								<option value=""> Choisir</option>
+								<option value="">Places disponibles</option>
 								<?php echo $numero;?>
 							</select>
 						</div>
