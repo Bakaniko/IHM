@@ -354,18 +354,18 @@
 
 
   \ifthenelse{\isundefined{\chargeDeCours}}{}{\pgftext[x=5.5cm,y=3.1cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{18}{18}{\fontfamily{phv}\selectfont{}\textbf{\chargeDeCours}}}};}
- %\pgftext[x=5.5cm,y=3.4cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{18}{18}{\fontfamily{phv}\selectfont{}\textbf{Chargé de cours : Malvina Dupays (Magellium)}}}};
+ %\pgftext[x=5.5cm,y=3.4cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{18}{18}{\fontfamily{phv}\selectfont{}\textbf{Chargé de cours : ?????}}}};
  \pgftext[x=5.5cm,y=2.1cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{18}{18}{\fontfamily{phv}\selectfont{}\textbf{\responsable}}}};
 
  						%% coordonnées Master
  						\pgftext[x=1.1cm,y=4.7cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{Université Paris 8}}}};
  						\pgftext[x=1.1cm,y=4.2cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{UFR eriTES}}}};
- 						\pgftext[x=1.1cm,y=3.7cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{3ème étage Bâtiment D}}}};
+ 						\pgftext[x=1.1cm,y=3.7cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{Bât. D, salle 128}}}};
  						\pgftext[x=1.1cm,y=3.4cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{2, rue de la Liberté}}}};
  						\pgftext[x=1.1cm,y=3.0cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{93256 Saint-Denis Cedex}}}};
  						\pgftext[x=1.1cm,y=2.6cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{France}}}};
- 						\pgftext[x=1.1cm,y=1.9cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{Tél. +33 (0)1 49 40 72 70}}}};
- 						\pgftext[x=1.1cm,y=1.4cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{http://www.geographie.univ-paris8.fr}}}};
+ 						\pgftext[x=1.1cm,y=1.9cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{Tél. +33 (0)1 49 40 73 25}}}};
+ 						\pgftext[x=1.1cm,y=1.4cm,bottom,left]{\scalebox{0.6}[1]{\fontsize{12}{12}{\fontfamily{ptm}\selectfont{}\makebox[6.7cm][c]{http://www2.univ-paris8.fr/ingenierie-cognition/master-handi/}}}};
 
 
 					\end{tikzpicture}

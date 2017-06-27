@@ -1,0 +1,403 @@
+\section{Notes sur le SQL}\label{notes-sur-le-sql}
+
+Notes table par table
+
+Toutes les tables commencent par le préfix ``proj\_''
+
+\subsection{proj\_TypeUtilisateur}\label{projux5ftypeutilisateur}
+
+\subsubsection{\texorpdfstring{\textbf{TypeUtilisateur}}{TypeUtilisateur}}\label{typeutilisateur}
+
+Défini les types d'utilisateurs possibles:
+
+\begin{itemize}
+\tightlist
+\item
+  admin : administre le site et la base de données
+\item
+  manager : peut gérér les spectacles et les réservations mais pas le
+  site et la base
+\item
+  user : client du site, peut créer un compte et faire des réservations
+\end{itemize}
+
+Un utilisateur du site doit obligatoirement avoir un TypeUtilisateur,
+seul un admin peut changer le type d'un utilisateur.
+
+varchar 10
+
+\subsection{proj\_Utilisateur}\label{projux5futilisateur}
+
+\subsubsection{\texorpdfstring{\textbf{IDU}}{IDU}}\label{idu}
+
+Identifiant Unique utilisateur, \textbf{clé primaire}
+
+type numérique auto-incrémenté
+
+\subsubsection{login}\label{login}
+
+Identifiant de l'utilisateur (pseudo, adresse mail)
+
+Varchar 30, \textbf{UNIQUE}
+
+Il ne doit pas y avoir 2 login identiques dans la base
+
+\subsubsection{passHash}\label{passhash}
+
+Mot de passe haché par la fonction password\_hash() de PHP; doit être
+utilisé directement par password\_verify().
+
+varchar 255 NOT NULL
+
+\subsubsection{nom}\label{nom}
+
+Nom de l'utilisateur
+
+Varchar 30
+
+\subsubsection{prenom}\label{prenom}
+
+Prenom de l'utilisateur
+
+Varchar 30
+
+\subsubsection{adressePostale1}\label{adressepostale1}
+
+Première ligne de l'adresse postale
+
+Varchar 50
+
+\subsubsection{adressePostale2}\label{adressepostale2}
+
+Deuxième ligne de l'adresse postale
+
+Varchar 50
+
+\subsubsection{codePostal}\label{codepostal}
+
+Code postal : traité comme string pour les client étrangers
+
+Varchar 10
+
+\subsubsection{ville}\label{ville}
+
+Ville de résidence
+
+Varchar 15
+
+\subsubsection{adresseMail}\label{adressemail}
+
+email de contact, \emph{devra correspondre à un certain format}
+
+\textbf{unique}
+
+varchar 50
+
+\subsubsection{telephone}\label{telephone}
+
+telephone de contact, traité comme string pour les numéros étrangers,
+\emph{devra correspondre à un certain format}
+
+varchar 15
+
+\subsubsection{\texorpdfstring{\emph{typeUtilisateur}}{typeUtilisateur}}\label{typeutilisateur-1}
+
+référence le type d'utilisateur
+
+Par défaut, réglé sur \emph{user}, devra être changé ultérieurement par
+un admin
+
+Clé étrangère sur \textbf{proj\_TypeUtilisateur.TypeUtilisateur}
+
+varchar 10
+
+\subsection{proj\_Spectacle}\label{projux5fspectacle}
+
+Référence tous les spectacles proposés (faits, en cours, à venir)
+
+\subsubsection{\texorpdfstring{\textbf{idSpectacle}}{idSpectacle}}\label{idspectacle}
+
+Identifiant unique auto-incrémenté, \textbf{clé primaire}
+
+Int
+
+\subsubsection{nom}\label{nom-1}
+
+Nom du spectacle
+
+varchar 50
+
+(unique ?)
+
+\subsubsection{type}\label{type}
+
+Référence le type de spectacle: concert, pièce de théatre, danse
+\ldots{}
+
+Suggestion: Les valeurs devraient venir d'une table externe
+
+varchar 30
+
+\subsubsection{infos}\label{infos}
+
+contient les informations du spectacle:
+
+\begin{itemize}
+\tightlist
+\item
+  nom du metteur en scène / chorégraphe
+\item
+  noms des acteurs/musiciens
+\item
+  description courte
+\end{itemize}
+
+suggestion : peut être divisé en plusieurs champs dans un vrai site
+
+TEXT
+
+\subsection{proj\_Salle}\label{projux5fsalle}
+
+Une salle est composée de places et appartient à un lieu
+
+\subsubsection{\texorpdfstring{\textbf{idSalle}}{idSalle}}\label{idsalle}
+
+Identifiant unique
+
+Numérique INT auto-incrémenté \textbf{clé primaire}
+
+\subsubsection{nom}\label{nom-2}
+
+nom de la salle (salle n°3; Théatre Odéon; etc)
+
+varchar 30
+
+\subsubsection{adresse}\label{adresse}
+
+adresse postale
+
+TEXT
+
+\subsubsection{type}\label{type-1}
+
+type de salle: salle de concert, théatre, piste de cirque\ldots{}
+
+varchar 20
+
+\subsection{proj\_Representation}\label{projux5frepresentation}
+
+Une représentation est identifiée par un spectacle (auteur, acteurs,
+etc), une salle, un horaire et une date. Un spectacle peut avoir
+plusieurs représentations dans la même salle.
+
+\subsubsection{\texorpdfstring{\textbf{idRepresentation}}{idRepresentation}}\label{idrepresentation}
+
+Identifiant unique
+
+Numérique INT auto-incrémenté \textbf{clé primaire}
+
+\subsubsection{\texorpdfstring{\emph{idSalle}}{idSalle}}\label{idsalle-1}
+
+proj\_Salle.idSalle, \textbf{clé étrangère}
+
+\subsubsection{\texorpdfstring{\emph{idSpectacle}}{idSpectacle}}\label{idspectacle-1}
+
+proj\_Spectacle.idSpectacle, \textbf{clé étrangère}
+
+\subsubsection{date}\label{date}
+
+date de la représentation, séparée du temps pour être plus simple à
+dupliquer
+
+DATE
+
+\subsubsection{HoraireDebut}\label{horairedebut}
+
+Début de la représentation
+
+TIME
+
+\subsubsection{HoraireFin}\label{horairefin}
+
+Fin de la représentation
+
+TIME
+
+\subsection{proj\_Categorie}\label{projux5fcategorie}
+
+Catégories disponibles pour une salle
+
+\subsubsection{\texorpdfstring{\textbf{idCategorie}}{idCategorie}}\label{idcategorie}
+
+Identifiant unique
+
+Numérique INT auto-incrémenté \textbf{clé primaire}
+
+\subsubsection{Categorie}\label{categorie}
+
+Nom de la categorie
+
+varchar 20
+
+\subsubsection{\texorpdfstring{\emph{idSalle}}{idSalle}}\label{idsalle-2}
+
+Les salles ont certaines catégories mais pas toutes. Il faut séparer les
+catégories de chaque salle, car la même catégorie n'aura pas le même
+prix dans un théatre que dans un opéra.
+
+proj\_Salle.idSalle, \textbf{clé étrangère}
+
+\subsection{proj\_Place}\label{projux5fplace}
+
+\subsubsection{\texorpdfstring{\textbf{idPlace}}{idPlace}}\label{idplace}
+
+Identifiant unique
+
+Numérique INT auto-incrémenté \textbf{clé primaire}
+
+\subsubsection{\texorpdfstring{\emph{idSalle}}{idSalle}}\label{idsalle-3}
+
+Une place appartient toujours à une salle
+
+proj\_Salle.idSalle, \textbf{clé étrangère}
+
+\subsubsection{\texorpdfstring{\emph{idCategorie}}{idCategorie}}\label{idcategorie-1}
+
+proj\_Categorie.idCategorie, \textbf{clé étrangère}
+
+\subsection{Handicap}\label{handicap}
+
+Détermine si la place est accessible ou non.
+
+varchar (3)
+
+\subsection{Rang}\label{rang}
+
+Rangée à laquelle la place appartient
+
+varchar (5)
+
+\subsection{Numero}\label{numero}
+
+Numéro de la place: concaténation Rang + idPlace
+
+varchar(10)
+
+\subsection{proj\_PrixPlace}\label{projux5fprixplace}
+
+Le prix est fonction du spectacle, peut importe la représentation, et de
+la catégorie. La catégorie permet de remonter à la salle.
+
+\subsubsection{\texorpdfstring{\textbf{\emph{idCategorie}}}{idCategorie}}\label{idcategorie-2}
+
+proj\_Categorie.idCategorie, \textbf{clé étrangère}; \textbf{clé
+primaire}
+
+\subsubsection{\texorpdfstring{\textbf{\emph{idSpectacle}}}{idSpectacle}}\label{idspectacle-2}
+
+proj\_Spectacle.idSpectacle, \textbf{clé étrangère}; \textbf{clé
+primaire}
+
+\subsubsection{prix}\label{prix}
+
+Prix en euros
+
+Décimal
+
+\subsection{proj\_Reservation}\label{projux5freservation}
+
+Une réservation prend en compte 1 et 1 seule place, pour une unique
+réprésentation, par un unique utilisateur /client.
+
+Avec le couple idPlace et idRepresentation, il est possible de retrouver
+le prix
+
+\subsubsection{\texorpdfstring{\textbf{\emph{IDU}}}{IDU}}\label{idu-1}
+
+proj\_Utilisateur.IDU, \textbf{clé étrangère}; \textbf{clé primaire}
+
+\subsubsection{\texorpdfstring{\textbf{\emph{idRepresentation}}}{idRepresentation}}\label{idrepresentation-1}
+
+proj\_Representation.idRepresentation, \textbf{clé étrangère};
+\textbf{clé primaire}
+
+\subsubsection{\texorpdfstring{\textbf{\emph{idPlace}}}{idPlace}}\label{idplace-1}
+
+proj\_Place.idPlace, \textbf{clé étrangère}; \textbf{clé primaire}
+
+\subsection{messages\_contacts}\label{messagesux5fcontacts}
+
+Cette table est destinée à contenir les messages envoyés à travers la
+page infos.phpMyAdmin
+
+\subsubsection{id\_message\_contact}\label{idux5fmessageux5fcontact}
+
+Id unique du message, généré à l'insertion
+
+type \emph{SERIAL}
+
+\subsubsection{Nom\_contact}\label{nomux5fcontact}
+
+Nom de l'expéditeur
+
+\emph{varchar 30}
+
+\subsubsection{Prenom\_contact}\label{prenomux5fcontact}
+
+Prenom de l'expéditeur
+
+\emph{varchar 255}
+
+\subsubsection{Mail\_contact}\label{mailux5fcontact}
+
+email de l'expéditeur
+
+\emph{varchar 255}
+
+\subsubsection{Text\_message}\label{textux5fmessage}
+
+Texte du message
+
+type \emph{TEXT}
+
+\subsubsection{date\_message\_contact}\label{dateux5fmessageux5fcontact}
+
+Date d'enregistrement du message
+
+type \emph{date}
+
+\section{Disponibilité des places}\label{disponibilituxe9-des-places}
+
+Pas besoin de créer une liste spéciale:
+
+Il suffit de trier les places pour le spectacle concerné où il y a (ou
+pas) de réservations de faite.
+
+\section{Clés étrangères}\label{cluxe9s-uxe9tranguxe8res}
+
+proj\_Utilisateur(typeUtilisateur) -\textgreater{}
+proj\_TypeUtilisateur(typeUtilisateur)
+
+proj\_Representation(idSalle) -\textgreater{} proj\_Salle(idSalle)
+
+proj\_Representation(idSpectacle) -\textgreater{}
+proj\_Spectacle(idSpectacle)
+
+proj\_Categorie(idSalle) -\textgreater{} proj\_Salle(idSalle)
+
+proj\_Place(idSalle) -\textgreater{} proj\_Salle(idSalle)
+
+proj\_Place(idCategorie) -\textgreater{} proj\_Categorie(idCategorie)
+
+proj\_PrixPlace(idCategorie) -\textgreater{}
+proj\_Categorie(idCategorie)
+
+proj\_PrixPlace(idSpectacle) -\textgreater{}
+proj\_Spectacle(idSpectacle)
+
+proj\_Reservation(IDU) -\textgreater{} proj\_Utilisateur(IDU)
+
+proj\_Reservation(idRepresentation) -\textgreater{}
+proj\_Representation(idRepresentation)
+
+proj\_Reservation(idPlace) -\textgreater{} proj\_Place(idPlace)
