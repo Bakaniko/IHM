@@ -17,8 +17,6 @@
       </div>
       <div class="d-flex flex-column justify-content-center hidden-md-down">
         <div class="d-flex flex-row">
-          <a class="px-1" href="https://www.w3.org/WAI/"><img src="<?php echo $path_images ; ?>wcag2A-blue.png"></a>
-          <a class="px-1" href="https://www.w3.org/WAI/"><img src="<?php echo $path_images ; ?>wcag2AA-blue.png"></a>
         </div>
       </div>
       <div class="d-flex flex-column justify-content-center hidden-sm-down">

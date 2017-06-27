@@ -1,3 +1,5 @@
+<!-- Ajax requête selection place-->
+<script src="<?php echo $path_root ; ?>ressources/jquery.min.js"></script>
 <!-- jQwery -->
 <script src="<?php echo $path_root ; ?>ressources/jquery-3.2.1.min.js"></script>
 <!-- Ajax -->

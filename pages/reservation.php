@@ -1,10 +1,52 @@
 <?php // Définition des chemins d'accès aux fichiers
+session_start();
 $path_root="../";
 $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
 $path_images=$path_root."images/";
-?>
 
+//require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
+?>
+<?php
+//$connect = mysqli_connect("localhost", "nicolas", "omkivyeik8", "p18_nicolas");
+$connect = mysqli_connect("localhost", "bilo", "defvearsh7", "p18_bilo");
+$categorie = '';
+$handi='';
+$rang='';
+$numero='';
+$query = "SELECT Categorie FROM proj_Place where proj_Place.idPlace NOT IN (SELECT  proj_Reservation.idRepresentation FROM proj_Reservation join
+			 proj_Representation on proj_Reservation.idRepresentation =proj_Representation.idRepresentation) Group by Categorie ";
+$result = mysqli_query($connect, $query);
+while($row = mysqli_fetch_array($result))
+{
+ $categorie .= "<option value=".$row["Categorie"].">".$row["Categorie"]."</option>";
+}
+
+$query = "SELECT DISTINCT Handicap FROM proj_Place where proj_Place.idPlace NOT IN (SELECT  proj_Reservation.idRepresentation FROM proj_Reservation join
+			 proj_Representation on proj_Reservation.idRepresentation =proj_Representation.idRepresentation) GROUP BY Handicap";
+  $result = mysqli_query($connect, $query);
+   while($row = mysqli_fetch_array($result))
+  {
+   $handi .= '<option value="'.$row["Handicap"].'">'.$row["Handicap"].'</option>';
+  }
+  
+$query = "SELECT DISTINCT Ranger FROM proj_Place where proj_Place.idPlace NOT IN (SELECT  proj_Reservation.idRepresentation FROM proj_Reservation join
+			 proj_Representation on proj_Reservation.idRepresentation =proj_Representation.idRepresentation) GROUP BY Ranger";
+$result = mysqli_query($connect, $query);
+while($row = mysqli_fetch_array($result))
+  {
+   $rang .= '<option value="'.$row["Ranger"].'">'.$row["Ranger"].'</option>';
+  }
+ 
+$query = "SELECT DISTINCT Numero FROM proj_Place where proj_Place.idPlace NOT IN (SELECT  proj_Reservation.idRepresentation FROM proj_Reservation join
+			 proj_Representation on proj_Reservation.idRepresentation =proj_Representation.idRepresentation) GROUP BY Numero";
+  $result = mysqli_query($connect, $query);
+   while($row = mysqli_fetch_array($result))
+  {
+   $numero .= '<option value="'.$row["Numero"].'">'.$row["Numero"].'</option>';
+  }
+  
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <?php include($path_structure."head.php"); ?> <!-- Inclusion <head> -->
@@ -12,8 +54,8 @@ $path_images=$path_root."images/";
 	<?php include($path_structure."menu.php"); ?> <!-- Inclusion menu -->
 
 	<!-- Contenu de la page spectacle -->
-	
-	<div class="container main" id="reservation">
+
+	<div class="container main">
 		<!-- Interface de Sélection des places -->
 		<div class="card mx-auto">
 			<!-- Titre -->
@@ -22,63 +64,38 @@ $path_images=$path_root."images/";
 			</div>
 			<!-- Formulaire de sélection des places -->
 			<div class="card-block text-center mx-auto">
-				<form method="POST" action="#">
+				<form>
 					<div class="d-flex flex-row flex-wrap justify-content-center">
 						<!-- Sélection catégorie -->
 						<div class="form-group d-flex flex-column">
 							<label for="categorie">Catégorie</label>
-							<select class="custom-select" name="categorie">
-								<option selected>Choisir...</option>
-								<option value="1"></option>
-								<option value="2"></option>
-								<option value="3"></option>
-								<option value="4"></option>
-								<option value="5"></option>
-								<option value="6"></option>
-								<option value="7"></option>
-								<option value="8"></option>
-								<option value="9"></option>
-								<option value="10"></option>
-								<option value="11"></option>
-								<option value="12"></option>
+							<select class="custom-select action" name="categorie" id="categorie">
+								<option value="">Choisir</option>
+									<?php echo $categorie;?>
+							</select>
+						</div>
+						<!-- Sélection Handicap -->
+						<div class="form-group d-flex flex-column">
+							<label for="handicap">Accessibilité requise ?</label>
+							<select class="custom-select action" name="handicap" id="handicap">
+								<option value="">Choisir</option>
+									<?php echo $handi;?>
 							</select>
 						</div>
 						<!-- Sélection rangée -->
 						<div class="form-group d-flex flex-column">
-							<label for="rangee">Rangée</label>
-							<select class="custom-select" name="rangee">
-								<option selected>Choisir...</option>
-								<option value="1"></option>
-								<option value="2"></option>
-								<option value="3"></option>
-								<option value="4"></option>
-								<option value="5"></option>
-								<option value="6"></option>
-								<option value="7"></option>
-								<option value="8"></option>
-								<option value="9"></option>
-								<option value="10"></option>
-								<option value="11"></option>
-								<option value="12"></option>
+							<label for="ranger">Rangée</label>
+							<select class="custom-select action" name="ranger" id="ranger">
+								<option value="">Rangées disponibles</option>
+									<?php echo $rang;?>
 							</select>
 						</div>
 						<!-- Sélection numéro -->
 						<div class="form-group d-flex flex-column">
 							<label for="numero">Numéro</label>
-							<select class="custom-select" name="numero">
-								<option selected>Choisir...</option>
-								<option value="1"></option>
-								<option value="2"></option>
-								<option value="3"></option>
-								<option value="4"></option>
-								<option value="5"></option>
-								<option value="6"></option>
-								<option value="7"></option>
-								<option value="8"></option>
-								<option value="9"></option>
-								<option value="10"></option>
-								<option value="11"></option>
-								<option value="12"></option>
+							<select class="custom-select" name="numero" id="numero">
+								<option value="">Places disponibles</option>
+								<?php echo $numero;?>
 							</select>
 						</div>
 						<!-- Boutton d'envoi -->
@@ -109,3 +126,6 @@ $path_images=$path_root."images/";
 	<?php include($path_structure."JS.php"); ?>	<!-- Inclusion CDN et fichiers javascript -->
 </body>
 </html>
+<script>
+<?php include($path_pages."recherche_place.js"); ?> <!-- Inclusion la page js de requête de recherche de place-->
+</script>
