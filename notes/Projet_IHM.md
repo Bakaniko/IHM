@@ -158,11 +158,15 @@ le visiteur de manière agréable et engageante.
 Cette première page propose directement des spectacles à découvrir et donne envie
 au visiteur de parcourir le reste du site.
 
+![Page d'acceuil \label{acceuil}](images/acceuil.png){ width=100% }
+
 ### Une carte pour prévoir son déplacement
 
 Une carte a été ajoutée pour donner un point de repère géographique immédiat.
 Google maps a été préféré à leaflet pour l'accès à streetView et la visite à 360
 degrés de l'intérieur de l'opéra.
+
+![Page Nous contacter \label{Contact}](images/contact.png){ width=100% }
 
 \begin{figure}[H]
 \centering
@@ -220,7 +224,7 @@ Ensuite le site a été conçu pour fonctionner sur tous les navigateurs (même 
 \end{minipage}
 
 \flushright
-\vspace{-12.50cm}
+\vspace{-13.250cm}
 \noindent\begin{minipage}{0.49\textwidth}
 \begin{figure}[H]
 \includegraphics[width=\columnwidth]{images/modele_adaptatif_ouvert.png}
@@ -431,6 +435,8 @@ if (!empty($\_POST['inputpseudo']) && !preg_match('#^[a-zA-Z0-9 -]+$#',$\_POST['
 
 \end{lstlisting}
 
+![Page de compte \label{compte}](images/compte.png){ width=100% }
+
 ## Gestion des sessions {#GESTIONSESSION}
 
 La variable de session contient deux index :
@@ -482,6 +488,8 @@ else {
 \end{lstlisting}
 
 # Gestion des réservations
+
+![Page de Réservation \label{reservation}](images/reservation.png){ width=100% }
 ## Plan de salle
 
 
@@ -596,7 +604,7 @@ vers la page gestion.php;
 - ajout d'un fil d'ariane en dessous du menu pour aider l'utilisateur à naviguer
 dans le site;
 
--
+
 
 ## Page gestion.php
 
@@ -613,12 +621,16 @@ par spectacle, par salle, par mois, par année. Evénentuellement en reprenant l
 code de la page programmation.php. Il faudra peut-être avoir recours à Javascript
 et JQuery/Ajax.
 
+![Page de gestion des représentations \label{gestion}](images/gestion.png){ width=100% }
+
 ## Page spectacle.php
 
 - gérer le cas où l'idSpectacle n'existe pas dans la base,
 
 -  si toutes les dates du spectacles sont passées, afficher quand
  même les informations, plus représentations passées (sans bouton réservé)
+
+ ![Page Spectacle \label{Spectacle}](images/spectacle.png){ width=100% }
 
 ## Page reservation.php
 
@@ -638,8 +650,11 @@ sont insérées dans la variable
 ## Page panier.php
 
 Bien qu'existante, la page panier.php n'est pas fonctionnelle car elle dépend
-directement des .
+directement de la page reservation.php qui n'est pas pleinement fonctionnelle.
 
+
+ ![Page Panier \label{panier}](images/panier.png){ width=100% }
+ 
 # Conclusion
 
 Bien que n'étant pas complètement terminé la réalisation de ce projet a été
