@@ -9,7 +9,7 @@ $(document).ready(function(){
    {
     result = 'handicap';
    }
-   else if (action == "handicap")
+    else if(action == "handicap")
    {
     result = 'ranger';
    }

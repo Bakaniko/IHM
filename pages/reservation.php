@@ -5,18 +5,46 @@ $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
 $path_images=$path_root."images/";
 
-require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
+//require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
 ?>
 <?php
+$connect = mysqli_connect("localhost", "bilo", "defvearsh7", "p18_bilo");
 $categorie = '';
-$sql = "SELECT Categorie FROM proj_Place
-			where proj_Place.idPlace NOT IN (SELECT proj_Reservation.idPlace FROM proj_Reservation)
-			 Group by Categorie "or die(print_r($bd->errorInfo()));
-$req = $pdo->query($sql);
-while($row = $req->fetch())
+$handi='';
+$rang='';
+$numero='';
+$query = "SELECT Categorie FROM proj_Place where proj_Place.idPlace NOT IN (SELECT  proj_Reservation.idRepresentation FROM proj_Reservation join
+			 proj_Representation on proj_Reservation.idRepresentation =proj_Representation.idRepresentation) Group by Categorie ";
+$result = mysqli_query($connect, $query);
+while($row = mysqli_fetch_array($result))
 {
- $categorie.= '<option value="'.$row->Categorie.'">'.$row->Categorie.'</option>';
+ $categorie .= "<option value=".$row["Categorie"].">".$row["Categorie"]."</option>";
 }
+
+$query = "SELECT DISTINCT Handicap FROM proj_Place where proj_Place.idPlace NOT IN (SELECT  proj_Reservation.idRepresentation FROM proj_Reservation join
+			 proj_Representation on proj_Reservation.idRepresentation =proj_Representation.idRepresentation) GROUP BY Handicap";
+  $result = mysqli_query($connect, $query);
+   while($row = mysqli_fetch_array($result))
+  {
+   $handi .= '<option value="'.$row["Handicap"].'">'.$row["Handicap"].'</option>';
+  }
+  
+$query = "SELECT DISTINCT Ranger FROM proj_Place where proj_Place.idPlace NOT IN (SELECT  proj_Reservation.idRepresentation FROM proj_Reservation join
+			 proj_Representation on proj_Reservation.idRepresentation =proj_Representation.idRepresentation) GROUP BY Ranger";
+$result = mysqli_query($connect, $query);
+while($row = mysqli_fetch_array($result))
+  {
+   $rang .= '<option value="'.$row["Ranger"].'">'.$row["Ranger"].'</option>';
+  }
+ 
+$query = "SELECT DISTINCT Numero FROM proj_Place where proj_Place.idPlace NOT IN ((SELECT  proj_Reservation.idRepresentation FROM proj_Reservation join
+			 proj_Representation on proj_Reservation.idRepresentation =proj_Representation.idRepresentation) GROUP BY Numero";
+  $result = mysqli_query($connect, $query);
+   while($row = mysqli_fetch_array($result))
+  {
+   $numero .= '<option value="'.$row["Numero"].'">'.$row["Numero"].'</option>';
+  }
+  
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -50,6 +78,7 @@ while($row = $req->fetch())
 							<label for="handicap">Accessibilité requise ?</label>
 							<select class="custom-select action" name="handicap" id="handicap">
 								<option value=""> Choisir</option>
+									<?php echo $handi;?>
 							</select>
 						</div>
 						<!-- Sélection rangée -->
@@ -57,6 +86,7 @@ while($row = $req->fetch())
 							<label for="ranger">Rangée</label>
 							<select class="custom-select action" name="ranger" id="ranger">
 								<option value=""> Choisir</option>
+									<?php echo $rang;?>
 							</select>
 						</div>
 						<!-- Sélection numéro -->
@@ -64,6 +94,7 @@ while($row = $req->fetch())
 							<label for="numero">Numéro</label>
 							<select class="custom-select" name="numero" id="numero">
 								<option value=""> Choisir</option>
+								<?php echo $numero;?>
 							</select>
 						</div>
 						<!-- Boutton d'envoi -->
