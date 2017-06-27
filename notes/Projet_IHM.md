@@ -206,6 +206,30 @@ et les flexboxs de HTML5.
 Ensuite le site a été conçu pour fonctionner sur tous les navigateurs (même IE8).
 
 
+\noindent\begin{minipage}{\textwidth}
+\flushleft
+
+\noindent\begin{minipage}{0.49\textwidth}
+
+\begin{figure}[H]
+\includegraphics[width=\columnwidth]{images/modele_adaptatif_ferme.png}
+\caption[Sur smartphone menu fermé]{Sur smartphone menu fermé}
+\label{fig:modele_adaptatif_ferme}
+\end{figure}
+
+\end{minipage}
+
+\flushright
+\vspace{-12.50cm}
+\noindent\begin{minipage}{0.49\textwidth}
+\begin{figure}[H]
+\includegraphics[width=\columnwidth]{images/modele_adaptatif_ouvert.png}
+\caption[Sur smartphone menu ouvert]{Sur smartphone menu ouvert}
+\label{fig:modele_adaptatif_ouvert}
+\end{figure}
+\end{minipage}
+\end{minipage}
+
 
 ## Retour et éléments de réflexion
 
