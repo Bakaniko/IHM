@@ -4,12 +4,11 @@ $path_root="../";
 $path_structure=$path_root."structure/";
 $path_pages=$path_root."pages/";
 $path_images=$path_root."images/";
-
-//require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
 ?>
+
 <?php
-//$connect = mysqli_connect("localhost", "nicolas", "omkivyeik8", "p18_nicolas");
-$connect = mysqli_connect("localhost", "bilo", "defvearsh7", "p18_bilo");
+require_once("$path_structure".'base.php');# inclure la connection à la base de données pour vérifier si les infos éxistent ou pas
+
 $categorie = '';
 $handi='';
 $rang='';
